@@ -1,0 +1,5 @@
+=== dataset download start: Fri Apr 24 16:21:55 UTC 2026
+Fetching 17 files:   0%|          | 0/17 [00:00<?, ?it/s]Fetching 17 files:   6%|▌         | 1/17 [00:00<00:04,  3.39it/s]Fetching 17 files:  24%|██▎       | 4/17 [00:04<00:14,  1.14s/it]Fetching 17 files:  47%|████▋     | 8/17 [00:06<00:06,  1.35it/s]Fetching 17 files:  65%|██████▍   | 11/17 [00:42<00:30,  5.15s/it]Fetching 17 files:  82%|████████▏ | 14/17 [00:58<00:15,  5.28s/it]Fetching 17 files:  88%|████████▊ | 15/17 [02:08<00:29, 14.81s/it]Fetching 17 files: 100%|██████████| 17/17 [02:08<00:00,  7.59s/it]
+[32m✓ Downloaded[0m
+  path: /home/v-daqianding/workspace/data/raw_data/onerec_data
+=== dataset done: Fri Apr 24 16:24:04 UTC 2026

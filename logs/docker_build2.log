@@ -1,0 +1,10 @@
+#7 3.184 [notice] A new release of pip is available: 24.2 -> 26.0.1
+#7 3.184 [notice] To update, run: python -m pip install --upgrade pip
+#7 DONE 3.3s
+
+#8 exporting to image
+#8 exporting layers
+#8 exporting layers 11.0s done
+#8 writing image sha256:4ba1e851c0d84021bb109bd9600c1f84cf323881503619fbd36e400f28b7f171 done
+#8 naming to docker.io/library/onerec-train:latest done
+#8 DONE 11.1s

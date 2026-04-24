@@ -1,0 +1,6 @@
+=== ckpt download start: Fri Apr 24 16:21:55 UTC 2026
+Fetching 17 files:   0%|          | 0/17 [00:00<?, ?it/s]Still waiting to acquire lock on hf_models/OneRec-1.7B-pretrain/.cache/huggingface/.gitignore.lock (elapsed: 0.1 seconds)
+Fetching 17 files:   6%|▌         | 1/17 [00:00<00:08,  1.88it/s]Fetching 17 files:  35%|███▌      | 6/17 [00:01<00:02,  4.32it/s]Fetching 17 files:  71%|███████   | 12/17 [01:55<00:57, 11.53s/it]Fetching 17 files: 100%|██████████| 17/17 [01:55<00:00,  6.81s/it]
+[32m✓ Downloaded[0m
+  path: /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain
+=== ckpt done: Fri Apr 24 16:23:51 UTC 2026

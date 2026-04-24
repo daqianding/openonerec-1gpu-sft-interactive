@@ -1,0 +1,1712 @@
+
+=============
+== PyTorch ==
+=============
+
+NVIDIA Release 24.08 (build 107063150)
+PyTorch Version 2.5.0a0+872d972
+Container image Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+=== launching single-GPU SFT ===
+MODEL_DIR=/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain OUTPUT_DIR=/home/v-daqianding/workspace/outputs/sft
+MAX_LENGTH=32768 MINIBATCH=16384 NUM_STEPS=200 WARMUP=20
+GPU 0: NVIDIA A100 80GB PCIe (UUID: GPU-bfb86b91-1279-973c-2fec-f9700c6517b3)
+[W424 18:00:03.792870275 CUDAAllocatorConfig.h:28] Warning: expandable_segments not supported on this platform (function operator())
+Loading checkpoint 1/1: 
+/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/model-00000-of-
+00001.safetensors
+Training Arguments:
+{
+    "model_dir": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain",
+    "resume_from": null,
+    "resume_from_tag": null,
+    "resume_training_state": false,
+    "use_fp32_weight": true,
+    "use_fp32_reduce": false,
+    "reshard_after_forward": false,
+    "save_checkpoint_per_step": 9999,
+    "output_dir": "/home/v-daqianding/workspace/outputs/sft",
+    "model_class": "Qwen3ForCausalLM",
+    "dataset_config": "examples/dataset_config/sft.json",
+    "max_length": 32768,
+    "minibatch_size": 16384,
+    "start_optimize_embedding_index": 0,
+    "lr_scheduler_type": "cosine",
+    "num_warmup_steps": 20,
+    "num_training_steps": 200,
+    "min_lr": 0.0001,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.1,
+    "beta1": 0.9,
+    "beta2": 0.95,
+    "use_tie_weights": true,
+    "max_grad_norm": 1.0,
+    "freeze_llm": false,
+    "enable_gradient_checkpointing": true,
+    "allow_random_init_params": "",
+    "logging_per_step": 5,
+    "seed": 19260817,
+    "monitor_datasource_loss": false,
+    "monitor_datasource_cnt": false,
+    "use_chunked_loss_computer": true,
+    "enable_profiler": false
+}
+Enable gradient checkpointing
+Start... Load state dict
+End... Load state dict elapsed: 0.803 
+diff_weight_cnt: 0.0, diff_weight_ratio: 0.0000
+Initialize RoPE inv_freq for Qwen3RotaryEmbedding
+Trainable parameter: model.embed_tokens.weight
+Trainable parameter: 
+model.layers.0._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.0._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.0._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.0._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.0._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.0._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.0._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.0._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.0._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.0._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.0._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.1._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.1._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.1._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.1._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.1._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.1._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.1._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.1._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.1._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.1._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.1._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.2._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.2._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.2._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.2._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.2._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.2._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.2._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.2._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.2._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.2._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.2._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.3._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.3._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.3._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.3._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.3._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.3._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.3._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.3._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.3._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.3._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.3._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.4._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.4._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.4._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.4._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.4._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.4._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.4._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.4._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.4._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.4._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.4._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.5._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.5._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.5._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.5._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.5._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.5._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.5._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.5._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.5._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.5._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.5._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.6._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.6._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.6._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.6._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.6._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.6._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.6._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.6._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.6._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.6._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.6._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.7._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.7._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.7._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.7._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.7._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.7._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.7._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.7._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.7._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.7._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.7._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.8._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.8._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.8._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.8._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.8._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.8._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.8._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.8._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.8._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.8._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.8._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.9._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.9._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.9._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.9._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.9._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.9._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.9._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.9._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.9._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.9._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.9._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.10._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.10._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.10._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.10._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.10._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.10._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.10._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.10._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.10._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.10._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.10._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.11._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.11._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.11._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.11._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.11._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.11._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.11._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.11._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.11._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.11._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.11._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.12._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.12._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.12._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.12._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.12._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.12._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.12._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.12._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.12._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.12._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.12._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.13._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.13._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.13._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.13._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.13._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.13._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.13._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.13._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.13._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.13._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.13._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.14._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.14._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.14._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.14._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.14._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.14._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.14._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.14._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.14._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.14._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.14._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.15._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.15._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.15._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.15._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.15._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.15._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.15._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.15._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.15._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.15._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.15._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.16._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.16._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.16._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.16._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.16._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.16._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.16._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.16._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.16._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.16._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.16._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.17._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.17._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.17._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.17._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.17._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.17._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.17._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.17._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.17._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.17._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.17._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.18._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.18._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.18._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.18._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.18._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.18._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.18._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.18._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.18._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.18._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.18._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.19._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.19._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.19._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.19._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.19._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.19._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.19._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.19._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.19._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.19._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.19._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.20._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.20._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.20._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.20._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.20._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.20._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.20._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.20._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.20._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.20._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.20._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.21._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.21._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.21._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.21._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.21._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.21._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.21._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.21._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.21._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.21._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.21._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.22._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.22._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.22._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.22._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.22._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.22._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.22._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.22._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.22._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.22._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.22._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.23._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.23._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.23._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.23._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.23._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.23._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.23._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.23._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.23._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.23._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.23._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.24._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.24._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.24._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.24._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.24._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.24._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.24._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.24._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.24._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.24._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.24._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.25._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.25._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.25._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.25._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.25._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.25._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.25._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.25._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.25._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.25._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.25._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.26._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.26._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.26._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.26._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.26._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.26._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.26._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.26._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.26._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.26._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.26._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: 
+model.layers.27._checkpoint_wrapped_module.self_attn.q_proj.weight
+Trainable parameter: 
+model.layers.27._checkpoint_wrapped_module.self_attn.k_proj.weight
+Trainable parameter: 
+model.layers.27._checkpoint_wrapped_module.self_attn.v_proj.weight
+Trainable parameter: 
+model.layers.27._checkpoint_wrapped_module.self_attn.o_proj.weight
+Trainable parameter: 
+model.layers.27._checkpoint_wrapped_module.self_attn.q_norm.weight
+Trainable parameter: 
+model.layers.27._checkpoint_wrapped_module.self_attn.k_norm.weight
+Trainable parameter: 
+model.layers.27._checkpoint_wrapped_module.mlp.gate_proj.weight
+Trainable parameter: 
+model.layers.27._checkpoint_wrapped_module.mlp.up_proj.weight
+Trainable parameter: 
+model.layers.27._checkpoint_wrapped_module.mlp.down_proj.weight
+Trainable parameter: 
+model.layers.27._checkpoint_wrapped_module.input_layernorm.weight
+Trainable parameter: 
+model.layers.27._checkpoint_wrapped_module.post_attention_layernorm.weight
+Trainable parameter: model.norm.weight
+==================================================
+Start... Build dataloader
+ChatCompletionDataset init with kwargs={'sources': 
+'/home/v-daqianding/workspace/data/split_data_sft/file_list.json', 'max_length':
+32768, 'base_model_dir': 
+'/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain', 
+'datasource_config': {}, 'num_readers': 1, 'shuffle_window': 0, 
+'only_assistant_loss': False, 'cut_to_pad': 1, 'model_class': 
+'Qwen3ForCausalLM', 'full_attention': False, 'local_shuffle_buffer_size': 10000,
+'max_sample_length': 30000, 'local_shuffle_random_fetch': 0.0001, 
+'itemic_id_range': [151669, 176246], 'add_think_pattern': True}
+End... Build dataloader elapsed: 4.755 
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+WARNING:onerec_llm.data.qwen3_dataset:ParquetDataset Info: rank=0, world_size=1, worker=0, num_workers=2, len(fn_list)=852
+WARNING:onerec_llm.data.qwen3_dataset:ParquetDataset Info: rank=0, world_size=1, worker=1, num_workers=2, len(fn_list)=852
+Start... Show data
+Input Text:
+
+<|im_start|>system
+你是一个具备深度学习能力的推荐引擎，可以准确捕捉用户兴趣点，并结合实时需求给出最优推荐方案。<|im_end|>
+<|im_start|>user
+用户画像：
+{"性别": "女性", "年龄": "31-40岁", "最近在平台上对这些视频中的广告意图明确表示不感兴趣": "日式牛奶水泡饼干破价啦 # #日式水泡饼 #代餐 #休闲小零食 @快手粉条热点 ", "最近搜索内容": ["", "强子", "芬达汽水", "甜甜事件", "子奕西游", "托卡人物会动怎么关闭", "米加装修教程", "天降小桉", "馒头侠", "一亿孩子一间房", "闲云野人", "米加小镇沙漠飞机场1", "托卡小屋布置", "丧尸女孩的动画", "囊囊囊是什么梗", "加查", "Ⅹt", "婉辞柔家收徒弟", "3322软件站米加小镇怎么更新", "米加小镇LOFT公寓布置", "#资本", "米加小镇豪华别墅布置", "湘芙", "阿飞玩积木", "托卡洗衣房布置", "一川", "#串子", "米加小镇飞机场在哪里进入", "托卡是哪个国家的", "哈瑞宝软糖塌方"], "最近在平台上对以下视频中的广告意图表示感兴趣": "泡面out！现在的新型速食都发展成这个地步了？ #零食 #吃货日常 #速食 ；今天我们来吃一种口味超多的糖#上快手嗨吃一夏 #潮流生活热浪节 #糖果星球争霸赛 ；尝尝10种热门口味的烤肠！究竟哪款更好吃呢？ #烤肠 #美食太好吃了 #测评 ；这diy自建房外观的功能朕甚是喜欢 #233乐园 #阿凡达世界 ；便利店？自助？这是整的什么花活？；托卡会发亮的家具#233乐园 #托卡生活世界 ；这人到底是谁啊！ #崽崽ZEPETO；- (˶╹ꇴ╹メ): 让我们 都变成幸福大王 #崽崽ZE7ETO #奇思妙崽大作战发型推荐免费商品；4款网络爆火的巧克力零食！究竟哪款更好吃？ #巧克力控 ；那些你以为甜品店现做的甜品可能都是半成品..", "关注博主类型": [{"博主类型": "亲子", "占比": 20.0}, {"博主类型": "游戏", "占比": 20.0}, {"博主类型": "明星娱乐", "占比": 20.0}, {"博主类型": "生活", "占比": 20.0}, {"博主类型": "其他", "占比": 20.0}], "最近商业化其他行为": {"近30日短剧支付信息": "观看时间最长的3种短剧类型分别是:[家庭伦理_家庭伦理]看了0.12分钟、[逆袭_家庭伦理]看了0.09分钟、[逆袭_女性成长]看了0.01分钟", "近1年短剧支付信息": "变现金额最多的3种短剧类型分别是:[复仇_商战]、[逆袭_末世]、[逆袭_家庭伦理]"}, "最近观看的广告": "曝光并且点击的广告有：游戏平台-233乐园软件，其他工具类软件-vivo应用商店，美妆工具-巴兹BUDDS维妮婷专卖店，护肤-赵梦澈的小店，游戏平台-九游，其他工具类软件-vivo软件商店，游戏平台-小猫快玩", "视频消费类目": {"点赞最多的视频类型": ["二次元", "游戏"], "收藏最多的视频类型": ["二次元", "游戏"], "分享最多的视频类型": ["二次元", "民生资讯"], "评论最多的视频类型": ["游戏", "旅游"], "完播最多的视频类型": ["二次元", "游戏"]}, "最近对平台上这些挂车商品感兴趣并产生了消费行为": "魔芋制品2次，潮玩盲盒2次，百香果2次，白膜填色/模具彩绘2次，儿童椅2次，国产白酒2次，电煮锅1次，蛋黄酥1次，三件套1次，梭子蟹1次", "曝光并且转化的广告": [{"一级品类": "电商平台", "产品名": "天天神券福利君", "视频内容": "音乐一响 美食登场#新人省钱秘籍 #野外美食", "广告行为": "转化", "广告ID": "<|sid_begin|><s_a_3637><s_b_8189><s_c_330><|sid_end|>", "二级品类": "综合类电商平台"}, {"二级品类": "游戏平台", "一级品类": "游戏", "广告行为": "转化", "广告ID": "<|sid_begin|><s_a_7592><s_b_4125><s_c_7612><|sid_end|>", "产品名": "虫虫助手"}], "视频消费详情": [{"消费行为": "点赞", "视频ID序列": "<|sid_begin|><s_a_4507><s_b_5697><s_c_3441><|sid_end|><|sid_begin|><s_a_6395><s_b_6559><s_c_1847><|sid_end|><|sid_begin|><s_a_2217><s_b_3539><s_c_7323><|sid_end|><|sid_begin|><s_a_7962><s_b_4159><s_c_1430><|sid_end|><|sid_begin|><s_a_718><s_b_700><s_c_1932><|sid_end|><|sid_begin|><s_a_6256><s_b_5861><s_c_11><|sid_end|><|sid_begin|><s_a_7914><s_b_5496><s_c_1647><|sid_end|><|sid_begin|><s_a_2511><s_b_8045><s_c_7489><|sid_end|><|sid_begin|><s_a_7436><s_b_1621><s_c_2039><|sid_end|><|sid_begin|><s_a_280><s_b_1152><s_c_3772><|sid_end|><|sid_begin|><s_a_5669><s_b_3651><s_c_4774><|sid_end|><|sid_begin|><s_a_81><s_b_386><s_c_3188><|sid_end|><|sid_begin|><s_a_4482><s_b_6978><s_c_5718><|sid_end|><|sid_begin|><s_a_238><s_b_345><s_c_3501><|sid_end|><|sid_begin|><s_a_4995><s_b_7765><s_c_227><|sid_end|><|sid_begin|><s_a_461><s_b_54><s_c_5466><|sid_end|><|sid_begin|><s_a_76><s_b_1365><s_c_4130><|sid_end|><|sid_begin|><s_a_2456><s_b_7668><s_c_5521><|sid_end|><|sid_begin|><s_a_2714><s_b_641><s_c_1870><|sid_end|><|sid_begin|><s_a_7626><s_b_116><s_c_3428><|sid_end|><|sid_begin|><s_a_4838><s_b_4780><s_c_96><|sid_end|><|sid_begin|><s_a_6893><s_b_4463><s_c_8100><|sid_end|><|sid_begin|><s_a_2565><s_b_6132><s_c_8086><|sid_end|><|sid_begin|><s_a_1829><s_b_6798><s_c_4263><|sid_end|><|sid_begin|><s_a_2295><s_b_8157><s_c_5335><|sid_end|><|sid_begin|><s_a_1996><s_b_6623><s_c_1097><|sid_end|><|sid_begin|><s_a_38><s_b_8189><s_c_4993><|sid_end|><|sid_begin|><s_a_302><s_b_7073><s_c_3888><|sid_end|><|sid_begin|><s_a_6121><s_b_3312><s_c_5036><|sid_end|><|sid_begin|><s_a_4764><s_b_8157><s_c_1314><|sid_end|>"}, {"消费行为": "收藏", "视频ID序列": "<|sid_begin|><s_a_5291><s_b_2160><s_c_7433><|sid_end|><|sid_begin|><s_a_306><s_b_7461><s_c_6569><|sid_end|><|sid_begin|><s_a_5921><s_b_7888><s_c_7922><|sid_end|><|sid_begin|><s_a_5669><s_b_2224><s_c_2907><|sid_end|><|sid_begin|><s_a_3403><s_b_2648><s_c_5510><|sid_end|><|sid_begin|><s_a_1719><s_b_322><s_c_3678><|sid_end|><|sid_begin|><s_a_3810><s_b_3655><s_c_4794><|sid_end|><|sid_begin|><s_a_1183><s_b_917><s_c_4705><|sid_end|><|sid_begin|><s_a_7789><s_b_6352><s_c_5309><|sid_end|><|sid_begin|><s_a_1446><s_b_6313><s_c_2489><|sid_end|><|sid_begin|><s_a_1029><s_b_7831><s_c_2032><|sid_end|><|sid_begin|><s_a_1786><s_b_3170><s_c_6361><|sid_end|><|sid_begin|><s_a_5846><s_b_4109><s_c_4724><|sid_end|><|sid_begin|><s_a_118><s_b_1661><s_c_7920><|sid_end|><|sid_begin|><s_a_1569><s_b_3056><s_c_7744><|sid_end|><|sid_begin|><s_a_3366><s_b_4230><s_c_2057><|sid_end|><|sid_begin|><s_a_2714><s_b_6267><s_c_4105><|sid_end|><|sid_begin|><s_a_5154><s_b_5744><s_c_3717><|sid_end|><|sid_begin|><s_a_1469><s_b_7517><s_c_7621><|sid_end|><|sid_begin|><s_a_6378><s_b_4717><s_c_4552><|sid_end|><|sid_begin|><s_a_2127><s_b_6590><s_c_1587><|sid_end|><|sid_begin|><s_a_7592><s_b_5289><s_c_2858><|sid_end|><|sid_begin|><s_a_5686><s_b_1689><s_c_899><|sid_end|><|sid_begin|><s_a_1930><s_b_6620><s_c_3528><|sid_end|><|sid_begin|><s_a_7307><s_b_720><s_c_3588><|sid_end|><|sid_begin|><s_a_206><s_b_1621><s_c_2055><|sid_end|><|sid_begin|><s_a_6109><s_b_4104><s_c_596><|sid_end|><|sid_begin|><s_a_3199><s_b_4614><s_c_6903><|sid_end|><|sid_begin|><s_a_6121><s_b_1939><s_c_2464><|sid_end|><|sid_begin|><s_a_5814><s_b_4714><s_c_1715><|sid_end|>"}, {"消费行为": "分享", "视频ID序列": "<|sid_begin|><s_a_3810><s_b_2290><s_c_7001><|sid_end|><|sid_begin|><s_a_6568><s_b_3340><s_c_353><|sid_end|><|sid_begin|><s_a_5101><s_b_2280><s_c_3476><|sid_end|><|sid_begin|><s_a_3187><s_b_6575><s_c_3777><|sid_end|><|sid_begin|><s_a_2300><s_b_7192><s_c_5945><|sid_end|><|sid_begin|><s_a_928><s_b_116><s_c_3323><|sid_end|><|sid_begin|><s_a_2271><s_b_4797><s_c_26><|sid_end|><|sid_begin|><s_a_8007><s_b_120><s_c_358><|sid_end|><|sid_begin|><s_a_5669><s_b_1371><s_c_4175><|sid_end|><|sid_begin|><s_a_7355><s_b_3392><s_c_3915><|sid_end|><|sid_begin|><s_a_1100><s_b_2900><s_c_155><|sid_end|><|sid_begin|><s_a_2452><s_b_6180><s_c_7603><|sid_end|><|sid_begin|><s_a_5836><s_b_4253><s_c_7350><|sid_end|><|sid_begin|><s_a_857><s_b_279><s_c_2509><|sid_end|><|sid_begin|><s_a_503><s_b_7288><s_c_917><|sid_end|><|sid_begin|><s_a_5669><s_b_4755><s_c_13><|sid_end|>"}], "曝光并且点击的广告": [{"二级品类": "综合类电商平台", "视频内容": "音乐一响 美食登场#新人省钱秘籍 #野外美食", "广告行为": "点击", "一级品类": "电商平台", "广告ID": "<|sid_begin|><s_a_3637><s_b_8189><s_c_330><|sid_end|>", "产品名": "天天神券福利君"}, {"广告行为": "点击", "广告ID": "<|sid_begin|><s_a_5669><s_b_1237><s_c_13><|sid_end|>", "视频内容": "无广告全解锁的米加小镇，你玩到了吗？ #4399游戏盒 #", "二级品类": "游戏平台", "一级品类": "游戏", "产品名": "4399游戏盒"}, {"一级品类": "工具类软件", "二级品类": "多媒体处理", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_6079><s_b_3800><s_c_1357><|sid_end|>", "产品名": "相机秀秀app"}, {"广告行为": "点击", "广告ID": "<|sid_begin|><s_a_5881><s_b_1987><s_c_2659><|sid_end|>", "产品名": "倾涛短剧看剧", "二级品类": "付费短剧", "一级品类": "短剧小说"}, {"产品名": "西奈酱", "广告行为": "点击", "一级品类": "电商平台", "二级品类": "综合类电商平台", "广告ID": "<|sid_begin|><s_a_4845><s_b_5265><s_c_11><|sid_end|>", "视频内容": "天哪，这运气也太好了吧，快点来抢"}, {"广告ID": "<|sid_begin|><s_a_3164><s_b_5265><s_c_3965><|sid_end|>", "产品名": "全友全屋定制", "一级品类": "家居建材", "二级品类": "装修设计及工程服务", "广告行为": "点击"}, {"广告ID": "<|sid_begin|><s_a_5681><s_b_4856><s_c_6173><|sid_end|>", "广告行为": "点击", "产品名": "4399游戏盒", "一级品类": "游戏", "二级品类": "游戏平台"}, {"一级品类": "电商平台", "视频内容": "天哪，这运气也太好了吧，快点来抢", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_4845><s_b_27><s_c_6671><|sid_end|>", "产品名": "西奈酱", "二级品类": "综合类电商平台"}, {"二级品类": "游戏平台", "广告行为": "点击", "产品名": "虫虫助手", "广告ID": "<|sid_begin|><s_a_7592><s_b_4125><s_c_7612><|sid_end|>", "一级品类": "游戏"}, {"广告行为": "点击", "一级品类": "电商平台", "产品名": "多多种草", "广告ID": "<|sid_begin|><s_a_526><s_b_610><s_c_2189><|sid_end|>", "二级品类": "综合类电商平台"}, {"广告行为": "点击", "一级品类": "家居建材", "广告ID": "<|sid_begin|><s_a_3164><s_b_667><s_c_4076><|sid_end|>", "产品名": "全友全屋定制", "二级品类": "装修设计及工程服务"}, {"广告ID": "<|sid_begin|><s_a_5669><s_b_5140><s_c_5602><|sid_end|>", "视频内容": "#4399游戏盒 #米加小镇全解锁版教程", "广告行为": "点击", "产品名": "4399游戏盒", "一级品类": "游戏", "二级品类": "游戏平台"}, {"广告行为": "点击", "一级品类": "电商平台", "广告ID": "<|sid_begin|><s_a_5459><s_b_2656><s_c_6185><|sid_end|>", "视频内容": "搭子离职了，这个办公室再也没有人宠我！ #职场 #搞笑 #王狗宁 #得物", "二级品类": "综合类电商平台", "产品名": "圆"}, {"一级品类": "游戏", "广告ID": "<|sid_begin|><s_a_1273><s_b_5565><s_c_280><|sid_end|>", "广告行为": "点击", "二级品类": "游戏平台", "产品名": "233乐园软件"}, {"二级品类": "综合类电商平台", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_6728><s_b_4130><s_c_2715><|sid_end|>", "视频内容": "“音乐一响，VIP闪亮登场” #古早 #得物 #反差 ", "产品名": "圆", "一级品类": "电商平台"}]}
+
+用户查询：推荐米加适合住的房子
+
+请推荐相关内容。/no_think<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+<|sid_begin|><s_a_5669><s_b_6962><s_c_7021><|sid_end|><|im_end|>
+<|endoftext|><|im_start|>system
+你是一位资深的推荐算法专家，精通用户画像分析和个性化匹配，能够为每位用户提供量身定制的内容推荐。<|im_end|>
+<|im_start|>user
+【用户画像】
+平台上有一位18-23岁的女性用户。 她最近在视频上发布了一些不同类别的视频，包括：8个游戏，7个二次元，5个情感，5个其他，2个明星娱乐，1个自拍，1个颜值。 她最近发布了一系列视频：。 她近期的搜索记录包括：陶白白、萌命为存、关于西施情绪化id、瑜乔、怎么获得头像挂件快手、王者送福刊、我和江承都是疯子大结局、无著名原创头像、百度可爱键盘永久二维码、她说他想结婚所以我们大吵一架、张显宗和岳绮罗神图、吹泡泡、龙拳小子、怎么知道是不是最新版本、瑶无双全身贴、忘了、和异性的关系你能忍到几级聊天、突然梦到一个好久不见的人怎么回事、钻石框、iOS设备代码、冲杯咖啡、分路图标素材、献鱼、李佳欣的快手、支离破碎歌词、兽世之旅、大明星、爱意明暗、青鸟所念誓约、失眠酒DJ。 她近期观看的视频类型包括：点赞最多的类型是【其他、颜值】，收藏最多的类型是【颜值、二次元】，分享最多的类型是【音乐、游戏】，评论最多的类型是【艺术、舞蹈】，完播最多的类型是【游戏、二次元】。 她近期点赞了视频<|sid_begin|><s_a_3239><s_b_5584><s_c_6904><|sid_end|><|sid_begin|><s_a_7324><s_b_4974><s_c_2606><|sid_end|><|sid_begin|><s_a_2377><s_b_7125><s_c_6131><|sid_end|><|sid_begin|><s_a_4040><s_b_6330><s_c_1887><|sid_end|><|sid_begin|><s_a_8185><s_b_1584><s_c_4321><|sid_end|><|sid_begin|><s_a_3541><s_b_2507><s_c_7889><|sid_end|><|sid_begin|><s_a_5948><s_b_1385><s_c_28><|sid_end|><|sid_begin|><s_a_4880><s_b_1240><s_c_96><|sid_end|><|sid_begin|><s_a_3595><s_b_6661><s_c_4099><|sid_end|><|sid_begin|><s_a_1415><s_b_1756><s_c_2847><|sid_end|><|sid_begin|><s_a_7769><s_b_6145><s_c_9><|sid_end|><|sid_begin|><s_a_7159><s_b_230><s_c_2603><|sid_end|><|sid_begin|><s_a_3413><s_b_4118><s_c_2603><|sid_end|><|sid_begin|><s_a_5489><s_b_2261><s_c_4661><|sid_end|><|sid_begin|><s_a_7846><s_b_4618><s_c_3745><|sid_end|><|sid_begin|><s_a_7689><s_b_2063><s_c_2996><|sid_end|><|sid_begin|><s_a_2372><s_b_4116><s_c_28><|sid_end|><|sid_begin|><s_a_3647><s_b_5915><s_c_7151><|sid_end|><|sid_begin|><s_a_1317><s_b_3215><s_c_5386><|sid_end|><|sid_begin|><s_a_6334><s_b_136><s_c_5142><|sid_end|><|sid_begin|><s_a_4743><s_b_6018><s_c_3528><|sid_end|><|sid_begin|><s_a_1973><s_b_7297><s_c_2874><|sid_end|><|sid_begin|><s_a_6335><s_b_5147><s_c_1097><|sid_end|><|sid_begin|><s_a_4880><s_b_5291><s_c_2996><|sid_end|><|sid_begin|><s_a_4689><s_b_1956><s_c_4331><|sid_end|><|sid_begin|><s_a_5106><s_b_2703><s_c_4222><|sid_end|><|sid_begin|><s_a_3725><s_b_4365><s_c_6178><|sid_end|><|sid_begin|><s_a_3610><s_b_7211><s_c_361><|sid_end|><|sid_begin|><s_a_3581><s_b_7742><s_c_2309><|sid_end|><|sid_begin|><s_a_2360><s_b_7324><s_c_3128><|sid_end|>；收藏了视频<|sid_begin|><s_a_4689><s_b_3539><s_c_745><|sid_end|><|sid_begin|><s_a_7769><s_b_6145><s_c_9><|sid_end|><|sid_begin|><s_a_8108><s_b_6802><s_c_5909><|sid_end|><|sid_begin|><s_a_4743><s_b_6018><s_c_3528><|sid_end|><|sid_begin|><s_a_4689><s_b_1956><s_c_4331><|sid_end|><|sid_begin|><s_a_3725><s_b_4365><s_c_6178><|sid_end|><|sid_begin|><s_a_7834><s_b_6020><s_c_2899><|sid_end|><|sid_begin|><s_a_3581><s_b_7742><s_c_2309><|sid_end|><|sid_begin|><s_a_7857><s_b_3461><s_c_5862><|sid_end|><|sid_begin|><s_a_6039><s_b_2549><s_c_5592><|sid_end|><|sid_begin|><s_a_4995><s_b_3239><s_c_234><|sid_end|><|sid_begin|><s_a_176><s_b_4408><s_c_3947><|sid_end|><|sid_begin|><s_a_6799><s_b_2539><s_c_5817><|sid_end|><|sid_begin|><s_a_7660><s_b_2053><s_c_7796><|sid_end|><|sid_begin|><s_a_3314><s_b_5698><s_c_4436><|sid_end|><|sid_begin|><s_a_505><s_b_4308><s_c_1365><|sid_end|><|sid_begin|><s_a_4535><s_b_4253><s_c_431><|sid_end|><|sid_begin|><s_a_7307><s_b_1703><s_c_2487><|sid_end|><|sid_begin|><s_a_2063><s_b_171><s_c_2858><|sid_end|><|sid_begin|><s_a_857><s_b_2481><s_c_6112><|sid_end|><|sid_begin|><s_a_3581><s_b_2093><s_c_3064><|sid_end|><|sid_begin|><s_a_2207><s_b_1585><s_c_1898><|sid_end|><|sid_begin|><s_a_2372><s_b_2549><s_c_2907><|sid_end|><|sid_begin|><s_a_2310><s_b_4021><s_c_3631><|sid_end|><|sid_begin|><s_a_2310><s_b_3608><s_c_6543><|sid_end|><|sid_begin|><s_a_2432><s_b_3312><s_c_2864><|sid_end|><|sid_begin|><s_a_2063><s_b_55><s_c_4374><|sid_end|><|sid_begin|><s_a_4064><s_b_4853><s_c_4141><|sid_end|><|sid_begin|><s_a_7335><s_b_3252><s_c_5817><|sid_end|><|sid_begin|><s_a_7307><s_b_6018><s_c_4317><|sid_end|>；分享了视频<|sid_begin|><s_a_385><s_b_201><s_c_1219><|sid_end|><|sid_begin|><s_a_2377><s_b_3298><s_c_3658><|sid_end|><|sid_begin|><s_a_63><s_b_4501><s_c_1898><|sid_end|><|sid_begin|><s_a_5476><s_b_831><s_c_7773><|sid_end|><|sid_begin|><s_a_4432><s_b_324><s_c_1887><|sid_end|><|sid_begin|><s_a_3336><s_b_2454><s_c_3739><|sid_end|><|sid_begin|><s_a_1546><s_b_2058><s_c_3814><|sid_end|><|sid_begin|><s_a_6925><s_b_3811><s_c_3026><|sid_end|><|sid_begin|><s_a_6651><s_b_6337><s_c_6507><|sid_end|><|sid_begin|><s_a_6785><s_b_1590><s_c_6023><|sid_end|><|sid_begin|><s_a_1470><s_b_2784><s_c_565><|sid_end|><|sid_begin|><s_a_2909><s_b_7444><s_c_3357><|sid_end|><|sid_begin|><s_a_5098><s_b_3329><s_c_726><|sid_end|><|sid_begin|><s_a_7065><s_b_6559><s_c_7066><|sid_end|><|sid_begin|><s_a_5615><s_b_7530><s_c_4870><|sid_end|><|sid_begin|><s_a_2108><s_b_4755><s_c_5305><|sid_end|><|sid_begin|><s_a_3755><s_b_6303><s_c_512><|sid_end|><|sid_begin|><s_a_7028><s_b_6945><s_c_7841><|sid_end|><|sid_begin|><s_a_1669><s_b_2957><s_c_728><|sid_end|><|sid_begin|><s_a_4603><s_b_1909><s_c_4119><|sid_end|><|sid_begin|><s_a_3042><s_b_1748><s_c_7485><|sid_end|><|sid_begin|><s_a_2207><s_b_1525><s_c_8029><|sid_end|><|sid_begin|><s_a_7874><s_b_2405><s_c_4036><|sid_end|><|sid_begin|><s_a_6018><s_b_5434><s_c_6672><|sid_end|><|sid_begin|><s_a_6477><s_b_1011><s_c_3237><|sid_end|><|sid_begin|><s_a_3084><s_b_5612><s_c_7799><|sid_end|><|sid_begin|><s_a_1725><s_b_6267><s_c_5282><|sid_end|><|sid_begin|><s_a_5749><s_b_2013><s_c_4152><|sid_end|><|sid_begin|><s_a_7726><s_b_5959><s_c_2430><|sid_end|><|sid_begin|><s_a_1170><s_b_7502><s_c_1435><|sid_end|>。 她关注的博主类型有：【其他】占47.28%，【颜值】占11.2%，【游戏】占9.58%，【二次元】占9.01%，【明星娱乐】占7.43%，【影视和短剧】占3.19%，【随手拍】占2.83%，【生活】占1.52%，【情感】占1.52%，【才艺】占1.47%，【音乐】占0.89%，【搞笑】占0.68%，【读书】占0.52%，【运动】占0.47%，【动物】占0.37%，【高新数码】占0.31%，【美妆】占0.26%，【摄影】占0.21%，【舞蹈】占0.21%，【穿搭】占0.16%，【财经】占0.16%，【教育】占0.16%，【美食】占0.16%，【星座命理】占0.1%，【历史】占0.05%，【汽车】占0.05%，【健康】占0.05%，【三农】占0.05%，【奇人异象】占0.05%，【宗教】占0.05%。 她最近在平台上观看了不同类型的直播内容，其中：【脱口秀-pk主播】分类下的直播点赞了22次，评论了3次；【闲聊互动-温和闲聊】分类下的直播打赏了0.1元。 她近30日观看时间最长的1种短剧类型分别是:[寻亲_甜宠]看了2.71分钟。 她对这些视频中的广告内容感兴趣：什么属于小个子的本命鞋“隐形又增高”#小个子女生 ；前奏一秒沦陷 #汽水音乐 #音乐分享；当大直男闻到女生喷不同香水的反应…呃😅 难评… #香水#香水推荐#伪体香#缇雾控#迪丽热巴；#白鹿 #莫离 🩵🩵🩵烟雨淬叶锋，寒潭映孤鸿。玉骨承璃雪，剑影碎长风。她自水墨江湖走来，身后是坚韧眉间的万卷河山。冰刃破夜时生出那一线月华，是叶璃枯枝逢春处的半缕柔光。🩵🩵🩵#祁椿鹿LU ；这个新上线的《筑梦猫舍》可以赚，夜猫已经替你们试过了，真实有效，可以提现到账微信支付宝 小游戏 #赚钱小游戏；首出礼物哥直接带我们首先看 #章鱼本鱼 ；这就是现实版爽文吧 #爽文 #造黄谣 #结局解气 ；#少女心手机壳 #个性手机壳推荐 #阔爱炸了 ；全网最慢手速抢iPhone17！没人比我慢了吧... # #数码科技 。 她购买了这些挂车商品：贴纸3次。 她最近一年在平台上变现金额最多的3种短剧类型分别是:[复仇_家庭伦理]、[复仇_豪门恩怨]、[复仇_虐恋]。
+
+【用户输入】
+推荐粉色壁纸
+
+基于以上信息，推荐合适的内容。/no_think<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+<|sid_begin|><s_a_7938><s_b_2826><s_c_3963><|sid_end|><|im_end|>
+<|endoftext|><|im_start|>system
+你是一个个性化推荐专家，擅长理解用户画像和对话意图，提供精准的内容推荐。<|im_end|>
+<|im_start|>user
+这是用户的兴趣画像：
+这是一名女性用户。 她发布的视频类别包括：7个艺术，3个二次元，2个自拍，1个其他。 她点赞了视频<|sid_begin|><s_a_3655><s_b_3058><s_c_3763><|sid_end|><|sid_begin|><s_a_6742><s_b_4603><s_c_384><|sid_end|><|sid_begin|><s_a_3610><s_b_5175><s_c_1904><|sid_end|><|sid_begin|><s_a_3609><s_b_3180><s_c_2819><|sid_end|><|sid_begin|><s_a_5451><s_b_5918><s_c_844><|sid_end|><|sid_begin|><s_a_1225><s_b_2593><s_c_3279><|sid_end|><|sid_begin|><s_a_1693><s_b_5565><s_c_1934><|sid_end|><|sid_begin|><s_a_6538><s_b_5602><s_c_2044><|sid_end|><|sid_begin|><s_a_2747><s_b_804><s_c_2672><|sid_end|><|sid_begin|><s_a_7741><s_b_4365><s_c_4195><|sid_end|><|sid_begin|><s_a_4390><s_b_5820><s_c_7956><|sid_end|><|sid_begin|><s_a_7411><s_b_238><s_c_899><|sid_end|><|sid_begin|><s_a_3583><s_b_4448><s_c_2672><|sid_end|><|sid_begin|><s_a_1891><s_b_5087><s_c_936><|sid_end|><|sid_begin|><s_a_891><s_b_6575><s_c_3528><|sid_end|><|sid_begin|><s_a_3915><s_b_63><s_c_1171><|sid_end|><|sid_begin|><s_a_3373><s_b_3320><s_c_4317><|sid_end|><|sid_begin|><s_a_2785><s_b_55><s_c_7947><|sid_end|><|sid_begin|><s_a_526><s_b_739><s_c_6948><|sid_end|><|sid_begin|><s_a_7814><s_b_6713><s_c_5388><|sid_end|><|sid_begin|><s_a_5794><s_b_4755><s_c_745><|sid_end|><|sid_begin|><s_a_2984><s_b_2119><s_c_66><|sid_end|><|sid_begin|><s_a_2793><s_b_6873><s_c_2058><|sid_end|><|sid_begin|><s_a_4973><s_b_2363><s_c_4790><|sid_end|><|sid_begin|><s_a_3306><s_b_2038><s_c_1721><|sid_end|><|sid_begin|><s_a_5403><s_b_55><s_c_8032><|sid_end|><|sid_begin|><s_a_7966><s_b_3806><s_c_2108><|sid_end|><|sid_begin|><s_a_6523><s_b_2453><s_c_4535><|sid_end|><|sid_begin|><s_a_6332><s_b_2091><s_c_7919><|sid_end|><|sid_begin|><s_a_3058><s_b_7444><s_c_7179><|sid_end|>；收藏了视频<|sid_begin|><s_a_1219><s_b_4216><s_c_2500><|sid_end|><|sid_begin|><s_a_92><s_b_3450><s_c_3328><|sid_end|><|sid_begin|><s_a_3655><s_b_7192><s_c_1897><|sid_end|><|sid_begin|><s_a_2526><s_b_5779><s_c_94><|sid_end|><|sid_begin|><s_a_2032><s_b_1165><s_c_4007><|sid_end|><|sid_begin|><s_a_810><s_b_2279><s_c_3870><|sid_end|><|sid_begin|><s_a_393><s_b_448><s_c_2485><|sid_end|><|sid_begin|><s_a_3420><s_b_7985><s_c_6715><|sid_end|><|sid_begin|><s_a_2634><s_b_8022><s_c_3525><|sid_end|><|sid_begin|><s_a_6468><s_b_4543><s_c_4170><|sid_end|><|sid_begin|><s_a_7531><s_b_7542><s_c_7515><|sid_end|>；分享了视频<|sid_begin|><s_a_6448><s_b_160><s_c_4074><|sid_end|><|sid_begin|><s_a_7741><s_b_2090><s_c_3441><|sid_end|><|sid_begin|><s_a_3583><s_b_3800><s_c_4258><|sid_end|>。 她的关注列表涵盖了这些领域：82.35%是【才艺】，15.29%是【其他】，1.18%是【二次元】，1.18%是【美食】。 她最近在平台上观看了不同类型的视频，其中：点赞最多的类型是【艺术、游戏】，收藏最多的类型是【游戏、艺术】，分享最多的类型是【游戏、科学与法律】，评论最多的类型是【艺术、科学与法律】，完播最多的类型是【游戏、喜剧】。 她近期的搜索记录包括：#桐心糕糕雾、昊昊、光遇病恋是什么、17×6、慈善家、卖仿MS编辑、李歪歪快手、滤镜林忆紊、周杰伦、微信双人联机手游、English name 、#耶兔堡、禁阁怎么解锁、#滤镜余思颖、滤镜李子含分享、猪霸天、秋天图片、略、暴风眼的冒险是啥、背景图、头像古早、小哈、滤镜分享、北京天安门升旗第一视角、余思颖、推荐治愈小游戏、分享站、核类背景图、#滤镜宋乐舟、#糊糊泡米粥。 她表现出对以下广告视频的兴趣：初音未来「粉樱幻舞」主题餐厅一日店长vlog！快来与MIKU一起踏入这浪漫的樱花雨中吧~ # 正式运营时间：2025***～6月15日 上海店地址：上海市黄浦区***；ht：圈名是几个字 宣传找在其他平台帮忙发视频的 给r 有意者私信 合集自剪 锐化妍欣屿帮调；#光遇 #光遇粘土 #虫子 这是什么虫子，有没有毒啊？；价到13再赠一普好不好 #普还是无门槛；最后一次见面时我们连再见都没说出口 #滤镜宋乐舟 #风格灵感小雪美汁 ；《篮莓不久》点击视频左下角观看后续内容 #小说 ；当我把特效手动捏进崽崽里！！崽崽捏脸功能太强大了哈哈哈~#崽崽ZEPETO #崽崽安利；为书友们推荐一些好看又好玩的书！ #点点穿书；国际风格logo设计 #LOGO设计 #国际化 #风格 #创意 ；让陈茶茶的爱意填满这个主题!!🥰 #小组件 #手机主题 #放学等我 #痛机。
+
+用户现在想了解关于"推荐头像"的内容，能帮忙推荐一些吗？/no_think<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+<|sid_begin|><s_a_8047><s_b_4038><s_c_96><|sid_end|><|im_end|>
+<|endoftext|><|im_start|>system
+你是一位资深的推荐算法专家，精通用户画像分析和个性化匹配，能够为每位用户提供量身定制的内容推荐。<|im_end|>
+<|im_start|>user
+这是用户的兴趣画像：
+{"性别": "女性", "年龄": "", "最近观看的广告": "曝光并且点击的广告有：其他游戏-超自然行动组游戏，综合类电商平台-京东好物推荐，医疗器械-花漾心语琪瞳软性亲水接触镜，日化洗护-七月美护理甄选，游戏平台-网易游戏，角色扮演-逆水寒手游，彩妆-芭宝欧babaoou美妆旗舰店，休闲游戏-超自然行动组手游，综合类电商平台-京东好物特惠，家庭护理品-二狗..，零食/坚果/特产-周辣辣麻辣实验室，其他游戏-第五人格手游，小新潮玩拆卡，医疗器械-lemonsaty软性亲水接触镜，运营商经销商-流量王企业店；在点击的广告中，浅层转化的广告有：其他游戏-超自然行动组游戏，综合类电商平台-京东好物推荐", "最近商业化其他行为": {"近30日短剧支付信息": "观看时间最长的4种短剧类型分别是:[复仇_悬疑]看了3.76分钟、[解密_悬疑]看了1.4分钟、[复仇_女性成长]看了1.25分钟、[逆袭_灾难]看了0.01分钟", "近1年短剧支付信息": "变现金额最多的3种短剧类型分别是:[逆袭_女性成长]、[打脸虐渣_家庭伦理]、[复仇_女性成长]；付费金额最多的1种短剧类型分别是:[复仇_虐恋]"}, "最近在平台上对以下视频中的广告意图表示感兴趣": "“新手致富教学”破产必看#超自然行动组 #还好是超自然不然就火了 下载链接 #攻略；沉浸式收纳微缩食玩冰箱 #微缩 #沉浸式 ；下次我想尝试横屏了！感觉画面太大了，你们看着是不是不舒服！ #定制卡砖 #手作打包；沉浸式摆迷你小洗浴房～ #大人也要玩玩具 #能玩一整天的过家家 #浴室收纳 ；诡秘 追剧搭子找来了快囤起来#自热火锅#今天吃啥 #灵魂宵夜 #火锅#丝米达；平时吃腻了泡面赶紧来试试这个肉酱炒刀削！这价到手四大盒！面条裹满了浓郁的肉香酱汁真的好好吃！ #吃货的日常 #面 世界谁懂啊速食美食 ；姐妹们也太大方了；客妹居然距离我家只有十分钟 #沉浸式打包 #手作刀 ；😅 #文创 #封口贴 #三丽鸥贴纸 ；我看谁再让我帮他砍拼夕夕呢^_^... #捏捏乐 #吐槽 #打包 ", "最近对平台上这些挂车商品感兴趣并产生了消费行为": "冲泡方便面/拉面/面皮/面饼15次，即食火锅/自热火锅6次，方便粉丝/粉条4次，面筋制品/辣条3次，肉类礼包/组合2次，足贴2次，麻薯/大福/青团2次，JK/DK/学生装2次", "最近搜索内容": ["空白名昵称", "尤雅时间人设推荐", "迷你世界建筑教程", "吴敏霞的声音怎么变好听", "第五人格名字推荐", "安森哟", "耳钉", "强吻", "天天消消乐", "第五人格直播", "双红CP磕点", "小轩", "会返厂的皮肤第五人格", "摄香", "头像碎片在哪里获得", "收碎片", "名字被举报了会发改名卡吗第五人格", "第五人格最便宜的皮肤", "周一精灵与叶大大", "第五人格杀戮天使头像怎么获得", "登录游戏身份证", "丝瓜汤", "强吻别人男朋友", "三丽鸥返场了吗", "击玩", "快影怎么转动图", "芷萱918", "双红CP", "最佳男主角", "第五人格聊天记录剧本"], "最近评论的视频": [{"视频评论": ["是珊瑚夫人"], "视频ID": "<|sid_begin|><s_a_6448><s_b_848><s_c_7406><|sid_end|>"}, {"视频评论": ["我出"], "视频ID": "<|sid_begin|><s_a_2614><s_b_1311><s_c_1463><|sid_end|>"}, {"视频评论": ["被她霸屏了[捂脸]"], "视频ID": "<|sid_begin|><s_a_2602><s_b_7218><s_c_7332><|sid_end|>"}, {"视频评论": ["111"], "视频ID": "<|sid_begin|><s_a_7657><s_b_7130><s_c_7919><|sid_end|>"}, {"视频评论": ["233乐园里面有，苹果也能下载"], "视频ID": "<|sid_begin|><s_a_5541><s_b_4290><s_c_7189><|sid_end|>"}, {"视频评论": ["如果全世界的人都讨厌我", "会的 如果全世界的人都不喜欢你了 我知道你更需要我 那我就更离不开你 别哭 你漂亮的眼睛不该流眼泪、"], "视频ID": "<|sid_begin|><s_a_5476><s_b_7791><s_c_4757><|sid_end|>"}, {"视频评论": ["111"], "视频ID": "<|sid_begin|><s_a_6448><s_b_4688><s_c_825><|sid_end|>"}, {"视频评论": ["老师可以把瑞琪儿和扎克的头像截给我吗[挑逗]"], "视频ID": "<|sid_begin|><s_a_7531><s_b_3833><s_c_515><|sid_end|>"}, {"视频评论": ["犹太前排"], "视频ID": "<|sid_begin|><s_a_3655><s_b_1803><s_c_2039><|sid_end|>"}, {"视频评论": ["妈妈"], "视频ID": "<|sid_begin|><s_a_1028><s_b_5410><s_c_4828><|sid_end|>"}, {"视频评论": ["前排前排"], "视频ID": "<|sid_begin|><s_a_1369><s_b_6999><s_c_3335><|sid_end|>"}, {"视频评论": ["有没有1r的稿图，要独家的[猪猪]"], "视频ID": "<|sid_begin|><s_a_4695><s_b_2938><s_c_4773><|sid_end|>"}, {"视频评论": ["老师礼拿"], "视频ID": "<|sid_begin|><s_a_1252><s_b_2043><s_c_4727><|sid_end|>"}, {"视频评论": ["前排[想吃]"], "视频ID": "<|sid_begin|><s_a_1016><s_b_7398><s_c_2556><|sid_end|>"}, {"视频评论": ["谁有牌子和我拍个剧本[猪猪]给2元"], "视频ID": "<|sid_begin|><s_a_6448><s_b_7489><s_c_4829><|sid_end|>"}, {"视频评论": ["想问一下医生痊愈还会返厂吗？"], "视频ID": "<|sid_begin|><s_a_7531><s_b_4731><s_c_4222><|sid_end|>"}, {"视频评论": ["前排"], "视频ID": "<|sid_begin|><s_a_3655><s_b_1005><s_c_6018><|sid_end|>"}, {"视频评论": ["你在期待什么"], "视频ID": "<|sid_begin|><s_a_697><s_b_2780><s_c_2776><|sid_end|>"}, {"视频评论": ["2", "111"], "视频ID": "<|sid_begin|><s_a_1369><s_b_1288><s_c_2222><|sid_end|>"}, {"视频评论": ["老师多少钱包邮"], "视频ID": "<|sid_begin|><s_a_4695><s_b_6589><s_c_383><|sid_end|>"}, {"视频评论": ["6", "前", "开什么玩笑"], "视频ID": "<|sid_begin|><s_a_3655><s_b_1903><s_c_1897><|sid_end|>"}, {"视频评论": ["111"], "视频ID": "<|sid_begin|><s_a_4113><s_b_4501><s_c_515><|sid_end|>"}, {"视频评论": ["这种滤镜是怎么调的？[让人头大]", "好，谢谢老师[猪猪]"], "视频ID": "<|sid_begin|><s_a_3655><s_b_8022><s_c_2993><|sid_end|>"}, {"视频评论": ["你好姐姐我是Swj的现任，我看了你的朋友圈，你很漂亮，而我笨笨的也不好看，你说他为什么选择了我而不是"], "视频ID": "<|sid_begin|><s_a_2529><s_b_2268><s_c_5120><|sid_end|>"}, {"视频评论": ["老师居然有赤宴，我的一辈子"], "视频ID": "<|sid_begin|><s_a_6561><s_b_1989><s_c_8152><|sid_end|>"}, {"视频评论": ["礼拿老师[猪猪]"], "视频ID": "<|sid_begin|><s_a_3989><s_b_2756><s_c_6010><|sid_end|>"}, {"视频评论": ["求带"], "视频ID": "<|sid_begin|><s_a_7531><s_b_1763><s_c_1105><|sid_end|>"}, {"视频评论": ["好", "宝子收不收？", "收不收？"], "视频ID": "<|sid_begin|><s_a_4943><s_b_4501><s_c_6037><|sid_end|>"}], "视频消费详情": [{"消费行为": "点赞", "视频ID序列": "<|sid_begin|><s_a_6448><s_b_334><s_c_89><|sid_end|><|sid_begin|><s_a_7400><s_b_7928><s_c_6844><|sid_end|><|sid_begin|><s_a_8091><s_b_798><s_c_6955><|sid_end|><|sid_begin|><s_a_2609><s_b_6721><s_c_261><|sid_end|><|sid_begin|><s_a_3219><s_b_4091><s_c_5605><|sid_end|><|sid_begin|><s_a_3203><s_b_7713><s_c_6297><|sid_end|><|sid_begin|><s_a_7626><s_b_7519><s_c_4996><|sid_end|><|sid_begin|><s_a_7275><s_b_76><s_c_2452><|sid_end|><|sid_begin|><s_a_461><s_b_238><s_c_238><|sid_end|><|sid_begin|><s_a_1221><s_b_3439><s_c_5908><|sid_end|><|sid_begin|><s_a_1369><s_b_6562><s_c_188><|sid_end|><|sid_begin|><s_a_3655><s_b_1903><s_c_1897><|sid_end|><|sid_begin|><s_a_6448><s_b_4688><s_c_825><|sid_end|><|sid_begin|><s_a_7686><s_b_160><s_c_7624><|sid_end|><|sid_begin|><s_a_1369><s_b_6999><s_c_3335><|sid_end|><|sid_begin|><s_a_2452><s_b_8157><s_c_5203><|sid_end|><|sid_begin|><s_a_90><s_b_554><s_c_1713><|sid_end|><|sid_begin|><s_a_3098><s_b_6006><s_c_2361><|sid_end|><|sid_begin|><s_a_1000><s_b_2316><s_c_4680><|sid_end|><|sid_begin|><s_a_6561><s_b_1989><s_c_8152><|sid_end|><|sid_begin|><s_a_5555><s_b_700><s_c_1748><|sid_end|><|sid_begin|><s_a_5002><s_b_6448><s_c_2225><|sid_end|><|sid_begin|><s_a_3655><s_b_1005><s_c_6018><|sid_end|><|sid_begin|><s_a_6448><s_b_2938><s_c_3763><|sid_end|><|sid_begin|><s_a_3360><s_b_6998><s_c_257><|sid_end|><|sid_begin|><s_a_1399><s_b_4969><s_c_6949><|sid_end|><|sid_begin|><s_a_1016><s_b_7398><s_c_2556><|sid_end|><|sid_begin|><s_a_1369><s_b_1355><s_c_4734><|sid_end|><|sid_begin|><s_a_3655><s_b_1803><s_c_2039><|sid_end|><|sid_begin|><s_a_2114><s_b_7829><s_c_2603><|sid_end|>"}, {"消费行为": "收藏", "视频ID序列": "<|sid_begin|><s_a_4695><s_b_6713><s_c_7743><|sid_end|><|sid_begin|><s_a_8007><s_b_4525><s_c_722><|sid_end|><|sid_begin|><s_a_2063><s_b_4714><s_c_1887><|sid_end|><|sid_begin|><s_a_6611><s_b_3482><s_c_2304><|sid_end|><|sid_begin|><s_a_3564><s_b_2539><s_c_114><|sid_end|><|sid_begin|><s_a_6975><s_b_2119><s_c_898><|sid_end|><|sid_begin|><s_a_2284><s_b_1541><s_c_7994><|sid_end|><|sid_begin|><s_a_2063><s_b_6018><s_c_4065><|sid_end|><|sid_begin|><s_a_8007><s_b_2650><s_c_6428><|sid_end|><|sid_begin|><s_a_7307><s_b_6562><s_c_7179><|sid_end|><|sid_begin|><s_a_4924><s_b_5447><s_c_5466><|sid_end|><|sid_begin|><s_a_7307><s_b_4525><s_c_5817><|sid_end|><|sid_begin|><s_a_3250><s_b_2826><s_c_1285><|sid_end|><|sid_begin|><s_a_3250><s_b_2394><s_c_5395><|sid_end|><|sid_begin|><s_a_1100><s_b_4132><s_c_792><|sid_end|><|sid_begin|><s_a_4789><s_b_4134><s_c_3718><|sid_end|><|sid_begin|><s_a_2094><s_b_1036><s_c_2009><|sid_end|><|sid_begin|><s_a_6639><s_b_6592><s_c_234><|sid_end|><|sid_begin|><s_a_3250><s_b_4661><s_c_7679><|sid_end|><|sid_begin|><s_a_6627><s_b_1694><s_c_5237><|sid_end|><|sid_begin|><s_a_5892><s_b_5136><s_c_6661><|sid_end|><|sid_begin|><s_a_7330><s_b_5918><s_c_2894><|sid_end|><|sid_begin|><s_a_5084><s_b_6906><s_c_7084><|sid_end|><|sid_begin|><s_a_5287><s_b_8055><s_c_3651><|sid_end|><|sid_begin|><s_a_7274><s_b_59><s_c_3982><|sid_end|><|sid_begin|><s_a_1150><s_b_4314><s_c_7327><|sid_end|><|sid_begin|><s_a_6575><s_b_5210><s_c_2063><|sid_end|><|sid_begin|><s_a_7220><s_b_5421><s_c_722><|sid_end|><|sid_begin|><s_a_7531><s_b_3797><s_c_4928><|sid_end|><|sid_begin|><s_a_8166><s_b_5674><s_c_7332><|sid_end|>"}, {"消费行为": "分享", "视频ID序列": "<|sid_begin|><s_a_4429><s_b_1559><s_c_3357><|sid_end|><|sid_begin|><s_a_2478><s_b_4975><s_c_4170><|sid_end|><|sid_begin|><s_a_6130><s_b_4355><s_c_2443><|sid_end|><|sid_begin|><s_a_3961><s_b_3541><s_c_7111><|sid_end|><|sid_begin|><s_a_4535><s_b_5635><s_c_2324><|sid_end|><|sid_begin|><s_a_7411><s_b_131><s_c_6492><|sid_end|><|sid_begin|><s_a_891><s_b_7339><s_c_4001><|sid_end|><|sid_begin|><s_a_1413><s_b_5846><s_c_7962><|sid_end|><|sid_begin|><s_a_6972><s_b_5955><s_c_6933><|sid_end|><|sid_begin|><s_a_5099><s_b_3229><s_c_5958><|sid_end|><|sid_begin|><s_a_851><s_b_4651><s_c_1175><|sid_end|><|sid_begin|><s_a_1559><s_b_1446><s_c_3469><|sid_end|><|sid_begin|><s_a_2360><s_b_3358><s_c_4119><|sid_end|><|sid_begin|><s_a_3024><s_b_15><s_c_6139><|sid_end|><|sid_begin|><s_a_5568><s_b_2447><s_c_5683><|sid_end|><|sid_begin|><s_a_526><s_b_4507><s_c_841><|sid_end|><|sid_begin|><s_a_3624><s_b_7888><s_c_5388><|sid_end|><|sid_begin|><s_a_2046><s_b_4685><s_c_7764><|sid_end|><|sid_begin|><s_a_6826><s_b_6018><s_c_6518><|sid_end|><|sid_begin|><s_a_7809><s_b_4615><s_c_3863><|sid_end|><|sid_begin|><s_a_7316><s_b_1255><s_c_7514><|sid_end|><|sid_begin|><s_a_1930><s_b_6178><s_c_1240><|sid_end|><|sid_begin|><s_a_4482><s_b_5800><s_c_1784><|sid_end|><|sid_begin|><s_a_1369><s_b_7201><s_c_5720><|sid_end|><|sid_begin|><s_a_203><s_b_3655><s_c_759><|sid_end|><|sid_begin|><s_a_2923><s_b_1532><s_c_424><|sid_end|><|sid_begin|><s_a_6603><s_b_7829><s_c_855><|sid_end|><|sid_begin|><s_a_64><s_b_1354><s_c_2354><|sid_end|><|sid_begin|><s_a_1930><s_b_1513><s_c_5214><|sid_end|><|sid_begin|><s_a_7396><s_b_5835><s_c_3443><|sid_end|>"}], "曝光并且转化的广告": [{"广告ID": "<|sid_begin|><s_a_6986><s_b_847><s_c_4141><|sid_end|>", "视频内容": "#性感可爱 #可爱性感 #萌妹子", "产品名": "圆", "二级品类": "综合类电商平台", "一级品类": "电商平台", "广告行为": "转化"}, {"广告行为": "转化", "产品名": "超自然行动组游戏", "二级品类": "其他游戏", "广告ID": "<|sid_begin|><s_a_4089><s_b_6802><s_c_3428><|sid_end|>", "视频内容": "j请叫我地狱把妹王 #超自然行动组 #还好是超自然不然就火了", "一级品类": "游戏"}, {"一级品类": "食品饮料", "视频内容": "小时候爱吃的辣条都被我找来了，麻麻辣辣特别过瘾，好多辣根本停不下来。 #辣条永不过时 #童年回忆小零食 ", "二级品类": "零食/坚果/特产", "广告行为": "转化", "产品名": "周辣辣麻辣实验室", "广告ID": "<|sid_begin|><s_a_3000><s_b_7036><s_c_1473><|sid_end|>"}, {"二级品类": "医疗器械", "广告ID": "<|sid_begin|><s_a_2126><s_b_386><s_c_3244><|sid_end|>", "产品名": "花漾心语琪瞳软性亲水接触镜", "一级品类": "医疗健康", "广告行为": "转化"}, {"产品名": "旺仔牛奶", "二级品类": "乳制品及乳制品饮料", "广告ID": "<|sid_begin|><s_a_4571><s_b_3802><s_c_4673><|sid_end|>", "一级品类": "食品饮料", "广告行为": "转化", "视频内容": "当banana遇见了cow！ #旺旺香蕉牛奶 #"}, {"广告ID": "<|sid_begin|><s_a_6162><s_b_4082><s_c_1637><|sid_end|>", "一级品类": "传媒资讯", "二级品类": "其他传媒及内容", "广告行为": "转化", "产品名": "磁力智投"}, {"一级品类": "工具类软件", "二级品类": "软件工具", "广告行为": "转化", "广告ID": "<|sid_begin|><s_a_6762><s_b_5411><s_c_7566><|sid_end|>", "产品名": "夸克官网"}, {"产品名": "哒哒兼职", "二级品类": "招聘资讯", "广告行为": "转化", "广告ID": "<|sid_begin|><s_a_7408><s_b_1612><s_c_4849><|sid_end|>", "一级品类": "传媒资讯"}], "最近观看的直播": [{"直播类目": "闲聊互动-挑衅闲聊", "行为": "评论了1次"}, {"行为": "评论了1次", "直播类目": "游戏-大型游戏"}, {"行为": "评论了2次", "直播类目": "闲聊互动-热闹闲聊"}, {"行为": "点赞了1次", "直播类目": "游戏-大型游戏"}], "关注博主类型": [{"博主类型": "其他", "占比": 31.34}, {"博主类型": "游戏", "占比": 16.42}, {"博主类型": "二次元", "占比": 13.43}, {"博主类型": "颜值", "占比": 7.46}, {"博主类型": "美妆", "占比": 5.97}, {"博主类型": "穿搭", "占比": 4.48}, {"博主类型": "影视和短剧", "占比": 4.48}, {"博主类型": "随手拍", "占比": 4.48}, {"博主类型": "生活", "占比": 2.99}, {"博主类型": "美食", "占比": 1.49}, {"博主类型": "搞笑", "占比": 1.49}, {"博主类型": "才艺", "占比": 1.49}, {"博主类型": "高新数码", "占比": 1.49}, {"博主类型": "教育", "占比": 1.49}, {"博主类型": "亲子", "占比": 1.49}], "曝光并且点击的广告": [{"一级品类": "通信", "二级品类": "运营商经销商", "广告行为": "点击", "视频内容": "限时疯抢！电信流量卡，2400G全国流量，首月免租，充50赠140！ #流量卡 #电话卡 #手机卡", "产品名": "流量王企业店", "广告ID": "<|sid_begin|><s_a_4097><s_b_3621><s_c_367><|sid_end|>"}, {"二级品类": "其他传媒及内容", "广告行为": "点击", "一级品类": "传媒资讯", "广告ID": "<|sid_begin|><s_a_6162><s_b_4082><s_c_1637><|sid_end|>", "产品名": "磁力智投"}, {"视频内容": "#性感可爱 #可爱性感 #萌妹子", "一级品类": "电商平台", "二级品类": "综合类电商平台", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_6986><s_b_847><s_c_4141><|sid_end|>", "产品名": "圆"}, {"产品名": "圆", "二级品类": "综合类电商平台", "一级品类": "电商平台", "视频内容": "#性感可爱 #可爱性感 #萌妹子", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_6986><s_b_847><s_c_4141><|sid_end|>"}, {"二级品类": "茶叶", "视频内容": "49.9抽到的iPhone真的太香了 #I16 #Pro系列 ", "广告ID": "<|sid_begin|><s_a_2775><s_b_1763><s_c_2228><|sid_end|>", "一级品类": "食品饮料", "广告行为": "点击"}, {"广告ID": "<|sid_begin|><s_a_101><s_b_633><s_c_4624><|sid_end|>", "产品名": "妙也可jk工作室", "二级品类": "女装", "广告行为": "点击", "一级品类": "服装配饰"}, {"二级品类": "日化洗护", "广告行为": "点击", "产品名": "七月美护理甄选", "一级品类": "日化", "广告ID": "<|sid_begin|><s_a_6503><s_b_7524><s_c_7787><|sid_end|>"}, {"广告ID": "<|sid_begin|><s_a_1509><s_b_6476><s_c_1563><|sid_end|>", "一级品类": "美妆", "产品名": "芭宝欧babaoou美妆旗舰店", "广告行为": "点击", "二级品类": "彩妆"}, {"广告ID": "<|sid_begin|><s_a_86><s_b_4460><s_c_7525><|sid_end|>", "二级品类": "3C数码配件", "产品名": "淼峰甄选企业店", "视频内容": "#小腿袜 #jk袜 #显瘦穿搭 #小腿压力袜", "一级品类": "3C及电器", "广告行为": "点击"}, {"广告行为": "点击", "广告ID": "<|sid_begin|><s_a_6494><s_b_4598><s_c_597><|sid_end|>", "一级品类": "游戏", "二级品类": "角色扮演", "产品名": "第五人格"}, {"视频内容": "有了元宝，打瓦超轻松 #腾讯元宝 #免费AI助手 #无畏契约 #打瓦", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_3837><s_b_5886><s_c_7111><|sid_end|>", "一级品类": "工具类软件", "二级品类": "其他工具类软件", "产品名": "元宝AI"}, {"广告ID": "<|sid_begin|><s_a_1844><s_b_6100><s_c_3466><|sid_end|>", "一级品类": "游戏", "二级品类": "其他游戏", "视频内容": "J欢迎来到初生公司 #超自然行动组 #前辈和我一起玩超自然吧 #还好是超自然不然就火了yc ", "产品名": "超自然行动组游戏", "广告行为": "点击"}, {"一级品类": "工具类软件", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_4427><s_b_3083><s_c_4794><|sid_end|>", "二级品类": "其他工具类软件", "产品名": "手机字体"}, {"广告行为": "点击", "一级品类": "电商平台", "二级品类": "综合类电商平台", "产品名": "惊喜一分购", "广告ID": "<|sid_begin|><s_a_7275><s_b_5196><s_c_2866><|sid_end|>"}, {"一级品类": "电商平台", "二级品类": "综合类电商平台", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_6713><s_b_4671><s_c_846><|sid_end|>", "产品名": "京东好物推荐"}, {"广告ID": "<|sid_begin|><s_a_270><s_b_528><s_c_7072><|sid_end|>", "一级品类": "珠宝玉石", "视频内容": "刚从柜台撤下来的首饰，喜欢你就拿去戴！不要嫌弃，今天我直接... #珠宝首饰 #首饰分享 #源头工厂 ", "产品名": "老银", "二级品类": "其他珠宝配饰", "广告行为": "点击"}, {"广告行为": "点击", "产品名": "旭平首饰XUPING旗舰店", "二级品类": "其他珠宝配饰", "视频内容": "沉浸式打包发货！ #旭平首饰 #得物 #时尚饰品 #首饰分享 ", "一级品类": "珠宝玉石", "广告ID": "<|sid_begin|><s_a_4864><s_b_7036><s_c_7099><|sid_end|>"}, {"广告ID": "<|sid_begin|><s_a_3203><s_b_1416><s_c_61><|sid_end|>", "二级品类": "其他通信", "产品名": "流量权益尊享包", "广告行为": "点击", "一级品类": "通信", "视频内容": "《第五人格》假期最新兑换码来啦！每位玩家都能领取芙莉莲+8000回声币！ #启动福利 "}, {"产品名": "淘宝购物", "视频内容": "这个是真酷啊 #手表 #学生党 #看电视 #开心快乐美一天 ", "广告行为": "点击", "一级品类": "电商平台", "二级品类": "综合类电商平台", "广告ID": "<|sid_begin|><s_a_495><s_b_4685><s_c_6908><|sid_end|>"}, {"广告行为": "点击", "二级品类": "休闲游戏", "产品名": "超自然行动组", "一级品类": "游戏", "广告ID": "<|sid_begin|><s_a_4525><s_b_92><s_c_4342><|sid_end|>"}, {"视频内容": "小时候爱吃的辣条都被我找来了，麻麻辣辣特别过瘾，好多辣根本停不下来。 #辣条永不过时 #童年回忆小零食 ", "广告行为": "点击", "产品名": "周辣辣麻辣实验室", "广告ID": "<|sid_begin|><s_a_3000><s_b_7036><s_c_1473><|sid_end|>", "二级品类": "零食/坚果/特产", "一级品类": "食品饮料"}, {"二级品类": "付费短剧", "广告ID": "<|sid_begin|><s_a_7705><s_b_5420><s_c_2485><|sid_end|>", "广告行为": "点击", "一级品类": "短剧小说", "产品名": "月亮短剧"}, {"广告行为": "点击", "产品名": "星辰剧场微剧", "广告ID": "<|sid_begin|><s_a_6027><s_b_967><s_c_861><|sid_end|>", "二级品类": "付费短剧", "视频内容": "zjl5.6-花朝梦又醒", "一级品类": "短剧小说"}, {"广告行为": "点击", "产品名": "京东好物特惠", "二级品类": "综合类电商平台", "广告ID": "<|sid_begin|><s_a_1150><s_b_5239><s_c_5077><|sid_end|>", "一级品类": "电商平台"}, {"广告行为": "点击", "广告ID": "<|sid_begin|><s_a_3655><s_b_2976><s_c_5861><|sid_end|>", "一级品类": "游戏", "产品名": "第五人格", "二级品类": "角色扮演"}, {"广告行为": "点击", "广告ID": "<|sid_begin|><s_a_4097><s_b_2768><s_c_7656><|sid_end|>", "视频内容": "刷视频玩游戏，电信2400G全国流量+1200分钟套餐让你彻底告别WIFI！ #流量卡 #电话卡 #手机卡", "二级品类": "运营商经销商", "产品名": "流量王企业店", "一级品类": "通信"}, {"广告ID": "<|sid_begin|><s_a_7408><s_b_1612><s_c_4849><|sid_end|>", "产品名": "哒哒兼职", "一级品类": "传媒资讯", "二级品类": "招聘资讯", "广告行为": "点击"}, {"二级品类": "其他工具类软件", "广告ID": "<|sid_begin|><s_a_6522><s_b_6807><s_c_6472><|sid_end|>", "一级品类": "工具类软件", "广告行为": "点击", "产品名": "腾讯元宝"}, {"一级品类": "服装配饰", "二级品类": "女装", "广告ID": "<|sid_begin|><s_a_4009><s_b_5640><s_c_4179><|sid_end|>", "产品名": "妙氏原创JK制服馆", "广告行为": "点击"}, {"产品名": "京东好物特惠", "一级品类": "电商平台", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_7275><s_b_3828><s_c_8133><|sid_end|>", "二级品类": "综合类电商平台"}, {"一级品类": "电商平台", "产品名": "京东好物推荐", "广告行为": "点击", "二级品类": "综合类电商平台", "广告ID": "<|sid_begin|><s_a_7275><s_b_7590><s_c_2376><|sid_end|>"}, {"广告行为": "点击", "一级品类": "日化", "二级品类": "家庭护理品", "产品名": "爱尚潮品", "广告ID": "<|sid_begin|><s_a_3250><s_b_6162><s_c_2819><|sid_end|>"}, {"广告行为": "点击", "二级品类": "家庭护理品", "广告ID": "<|sid_begin|><s_a_2563><s_b_7881><s_c_1462><|sid_end|>", "产品名": "钻之溪清洁家居店", "一级品类": "日化", "视频内容": "#塔罗牌"}, {"二级品类": "综合类电商平台", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_6728><s_b_4130><s_c_2715><|sid_end|>", "产品名": "圆", "一级品类": "电商平台", "视频内容": "“音乐一响，VIP闪亮登场” #古早 #得物 #反差 "}, {"二级品类": "其他工具类软件", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_3837><s_b_1889><s_c_8068><|sid_end|>", "一级品类": "工具类软件", "产品名": "元宝AI"}, {"二级品类": "休闲游戏", "一级品类": "游戏", "广告ID": "<|sid_begin|><s_a_5982><s_b_2223><s_c_4757><|sid_end|>", "产品名": "真香大饭店", "广告行为": "点击"}, {"二级品类": "女装", "广告ID": "<|sid_begin|><s_a_7523><s_b_7416><s_c_2739><|sid_end|>", "产品名": "妙氏原创JK制服馆", "广告行为": "点击", "视频内容": " #jk日常 蓝白色的水手服也太夏天了吧～水手服 #蓄力818都要发发发 ", "一级品类": "服装配饰"}, {"一级品类": "传媒资讯", "产品名": "磁力智投", "二级品类": "其他传媒及内容", "广告ID": "<|sid_begin|><s_a_6162><s_b_7256><s_c_7941><|sid_end|>", "广告行为": "点击"}, {"广告ID": "<|sid_begin|><s_a_5103><s_b_2565><s_c_4851><|sid_end|>", "视频内容": "法老最强诅咒的上海博物展？里面还有猫猫木乃伊#挑战 #博物馆 #木乃伊 #得物", "产品名": "得物星视频", "一级品类": "电商平台", "二级品类": "垂直电商平台", "广告行为": "点击"}, {"广告ID": "<|sid_begin|><s_a_5897><s_b_1897><s_c_2018><|sid_end|>", "广告行为": "点击", "一级品类": "游戏", "二级品类": "体育竞技", "产品名": "第五人格"}, {"二级品类": "医疗器械", "产品名": "lemonsaty软性亲水接触镜", "广告行为": "点击", "视频标题": "拍一发九", "一级品类": "医疗健康", "视频内容": "呆檬美瞳💰拍一发九！ #美瞳 #呆檬lemonsaty推荐 ", "广告ID": "<|sid_begin|><s_a_7060><s_b_5533><s_c_7092><|sid_end|>"}, {"一级品类": "游戏", "广告行为": "点击", "产品名": "网易游戏", "广告ID": "<|sid_begin|><s_a_7549><s_b_1541><s_c_3777><|sid_end|>", "二级品类": "游戏平台"}, {"一级品类": "游戏", "视频内容": "#超自然行动组 #还好是超自然不然就火了 超自然破产了怎么玩之新手教程", "产品名": "超自然行动组手游", "二级品类": "休闲游戏", "广告行为": "点击", "视频标题": "超自然破产了怎么玩之萌新教程", "广告ID": "<|sid_begin|><s_a_5719><s_b_7125><s_c_4783><|sid_end|>"}, {"广告行为": "点击", "二级品类": "医疗器械", "产品名": "花漾心语琪瞳软性亲水接触镜", "一级品类": "医疗健康", "广告ID": "<|sid_begin|><s_a_2126><s_b_386><s_c_3244><|sid_end|>"}, {"产品名": "网易游戏", "一级品类": "游戏", "广告ID": "<|sid_begin|><s_a_7549><s_b_7784><s_c_5789><|sid_end|>", "二级品类": "游戏平台", "广告行为": "点击"}, {"二级品类": "游戏平台", "一级品类": "游戏", "广告ID": "<|sid_begin|><s_a_7549><s_b_7784><s_c_5789><|sid_end|>", "产品名": "网易游戏", "广告行为": "点击"}, {"一级品类": "游戏", "二级品类": "游戏平台", "广告ID": "<|sid_begin|><s_a_5570><s_b_4099><s_c_8008><|sid_end|>", "广告行为": "点击", "产品名": "网易游戏"}, {"二级品类": "其他游戏", "广告ID": "<|sid_begin|><s_a_3541><s_b_4469><s_c_2087><|sid_end|>", "一级品类": "游戏", "产品名": "第五人格手游", "广告行为": "点击"}, {"一级品类": "电商平台", "产品名": "得物", "广告行为": "点击", "广告ID": "<|sid_begin|><s_a_831><s_b_847><s_c_7252><|sid_end|>", "视频内容": "有两妈你就享福吧#闺蜜 #李九儿 #得物", "二级品类": "垂直电商平台"}, {"广告行为": "点击", "视频内容": "#拆卡 #小马宝莉 打工仔上线🙉", "广告ID": "<|sid_begin|><s_a_4902><s_b_4902><s_c_4476><|sid_end|>", "产品名": "小新潮玩拆卡"}], "最近购买的商品": [{"花费金额": 3.9, "订单实际支付金额": 3.9, "商品名称": "树脂狐狸面具项链国风新中式美学民族风藏式编织情侣闺蜜吊坠礼物", "商品ID": "<|sid_begin|><s_a_1136><s_b_6592><s_c_8166><|sid_end|>", "类目": "箱包/饰品-饰品/流行首饰/时尚饰品-项链", "订单金额": 3.9}, {"商品名称": "【YF】周边游戏卡牌中英文牌78张全套初学生必备套件带普及", "订单实际支付金额": 5.99, "类目": "游戏/模玩/动漫周边/cos/桌游-卡牌/桌游及配件-其他棋牌/桌面游戏", "商品ID": "<|sid_begin|><s_a_407><s_b_5289><s_c_2624><|sid_end|>", "订单金额": 5.99, "花费金额": 5.99}, {"商品ID": "<|sid_begin|><s_a_2358><s_b_7950><s_c_7754><|sid_end|>", "订单金额": 5.9, "订单实际支付金额": 5.9, "类目": "医疗保健-功能眼镜/隐形眼镜-护理液", "商品名称": "OVOLOOK深层清洗清洁护眼消毒清洁夏日大小瓶隐形眼镜护理液女品", "花费金额": 5.9}, {"订单实际支付金额": 2.8, "花费金额": 2.8, "订单金额": 2.8, "类目": "游戏/模玩/动漫周边/cos/桌游-游戏/卡通/动漫/IP周边-动漫卡牌/挂件/文具", "商品名称": "口袋浪漫.长方形吧唧袋加自封袋长条自粘收纳透明保护套48*75mm", "商品ID": "<|sid_begin|><s_a_5725><s_b_6751><s_c_6693><|sid_end|>"}, {"订单实际支付金额": 9.9, "商品ID": "<|sid_begin|><s_a_7729><s_b_7224><s_c_1567><|sid_end|>", "花费金额": 9.9, "商品名称": "【9.9发50包】辣卤零食大礼包网红爆款宿舍解馋麻辣休闲小零食邮", "订单金额": 9.9, "类目": "零食/坚果/特产-肉干肉脯/熏腊卤味/肉类熟食-肉类礼包/组合"}, {"花费金额": 9.6, "商品名称": "ins棕色出卡打包加固飞机盒批发超厚快递盒明星周边打包材料纸盒", "购买件数": 2, "订单金额": 5.8, "商品ID": "<|sid_begin|><s_a_4913><s_b_5725><s_c_8177><|sid_end|>", "类目": "节庆用品/礼品-创意礼品-礼品盒/包装盒", "订单实际支付金额": 5.8}, {"商品ID": "<|sid_begin|><s_a_4540><s_b_7723><s_c_3691><|sid_end|>", "商品名称": "平价吧唧自粘袋加厚自封袋透明动漫徽章谷子收纳保护袋吃谷必备", "类目": "收纳整理-家庭收纳用具-收纳袋", "订单金额": 2.68, "订单实际支付金额": 2.68, "花费金额": 2.68}, {"类目": "美妆-美妆工具-指甲油/美甲产品/美甲工具", "商品ID": "<|sid_begin|><s_a_2255><s_b_4108><s_c_7903><|sid_end|>", "花费金额": 4.99, "商品名称": "小颖美甲-甘露08号（单色）裸色打底色 10ml瓶装 甲油胶", "订单金额": 4.99, "订单实际支付金额": 4.99}, {"订单金额": 9.9, "订单实际支付金额": 9.9, "类目": "医疗保健-功能眼镜/隐形眼镜-隐形眼镜", "商品ID": "<|sid_begin|><s_a_4259><s_b_7835><s_c_7522><|sid_end|>", "花费金额": 9.9, "商品名称": "琪瞳半年抛炼乳咖啡美瞳日光棕色系大直径素颜隐形眼镜欧若风新款"}, {"订单实际支付金额": 4.8, "商品名称": "ins风黑色星星雪梨纸大张鲜花礼物包装打包出货diy材料装饰素材纸", "花费金额": 4.8, "类目": "文化用品/学习用具-纸张本册-包装纸", "订单金额": 4.8, "商品ID": "<|sid_begin|><s_a_5725><s_b_8048><s_c_5186><|sid_end|>"}, {"订单金额": 3.99, "商品ID": "<|sid_begin|><s_a_621><s_b_3057><s_c_1585><|sid_end|>", "类目": "零食/坚果/特产-豆干制品/蔬菜零食-面筋制品/辣条", "商品名称": "辣条大礼包8090儿时怀旧辣片辣棒麻辣混合零食整箱童年麻辣小吃", "花费金额": 3.99, "订单实际支付金额": 3.99}, {"花费金额": 3.99, "商品名称": "【薽选好物】XUPING旭平首饰 不锈钢气质简约素圈男女可戴戒指", "订单金额": 3.99, "订单实际支付金额": 3.99, "类目": "箱包/饰品-饰品/流行首饰/时尚饰品-戒指/指环", "商品ID": "<|sid_begin|><s_a_1545><s_b_7572><s_c_7313><|sid_end|>"}, {"订单金额": 3.7, "商品名称": "【赵露思同款】夏天必备脱毛神器海泥脱毛膏男女士腋下全身可用", "花费金额": 3.7, "类目": "个护清洁-身体护理-脱毛", "商品ID": "<|sid_begin|><s_a_2524><s_b_2827><s_c_6055><|sid_end|>", "订单实际支付金额": 3.7}, {"订单实际支付金额": 3.4, "商品名称": "美瞳清洗器半自动不伤镜片方便携带伴侣盒手动清洁隐形眼镜盒", "花费金额": 3.4, "类目": "收纳整理-其他收纳", "订单金额": 3.4, "商品ID": "<|sid_begin|><s_a_7754><s_b_4636><s_c_7754><|sid_end|>"}], "视频消费类目": {"点赞最多的视频类型": ["游戏", "其他"], "收藏最多的视频类型": ["读书", "游戏"], "分享最多的视频类型": ["游戏", "自拍"], "评论最多的视频类型": ["游戏", "自拍"], "完播最多的视频类型": ["游戏", "二次元"]}, "最近添加的购物车": [{"类目": "美妆-美妆工具-其他美妆工具", "商品ID": "<|sid_begin|><s_a_4031><s_b_6073><s_c_7700><|sid_end|>", "商品单价": 4.9, "购买数量": 1, "商品名称": "懒人眼线贴自然防水防汗持久不晕染不脱妆美目贴免画平价眼线神器"}, {"商品ID": "<|sid_begin|><s_a_3734><s_b_2904><s_c_4706><|sid_end|>", "商品单价": 4.9, "购买数量": 1, "类目": "美妆-彩妆-眼线笔/液/膏", "商品名称": "ZVEV~下睫毛印章眼线笔防水防汗不晕染组合装不掉色二合一手残党"}, {"购买数量": 1, "商品ID": "<|sid_begin|><s_a_3734><s_b_6483><s_c_949><|sid_end|>", "类目": "美妆-彩妆-眼线笔/液/膏", "商品名称": "GC【4.99/盒】快速上妆眼线印章贴一贴成型新手初学者猫款韩妆款W", "商品单价": 4.99}], "视频生产类目": ["12个游戏", "12个其他", "5个自拍", "1个情感"]}
+
+用户现在想了解关于"推荐抽象配音"的内容，能帮忙推荐一些吗？/no_think<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+<|sid_begin|><s_a_7809><s_b_7638><s_c_4099><|sid_end|><|sid_begin|><s_a_7809><s_b_7638><s_c_4099><|sid_end|><|sid_begin|><s_a_7809><s_b_7638><s_c_4099><|sid_end|><|sid_begin|><s_a_7809><s_b_7638><s_c_4099><|sid_end|><|im_end|>
+<|endoftext|><|im_start|>system
+你是一个个性化推荐专家，擅长理解用户画像和对话意图，提供精准的内容推荐。<|im_end|>
+<|im_start|>user
+用户画像：
+{"性别": "女性", "年龄": "31-40岁", "最近观看的广告": "曝光并且点击的广告有：女士内衣裤袜-维觅睡衣，日化纸品-自由点旗舰店，女装-3MER，女装-以顿宏熠专卖店，消费类电子产品-礼物小小，零食/坚果/特产-陈阿炳官方旗舰店", "关注博主类型": [{"博主类型": "其他", "占比": 56.0}, {"博主类型": "随手拍", "占比": 12.0}, {"博主类型": "颜值", "占比": 12.0}, {"博主类型": "明星娱乐", "占比": 4.0}, {"博主类型": "游戏", "占比": 4.0}, {"博主类型": "穿搭", "占比": 4.0}, {"博主类型": "二次元", "占比": 4.0}, {"博主类型": "教育", "占比": 4.0}], "视频消费详情": [{"消费行为": "点赞", "视频ID序列": "<|sid_begin|><s_a_8133><s_b_1796><s_c_7347><|sid_end|><|sid_begin|><s_a_4898><s_b_3194><s_c_6010><|sid_end|><|sid_begin|><s_a_1242><s_b_7881><s_c_4849><|sid_end|><|sid_begin|><s_a_6744><s_b_425><s_c_6854><|sid_end|><|sid_begin|><s_a_5607><s_b_4201><s_c_4870><|sid_end|><|sid_begin|><s_a_1850><s_b_2740><s_c_199><|sid_end|><|sid_begin|><s_a_8175><s_b_21><s_c_7587><|sid_end|><|sid_begin|><s_a_2291><s_b_195><s_c_566><|sid_end|><|sid_begin|><s_a_6399><s_b_5530><s_c_4870><|sid_end|><|sid_begin|><s_a_7121><s_b_1901><s_c_4759><|sid_end|><|sid_begin|><s_a_2609><s_b_1157><s_c_2809><|sid_end|><|sid_begin|><s_a_6171><s_b_8182><s_c_5600><|sid_end|><|sid_begin|><s_a_1897><s_b_2223><s_c_5341><|sid_end|><|sid_begin|><s_a_1111><s_b_5530><s_c_3357><|sid_end|><|sid_begin|><s_a_6376><s_b_6889><s_c_250><|sid_end|><|sid_begin|><s_a_8133><s_b_879><s_c_4915><|sid_end|><|sid_begin|><s_a_3047><s_b_8182><s_c_6178><|sid_end|><|sid_begin|><s_a_219><s_b_6621><s_c_5751><|sid_end|><|sid_begin|><s_a_6651><s_b_6145><s_c_5357><|sid_end|><|sid_begin|><s_a_934><s_b_4365><s_c_191><|sid_end|><|sid_begin|><s_a_3413><s_b_5345><s_c_7207><|sid_end|><|sid_begin|><s_a_1324><s_b_6978><s_c_7189><|sid_end|><|sid_begin|><s_a_4103><s_b_3403><s_c_340><|sid_end|><|sid_begin|><s_a_5400><s_b_3851><s_c_841><|sid_end|><|sid_begin|><s_a_3066><s_b_3906><s_c_2971><|sid_end|><|sid_begin|><s_a_6732><s_b_7630><s_c_5317><|sid_end|><|sid_begin|><s_a_3333><s_b_3931><s_c_5386><|sid_end|><|sid_begin|><s_a_6486><s_b_8046><s_c_2866><|sid_end|><|sid_begin|><s_a_2909><s_b_5101><s_c_2881><|sid_end|><|sid_begin|><s_a_2485><s_b_4159><s_c_6118><|sid_end|>"}, {"消费行为": "收藏", "视频ID序列": "<|sid_begin|><s_a_7755><s_b_4365><s_c_2181><|sid_end|><|sid_begin|><s_a_3496><s_b_5426><s_c_408><|sid_end|><|sid_begin|><s_a_4073><s_b_3337><s_c_2452><|sid_end|><|sid_begin|><s_a_3751><s_b_3751><s_c_1420><|sid_end|><|sid_begin|><s_a_4689><s_b_4745><s_c_1712><|sid_end|><|sid_begin|><s_a_3889><s_b_2716><s_c_9><|sid_end|><|sid_begin|><s_a_7117><s_b_5504><s_c_7041><|sid_end|><|sid_begin|><s_a_5696><s_b_8189><s_c_3780><|sid_end|><|sid_begin|><s_a_1719><s_b_5843><s_c_2127><|sid_end|>"}], "最近对平台上这些挂车商品感兴趣并产生了消费行为": "夹克2次，短外套2次，半身裙1次", "最近在平台上对以下视频中的广告意图表示感兴趣": "终于可以穿上秋天的衣服啦～ #入秋穿搭 ；#睡衣女仆 #睡衣控 #你喜欢的样子我都有 ；31套韩系秋冬穿搭合集～ #穿搭；去不去啊 在线求解 #日常VLOG ；是谁这么会做睡衣呀！冲就完事啦！ ；来晚了来晚了 #沪漂 #日常Vlog；韩系穿的真的很难不爱！ #穿搭 #入秋 ；陈一娜陈哦哦同款西藏穿搭冲锋衣，只要49💰，怎么搭都好看，防水防风防油渍 几百块冲锋衣有的它都有 #冲锋衣 #男女同款早秋穿搭 小助手上热门 ；老式奶油卷，沈阳黑标大品牌旗舰店，品质保证；很美妙的假两件小上衣", "最近搜索内容": ["高级河灯", "杏宝和瓜瓜", "江姐中学军训", "炸蛋揪出捣蛋鬼答案", "揪出捣蛋鬼巅峰怎么解锁", "炸蛋自己会接到一爆竹吗", "答对了进阶版的答题以后进阶版没解锁怎么办", "蛋仔派对怎么一直匹配到坏蛋", "我的丈夫和儿子都是病娇", "bop牙膏真实测评", "蛋仔信誉分低于60后哪种行为可以恢复信誉分", "炸蛋炸到胆小会拉铃吗", "爱麻夫人热映中解说", "百褶裙腰围大了怎么办", "王李丹妮", "丽芝士夹心奶酪", "顽刻板鞋", "暗算蛋", "#蛋仔派对", "吃乌鱼子", "输入搜索内容", "蛋仔派对长生冢攻略", "自贡市江姐中学", "鞋", "土豆早期DDX视频", "韩磊方就“致女子怀孕”帖报警", "长生冢攻略蛋仔派对", "万斯海军蓝", "梓渝褪黑素", "哦哦三妹家衣服"], "最近评论的视频": [{"视频评论": ["农夫山泉有点甜[比心]"], "视频ID": "<|sid_begin|><s_a_3008><s_b_4365><s_c_7937><|sid_end|>"}, {"视频评论": ["为什么我们消灭磁石那里有尖刺啊，根本过不去[难过至极]"], "视频ID": "<|sid_begin|><s_a_7118><s_b_7087><s_c_6318><|sid_end|>"}, {"视频评论": ["求高级[上吊]"], "视频ID": "<|sid_begin|><s_a_63><s_b_2989><s_c_2039><|sid_end|>"}], "视频消费类目": {"点赞最多的视频类型": ["其他", "颜值"], "收藏最多的视频类型": ["房产家居", "时尚"], "分享最多的视频类型": ["军事", "房产家居"], "评论最多的视频类型": ["军事", "房产家居"], "完播最多的视频类型": ["情感", "美食"]}, "最近购买的商品": [{"商品ID": "<|sid_begin|><s_a_6316><s_b_1581><s_c_2778><|sid_end|>", "类目": "家居生活-居家日用-伞/雨具/防雨/防潮", "商品名称": "安全式彩胶自动圆角雨伞晴雨两用太阳伞防晒防紫外线三折款遮阳伞", "花费金额": 34.9, "订单金额": 34.9, "订单实际支付金额": 34.9}, {"花费金额": 9.9, "订单金额": 9.9, "商品名称": "印尼进口纳宝帝玉米棒丽芝士夹心卷奶酪休闲办公室追剧饼干零食SH", "商品ID": "<|sid_begin|><s_a_1471><s_b_1985><s_c_7677><|sid_end|>", "订单实际支付金额": 9.9, "类目": "零食/坚果/特产-饼干/膨化-膨化食品"}, {"商品ID": "<|sid_begin|><s_a_3680><s_b_5021><s_c_5948><|sid_end|>", "订单实际支付金额": 79.9, "商品名称": "3MER 显瘦假两件长袖上衣", "类目": "女装-T恤", "花费金额": 79.9, "订单金额": 79.9}]}
+
+用户查询：推荐电影
+
+请推荐相关内容。/no_think<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+<|sid_begin|><s_a_5111><s_b_4130><s_c_4837><|sid_end|><|sid_begin|><s_a_4166><s_b_6463><s_c_5186><|sid_end|><|sid_begin|><s_a_2820><s_b_6846><s_c_251><|sid_end|><|sid_begin|><s_a_2262><s_b_5256><s_c_6372><|sid_end|><|im_end|>
+<|endoftext|><|im_start|>system
+你是一个智能推荐助手，能够根据用户的兴趣画像和当前对话需求，精准推荐用户可能感兴趣的内容。<|im_end|>
+<|im_start|>user
+根据用户画像显示，用户兴趣如下：
+{"性别": "女性", "年龄": "12-17岁", "视频消费类目": {"点赞最多的视频类型": ["二次元", "自拍"], "分享最多的视频类型": ["游戏", "明星娱乐"], "评论最多的视频类型": ["自拍", "明星娱乐"], "完播最多的视频类型": ["二次元", "颜值"]}, "视频消费详情": [{"消费行为": "点赞", "视频ID序列": "<|sid_begin|><s_a_2668><s_b_591><s_c_7326><|sid_end|><|sid_begin|><s_a_542><s_b_1323><s_c_4727><|sid_end|><|sid_begin|><s_a_7006><s_b_5114><s_c_6411><|sid_end|><|sid_begin|><s_a_1240><s_b_7672><s_c_2650><|sid_end|><|sid_begin|><s_a_3989><s_b_386><s_c_6653><|sid_end|><|sid_begin|><s_a_6716><s_b_5290><s_c_4331><|sid_end|><|sid_begin|><s_a_2203><s_b_3906><s_c_4634><|sid_end|><|sid_begin|><s_a_5369><s_b_2520><s_c_2360><|sid_end|><|sid_begin|><s_a_7834><s_b_4264><s_c_4780><|sid_end|><|sid_begin|><s_a_895><s_b_7742><s_c_4374><|sid_end|><|sid_begin|><s_a_2790><s_b_5054><s_c_468><|sid_end|><|sid_begin|><s_a_7689><s_b_7864><s_c_3924><|sid_end|><|sid_begin|><s_a_4640><s_b_5230><s_c_3985><|sid_end|><|sid_begin|><s_a_81><s_b_2272><s_c_6860><|sid_end|><|sid_begin|><s_a_6234><s_b_4899><s_c_7177><|sid_end|><|sid_begin|><s_a_4879><s_b_1424><s_c_232><|sid_end|><|sid_begin|><s_a_6156><s_b_8178><s_c_8113><|sid_end|><|sid_begin|><s_a_3432><s_b_4203><s_c_7060><|sid_end|><|sid_begin|><s_a_3541><s_b_201><s_c_4616><|sid_end|><|sid_begin|><s_a_877><s_b_4130><s_c_7008><|sid_end|><|sid_begin|><s_a_5457><s_b_4559><s_c_2346><|sid_end|><|sid_begin|><s_a_2818><s_b_4678><s_c_7503><|sid_end|><|sid_begin|><s_a_5719><s_b_5742><s_c_636><|sid_end|><|sid_begin|><s_a_5765><s_b_6812><s_c_2039><|sid_end|><|sid_begin|><s_a_4838><s_b_1035><s_c_6206><|sid_end|><|sid_begin|><s_a_6330><s_b_3239><s_c_7972><|sid_end|><|sid_begin|><s_a_8052><s_b_3413><s_c_2533><|sid_end|><|sid_begin|><s_a_420><s_b_7843><s_c_4572><|sid_end|><|sid_begin|><s_a_7783><s_b_4408><s_c_4833><|sid_end|><|sid_begin|><s_a_7791><s_b_1936><s_c_3969><|sid_end|>"}, {"消费行为": "收藏", "视频ID序列": "<|sid_begin|><s_a_5260><s_b_5494><s_c_155><|sid_end|><|sid_begin|><s_a_8009><s_b_6606><s_c_8137><|sid_end|><|sid_begin|><s_a_6048><s_b_5273><s_c_601><|sid_end|><|sid_begin|><s_a_412><s_b_6258><s_c_2309><|sid_end|><|sid_begin|><s_a_6623><s_b_3143><s_c_7905><|sid_end|><|sid_begin|><s_a_492><s_b_539><s_c_6119><|sid_end|>"}, {"消费行为": "分享", "视频ID序列": "<|sid_begin|><s_a_7140><s_b_7369><s_c_3704><|sid_end|><|sid_begin|><s_a_7140><s_b_7369><s_c_3704><|sid_end|><|sid_begin|><s_a_1354><s_b_7750><s_c_3731><|sid_end|><|sid_begin|><s_a_3610><s_b_3484><s_c_5908><|sid_end|><|sid_begin|><s_a_6018><s_b_6105><s_c_2931><|sid_end|><|sid_begin|><s_a_1546><s_b_2923><s_c_601><|sid_end|><|sid_begin|><s_a_1546><s_b_2923><s_c_601><|sid_end|><|sid_begin|><s_a_3459><s_b_1447><s_c_7419><|sid_end|><|sid_begin|><s_a_3459><s_b_1447><s_c_7419><|sid_end|><|sid_begin|><s_a_1845><s_b_376><s_c_3715><|sid_end|><|sid_begin|><s_a_429><s_b_324><s_c_7093><|sid_end|><|sid_begin|><s_a_1459><s_b_4932><s_c_2376><|sid_end|><|sid_begin|><s_a_7125><s_b_1897><s_c_4001><|sid_end|><|sid_begin|><s_a_5260><s_b_5494><s_c_155><|sid_end|><|sid_begin|><s_a_8175><s_b_2490><s_c_134><|sid_end|><|sid_begin|><s_a_4519><s_b_4652><s_c_8092><|sid_end|><|sid_begin|><s_a_5716><s_b_376><s_c_1219><|sid_end|><|sid_begin|><s_a_5716><s_b_376><s_c_1219><|sid_end|><|sid_begin|><s_a_7260><s_b_4432><s_c_1857><|sid_end|><|sid_begin|><s_a_6642><s_b_5456><s_c_4404><|sid_end|><|sid_begin|><s_a_1802><s_b_1179><s_c_4469><|sid_end|><|sid_begin|><s_a_2207><s_b_2320><s_c_2189><|sid_end|><|sid_begin|><s_a_2207><s_b_2320><s_c_2189><|sid_end|><|sid_begin|><s_a_5573><s_b_539><s_c_4342><|sid_end|><|sid_begin|><s_a_5573><s_b_539><s_c_4342><|sid_end|><|sid_begin|><s_a_6448><s_b_8071><s_c_3396><|sid_end|><|sid_begin|><s_a_412><s_b_4771><s_c_3847><|sid_end|><|sid_begin|><s_a_5890><s_b_7107><s_c_442><|sid_end|>"}], "关注博主类型": [{"博主类型": "其他", "占比": 66.67}, {"博主类型": "二次元", "占比": 33.33}], "最近在平台上对以下视频中的广告意图表示感兴趣": "女儿居然惦记上我的衣帽间了！#90后带娃 #收纳 ；被跑单啦，白菜点掉落 #kig系兽头 #兽头掉落 ；第一次穿dk；百万高定公主裙全球首穿?!梦都不敢这么梦… #氧化菊 #潮流生活热浪节 #高定 #暑期逆袭变美季 ", "最近评论的视频": [{"视频评论": ["我并不害怕失去 因为我对你来说并不重要"], "视频ID": "<|sid_begin|><s_a_5526><s_b_2861><s_c_5434><|sid_end|>"}, {"视频评论": ["[让人头大]我是眼花了嘛"], "视频ID": "<|sid_begin|><s_a_2203><s_b_3906><s_c_4634><|sid_end|>"}, {"视频评论": ["好萌萌死我啦"], "视频ID": "<|sid_begin|><s_a_1158><s_b_2027><s_c_3780><|sid_end|>"}, {"视频评论": ["甜甜的歌和甜甜的我们"], "视频ID": "<|sid_begin|><s_a_7125><s_b_3337><s_c_66><|sid_end|>"}, {"视频评论": ["哈哈哈惨[让人头大]"], "视频ID": "<|sid_begin|><s_a_2310><s_b_4287><s_c_4469><|sid_end|>"}], "曝光并且点击的广告": [{"二级品类": "运营商经销商", "广告ID": "<|sid_begin|><s_a_5719><s_b_513><s_c_2493><|sid_end|>", "视频内容": "拿不到吃😏没开玩笑😠 #超自然行动组兑换码 #恐怖游戏", "产品名": "热门福利月月送不停", "广告行为": "点击", "一级品类": "通信"}, {"广告ID": "<|sid_begin|><s_a_1738><s_b_848><s_c_7133><|sid_end|>", "二级品类": "休闲游戏", "一级品类": "游戏", "产品名": "超自然行动组", "广告行为": "点击"}, {"一级品类": "通信", "广告ID": "<|sid_begin|><s_a_6074><s_b_5791><s_c_5036><|sid_end|>", "广告行为": "点击", "产品名": "蛇年钜惠", "二级品类": "运营商经销商"}], "最近搜索内容": ["心墙", "爱你没差", "双男主", "超自然行动组地图小抄", "限时点券活动", "素颜", "晴天", "擦边", "遗失的心跳", "王者碎片商店更新", "沈明珠屋内不许荡秋千", "双男主小说推文网黄", "路明非", "爱情专属权", "推荐双男主调教文", "#控射", "高丸子头怎么扎", "推荐控射文", "兰亭序加麒麟dj版", "怎么将所有图片调成时长相等", "超自然行动组", "斗罗大陆魂环第一集到最后一集", "我怀念的", "王者视频", "王者结算界面怎么改成出场动画", "#超自然行动组", "超自然行动组兑换码", "王者送福利入口", "小紫万花筒", "危险派对"], "视频生产类目": ["8个其他", "2个二次元", "1个游戏", "1个自拍"]}
+
+用户刚刚输入了"推荐控射文"，麻烦推荐一些合适的内容。/no_think<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+<|sid_begin|><s_a_3277><s_b_5146><s_c_6363><|sid_end|><|im_end|>
+<|endoftext|><|im_start|>system
+你是一位资深的推荐算法专家，精通用户画像分析和个性化匹配，能够为每位用户提供量身定制的内容推荐。<|im_end|>
+<|im_start|>user
+用户兴趣：
+{"性别": "女性", "年龄": "", "最近评论的视频": [{"视频评论": ["问问心理价"], "视频ID": "<|sid_begin|><s_a_6396><s_b_4501><s_c_1815><|sid_end|>"}, {"视频评论": ["蹲"], "视频ID": "<|sid_begin|><s_a_3252><s_b_3539><s_c_7427><|sid_end|>"}, {"视频评论": ["投"], "视频ID": "<|sid_begin|><s_a_5557><s_b_3330><s_c_2378><|sid_end|>"}, {"视频评论": ["季逸尘", "潇齐安"], "视频ID": "<|sid_begin|><s_a_6653><s_b_2549><s_c_2312><|sid_end|>"}, {"视频评论": ["不收了", "拒", "拒[落泪]"], "视频ID": "<|sid_begin|><s_a_2436><s_b_623><s_c_1815><|sid_end|>"}, {"视频评论": ["碎片"], "视频ID": "<|sid_begin|><s_a_6774><s_b_7764><s_c_1815><|sid_end|>"}, {"视频评论": ["诗有没有"], "视频ID": "<|sid_begin|><s_a_7695><s_b_5553><s_c_3279><|sid_end|>"}, {"视频评论": ["第八个最贵？第九个最便宜？"], "视频ID": "<|sid_begin|><s_a_897><s_b_5473><s_c_2849><|sid_end|>"}, {"视频评论": ["问问"], "视频ID": "<|sid_begin|><s_a_3581><s_b_4501><s_c_5789><|sid_end|>"}, {"视频评论": ["蹲蹲呀[猪猪](抽到我了私发原图)"], "视频ID": "<|sid_begin|><s_a_4990><s_b_5835><s_c_1720><|sid_end|>"}, {"视频评论": ["你看过吧[擦鼻涕]"], "视频ID": "<|sid_begin|><s_a_2353><s_b_2769><s_c_6173><|sid_end|>"}, {"视频评论": ["我还以为Al"], "视频ID": "<|sid_begin|><s_a_5686><s_b_3522><s_c_3066><|sid_end|>"}, {"视频评论": ["111"], "视频ID": "<|sid_begin|><s_a_3960><s_b_513><s_c_1209><|sid_end|>"}, {"视频评论": ["发错了[落泪]", "蹲蹲碎片双人给60碎片[猪猪]"], "视频ID": "<|sid_begin|><s_a_6396><s_b_238><s_c_7675><|sid_end|>"}, {"视频评论": ["老攻？"], "视频ID": "<|sid_begin|><s_a_7932><s_b_7888><s_c_7857><|sid_end|>"}, {"视频评论": ["山竹"], "视频ID": "<|sid_begin|><s_a_2215><s_b_1270><s_c_3199><|sid_end|>"}, {"视频评论": ["恭喜呀[猪猪]"], "视频ID": "<|sid_begin|><s_a_1996><s_b_7630><s_c_2899><|sid_end|>"}, {"视频评论": ["如果有52个萌妹子叫我诗诗就好了[擦鼻涕]"], "视频ID": "<|sid_begin|><s_a_4058><s_b_7072><s_c_6437><|sid_end|>"}, {"视频评论": ["我才12，不谈男友可以谈个男闺蜜"], "视频ID": "<|sid_begin|><s_a_4388><s_b_44><s_c_6548><|sid_end|>"}, {"视频评论": ["只有270碎片了能吃什么"], "视频ID": "<|sid_begin|><s_a_718><s_b_4501><s_c_5408><|sid_end|>"}, {"视频评论": ["碎片收设"], "视频ID": "<|sid_begin|><s_a_4990><s_b_5835><s_c_238><|sid_end|>"}, {"视频评论": ["19"], "视频ID": "<|sid_begin|><s_a_5954><s_b_2380><s_c_1888><|sid_end|>"}, {"视频评论": ["处闺蜜 12 我经常不在线 没微信QQ 长的还可以"], "视频ID": "<|sid_begin|><s_a_4388><s_b_5984><s_c_2758><|sid_end|>"}, {"视频评论": ["731"], "视频ID": "<|sid_begin|><s_a_3271><s_b_7806><s_c_6480><|sid_end|>"}, {"视频评论": ["碎片收设[擦鼻涕]"], "视频ID": "<|sid_begin|><s_a_3581><s_b_4501><s_c_1815><|sid_end|>"}, {"视频评论": ["111"], "视频ID": "<|sid_begin|><s_a_474><s_b_3983><s_c_6848><|sid_end|>"}, {"视频评论": ["萌妹纸们赞赞作品，都是好宝宝", "世界第一萌这块／."], "视频ID": "<|sid_begin|><s_a_5154><s_b_2591><s_c_7179><|sid_end|>"}, {"视频评论": ["处个12岁的闺密，我经常不在线"], "视频ID": "<|sid_begin|><s_a_7856><s_b_6306><s_c_2313><|sid_end|>"}, {"视频评论": ["下次用我平板玩"], "视频ID": "<|sid_begin|><s_a_6031><s_b_2976><s_c_8152><|sid_end|>"}, {"视频评论": ["给我点正常的[猪猪]"], "视频ID": "<|sid_begin|><s_a_4869><s_b_1689><s_c_5097><|sid_end|>"}, {"视频ID": "<|sid_begin|><s_a_2863><s_b_1504><s_c_2349><|sid_end|>"}, {"视频评论": ["我出"], "视频ID": "<|sid_begin|><s_a_3581><s_b_3161><s_c_2087><|sid_end|>"}], "最近对平台上这些挂车商品感兴趣并产生了消费行为": "贴纸4次，手机壳2次，贴片面膜2次，其他仿真玩具2次", "视频生产类目": ["3个游戏", "3个其他", "1个二次元"], "最近搜索内容": ["音乐推荐ins好听", "头像女蓝色系海", "歌曲推荐", "生日祝福小作文", "主人我错了剧情", "五功一受囚禁", "花的背景图动漫", "生日礼物推荐女10岁", "印象小物模板", "双人绘画模板一人一半", "作文400字左右", "400字作文那一刻我长大了", "画画后涂", "有一种踏实是你心里有我的名字", "即使到最后还微笑着要我加油", "印象魔法杖", "米苏同款封面图", "一只米苏", "6年级上册花之歌预习", "小丢", "画画教程", "碎片出设OC", "兰亭序麒麟dj舞蹈", "四叶草图片", "音乐", "头像女", "6年级上册第7课预习", "疯批感音乐", "生日礼物推荐女", "6年级上册语文第4课花之歌预习"], "曝光并且转化的广告": [{"二级品类": "综合类线下零售", "广告行为": "转化", "一级品类": "线下零售", "视频内容": "欢迎来到白天刷不到，晚上躲不掉系列 #零食很忙 #火鸡面 的神仙吃法 #夜宵 ", "广告ID": "<|sid_begin|><s_a_3154><s_b_6100><s_c_566><|sid_end|>", "产品名": "零食很忙"}], "关注博主类型": [{"博主类型": "其他", "占比": 63.04}, {"博主类型": "颜值", "占比": 13.04}, {"博主类型": "随手拍", "占比": 8.7}, {"博主类型": "二次元", "占比": 6.52}, {"博主类型": "游戏", "占比": 4.35}, {"博主类型": "才艺", "占比": 2.17}, {"博主类型": "明星娱乐", "占比": 2.17}], "视频消费详情": [{"消费行为": "点赞", "视频ID序列": "<|sid_begin|><s_a_1868><s_b_3190><s_c_6046><|sid_end|><|sid_begin|><s_a_3751><s_b_3482><s_c_1888><|sid_end|><|sid_begin|><s_a_4780><s_b_6655><s_c_3083><|sid_end|><|sid_begin|><s_a_5899><s_b_8189><s_c_2258><|sid_end|><|sid_begin|><s_a_3751><s_b_4525><s_c_6903><|sid_end|><|sid_begin|><s_a_4162><s_b_3396><s_c_1133><|sid_end|><|sid_begin|><s_a_2475><s_b_4478><s_c_94><|sid_end|><|sid_begin|><s_a_6078><s_b_5833><s_c_5861><|sid_end|><|sid_begin|><s_a_474><s_b_7288><s_c_2847><|sid_end|><|sid_begin|><s_a_7601><s_b_4253><s_c_1851><|sid_end|><|sid_begin|><s_a_3839><s_b_7502><s_c_4997><|sid_end|><|sid_begin|><s_a_4990><s_b_5835><s_c_1720><|sid_end|><|sid_begin|><s_a_2820><s_b_7843><s_c_3310><|sid_end|><|sid_begin|><s_a_3581><s_b_4501><s_c_5789><|sid_end|><|sid_begin|><s_a_967><s_b_4063><s_c_5924><|sid_end|><|sid_begin|><s_a_638><s_b_2090><s_c_6779><|sid_end|><|sid_begin|><s_a_4722><s_b_1300><s_c_7177><|sid_end|><|sid_begin|><s_a_1803><s_b_5816><s_c_7179><|sid_end|><|sid_begin|><s_a_7789><s_b_3023><s_c_1949><|sid_end|><|sid_begin|><s_a_4990><s_b_537><s_c_6023><|sid_end|><|sid_begin|><s_a_4419><s_b_3833><s_c_4900><|sid_end|><|sid_begin|><s_a_5882><s_b_4894><s_c_433><|sid_end|><|sid_begin|><s_a_3496><s_b_2650><s_c_7062><|sid_end|><|sid_begin|><s_a_5066><s_b_7874><s_c_8025><|sid_end|><|sid_begin|><s_a_4535><s_b_2051><s_c_6674><|sid_end|><|sid_begin|><s_a_6396><s_b_5006><s_c_4496><|sid_end|><|sid_begin|><s_a_7118><s_b_5955><s_c_5541><|sid_end|><|sid_begin|><s_a_474><s_b_1619><s_c_1382><|sid_end|><|sid_begin|><s_a_7249><s_b_5017><s_c_6537><|sid_end|><|sid_begin|><s_a_4432><s_b_2974><s_c_6886><|sid_end|>"}, {"消费行为": "收藏", "视频ID序列": "<|sid_begin|><s_a_474><s_b_5091><s_c_7060><|sid_end|><|sid_begin|><s_a_612><s_b_5344><s_c_2393><|sid_end|><|sid_begin|><s_a_6336><s_b_5158><s_c_428><|sid_end|><|sid_begin|><s_a_3696><s_b_7949><s_c_7755><|sid_end|><|sid_begin|><s_a_1555><s_b_4264><s_c_7971><|sid_end|><|sid_begin|><s_a_1038><s_b_3600><s_c_438><|sid_end|><|sid_begin|><s_a_4203><s_b_4790><s_c_6954><|sid_end|><|sid_begin|><s_a_6936><s_b_5526><s_c_3585><|sid_end|><|sid_begin|><s_a_1506><s_b_4197><s_c_5082><|sid_end|><|sid_begin|><s_a_7554><s_b_7755><s_c_478><|sid_end|><|sid_begin|><s_a_1943><s_b_5503><s_c_759><|sid_end|><|sid_begin|><s_a_4869><s_b_6745><s_c_7773><|sid_end|><|sid_begin|><s_a_6375><s_b_4231><s_c_8029><|sid_end|><|sid_begin|><s_a_2839><s_b_4138><s_c_7187><|sid_end|><|sid_begin|><s_a_496><s_b_4157><s_c_1635><|sid_end|><|sid_begin|><s_a_6766><s_b_1559><s_c_4417><|sid_end|><|sid_begin|><s_a_4531><s_b_481><s_c_2473><|sid_end|><|sid_begin|><s_a_6079><s_b_1099><s_c_7206><|sid_end|><|sid_begin|><s_a_4867><s_b_4352><s_c_2654><|sid_end|><|sid_begin|><s_a_6031><s_b_6611><s_c_6162><|sid_end|><|sid_begin|><s_a_1608><s_b_4779><s_c_5254><|sid_end|><|sid_begin|><s_a_6234><s_b_5274><s_c_6082><|sid_end|><|sid_begin|><s_a_3608><s_b_7783><s_c_433><|sid_end|><|sid_begin|><s_a_6893><s_b_2728><s_c_2635><|sid_end|><|sid_begin|><s_a_6396><s_b_5006><s_c_4496><|sid_end|><|sid_begin|><s_a_6146><s_b_3541><s_c_5734><|sid_end|><|sid_begin|><s_a_461><s_b_3414><s_c_2398><|sid_end|><|sid_begin|><s_a_4860><s_b_3876><s_c_5974><|sid_end|><|sid_begin|><s_a_3191><s_b_2092><s_c_899><|sid_end|><|sid_begin|><s_a_3600><s_b_847><s_c_2795><|sid_end|>"}, {"消费行为": "分享", "视频ID序列": "<|sid_begin|><s_a_2882><s_b_707><s_c_4946><|sid_end|><|sid_begin|><s_a_3366><s_b_6945><s_c_4183><|sid_end|><|sid_begin|><s_a_7809><s_b_2441><s_c_1260><|sid_end|><|sid_begin|><s_a_1690><s_b_7586><s_c_3658><|sid_end|><|sid_begin|><s_a_7959><s_b_7791><s_c_3863><|sid_end|><|sid_begin|><s_a_3920><s_b_1470><s_c_2058><|sid_end|><|sid_begin|><s_a_3208><s_b_2921><s_c_7796><|sid_end|><|sid_begin|><s_a_1483><s_b_6670><s_c_3913><|sid_end|><|sid_begin|><s_a_4467><s_b_7835><s_c_428><|sid_end|><|sid_begin|><s_a_3219><s_b_2485><s_c_1842><|sid_end|><|sid_begin|><s_a_3920><s_b_605><s_c_4579><|sid_end|><|sid_begin|><s_a_6925><s_b_2013><s_c_714><|sid_end|><|sid_begin|><s_a_7411><s_b_131><s_c_6492><|sid_end|><|sid_begin|><s_a_7777><s_b_101><s_c_8103><|sid_end|><|sid_begin|><s_a_5645><s_b_7776><s_c_4619><|sid_end|><|sid_begin|><s_a_4937><s_b_4641><s_c_1874><|sid_end|>"}], "视频消费类目": {"点赞最多的视频类型": ["其他", "二次元"], "收藏最多的视频类型": ["二次元", "游戏"], "分享最多的视频类型": ["二次元", "喜剧"], "评论最多的视频类型": ["情感", "其他"], "完播最多的视频类型": ["游戏", "二次元"]}, "最近在平台上对以下视频中的广告意图表示感兴趣": "陈思思就能兑换心灵一整版哦 #叶罗丽卡片拆卡 #卡游 #拆卡 ；哇~好喜欢懒羊羊~！我的好朋友速速安排！ #这个手机壳真的长在我心巴上了 #快分享给你的好友 #是时候安排一下了 #爱了爱了 ；🌚 ；听说干冰冻零食很好吃，我来替你们试试！ #冻零食 #干冰 #追剧小零食 ；挚友赠礼，温暖如初，每一份心意都值得珍藏与分享。 #kitty 黑框眼镜 好可爱啊 巨显脸小 是谁还没收到 #素颜神器 #眼镜框推荐；超划算的酸砂软糖终于来啦！！有了它谁还去线下买啊 谁懂啊！！超多口味！酸酸甜甜超有嚼劲！一口一个好过瘾！姐妹们快薅！！！ #软糖 #橡皮网红糖果 #零食推荐 ；#手工D1Y #手帐 开业啦～开业活动送小礼品；随便吃个芝士火鸡面对付一口 # #夜宵 ；在宿舍测评黄焖鸡自热米饭 还送一份蛋花芙蓉汤？真的好吃吗#测评 ；沉浸式吃美乐蒂蛋糕 #三丽鸥 #美乐蒂 ", "最近商业化其他行为": {"近30日短剧支付信息": "观看时间最长的2种短剧类型分别是:[逆袭_家庭伦理]看了0.29分钟、[复仇_商战]看了0.2分钟"}}
+
+搜索关键词：推荐特效
+
+请根据用户需求推荐内容。/no_think<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+<|sid_begin|><s_a_6079><s_b_753><s_c_89><|sid_end|><|im_end|>
+<|endoftext|><|im_start|>system
+你是一位资深的推荐算法专家，精通用户画像分析和个性化匹配，能够为每位用户提供量身定制的内容推荐。<|im_end|>
+<|im_start|>user
+用户的个人画像如下：
+平台上有一位50+岁的女性用户。 她最近在视频上发布了一些不同类别的视频，包括：18个明星娱乐，4个其他，3个自拍，1个游戏，1个二次元，1个影视综，1个颜值，1个三农。 她最近发布了一系列视频：<|sid_begin|><s_a_6799><s_b_5697><s_c_2860><|sid_end|>。 她在在视频<|sid_begin|><s_a_380><s_b_5293><s_c_3588><|sid_end|>下评论了"我们支持🈚磨皮🈚美颜🈚滤镜，最后看看是谁抗打"；在视频<|sid_begin|><s_a_7270><s_b_1110><s_c_2760><|sid_end|>下评论了"恁憋哭了"；在视频<|sid_begin|><s_a_7335><s_b_6120><s_c_629><|sid_end|>下评论了"[憨笑哪吒]"；在视频<|sid_begin|><s_a_2913><s_b_510><s_c_2656><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_7893><s_b_1731><s_c_3675><|sid_end|>下评论了"哪个是***[惊恐]"；在视频<|sid_begin|><s_a_6887><s_b_6550><s_c_114><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_4432><s_b_2332><s_c_1636><|sid_end|>下评论了"[惊恐]"；在视频<|sid_begin|><s_a_2337><s_b_6540><s_c_2452><|sid_end|>下评论了"出生在安徽你有什么想说的吗"；在视频<|sid_begin|><s_a_420><s_b_5061><s_c_4773><|sid_end|>下评论了"等掉"；在视频<|sid_begin|><s_a_99><s_b_695><s_c_601><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_380><s_b_5197><s_c_3658><|sid_end|>下评论了"许莳"；在视频<|sid_begin|><s_a_6696><s_b_4513><s_c_1547><|sid_end|>下评论了"求"；在视频<|sid_begin|><s_a_380><s_b_3918><s_c_5033><|sid_end|>下评论了"🉑"；在视频<|sid_begin|><s_a_3913><s_b_402><s_c_2251><|sid_end|>下评论了"老公[惊恐]"；在视频<|sid_begin|><s_a_7783><s_b_4068><s_c_7857><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_2565><s_b_3358><s_c_2655><|sid_end|>下评论了"私截致歉、我感觉这张柳智敏很好看啊[惊恐]"；在视频<|sid_begin|><s_a_4329><s_b_2648><s_c_4350><|sid_end|>下评论了"[憨笑哪吒]、给我唱[憨笑哪吒]、你又给我刷过几个子[汗]"；在视频<|sid_begin|><s_a_4603><s_b_7485><s_c_6287><|sid_end|>下评论了"停停停 我报警了[汗]、停停停"；在视频<|sid_begin|><s_a_2617><s_b_3066><s_c_232><|sid_end|>下评论了"密码币[翻白眼][涂指甲"；在视频<|sid_begin|><s_a_1411><s_b_5224><s_c_7062><|sid_end|>下评论了"这个喷不了[做不完]"；在视频<|sid_begin|><s_a_7140><s_b_1244><s_c_8100><|sid_end|>下评论了"笑死我了"；在视频<|sid_begin|><s_a_7335><s_b_1625><s_c_5700><|sid_end|>下评论了"这条她也没回[憨笑哪吒]"；在视频<|sid_begin|><s_a_6486><s_b_7926><s_c_5667><|sid_end|>下评论了"[惊恐]"；在视频<|sid_begin|><s_a_8163><s_b_3312><s_c_5817><|sid_end|>下评论了"饕餮"；在视频<|sid_begin|><s_a_4385><s_b_376><s_c_5521><|sid_end|>下评论了"闺蜜闺蜜"；在视频<|sid_begin|><s_a_5107><s_b_1681><s_c_4724><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_2304><s_b_3573><s_c_4701><|sid_end|>下评论了"我是农村入 别骗我[大哭]"；在视频<|sid_begin|><s_a_5607><s_b_2868><s_c_2><|sid_end|>下评论了"像在撒娇"；在视频<|sid_begin|><s_a_7791><s_b_6606><s_c_232><|sid_end|>下评论了"最后一次了嗯对、[憨笑哪吒]"；在视频<|sid_begin|><s_a_2475><s_b_4118><s_c_1785><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_1845><s_b_4365><s_c_3605><|sid_end|>下评论了"up"；在视频<|sid_begin|><s_a_7530><s_b_4510><s_c_1897><|sid_end|>下评论了"谢谢[猪蹄]、求梅元知的[出去丸]"；在视频<|sid_begin|><s_a_5212><s_b_2280><s_c_4991><|sid_end|>下评论了"2011***是星期几"；在视频<|sid_begin|><s_a_2284><s_b_1559><s_c_13><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_2436><s_b_642><s_c_5065><|sid_end|>下评论了"姐姐我送啦10朵 我的编号是什么呀"；在视频<|sid_begin|><s_a_6180><s_b_3><s_c_4727><|sid_end|>下评论了"姐姐我花都给你啦我的编号是什么呀"；在视频<|sid_begin|><s_a_2923><s_b_3283><s_c_4993><|sid_end|>下评论了"笑死我了[憨笑哪吒]"；在视频<|sid_begin|><s_a_92><s_b_1428><s_c_4436><|sid_end|>下评论了"谁有前五张图[猪蹄]"；在视频<|sid_begin|><s_a_7159><s_b_4433><s_c_7025><|sid_end|>下评论了"喜欢言澈[憨笑哪吒]"；在视频<|sid_begin|><s_a_851><s_b_461><s_c_4701><|sid_end|>下评论了"我也喜欢你[都市丽人]、I love you very much是什么意思[惊恐]"；在视频<|sid_begin|><s_a_4398><s_b_3371><s_c_6080><|sid_end|>下评论了"处吗"；在视频<|sid_begin|><s_a_667><s_b_6060><s_c_4474><|sid_end|>下评论了"没有空气墙不玩[憨笑哪吒]"；在视频<|sid_begin|><s_a_7285><s_b_1936><s_c_4550><|sid_end|>下评论了"1米5我也认了[憨笑哪吒]、我🌿有钱人"；在视频<|sid_begin|><s_a_4413><s_b_4603><s_c_3611><|sid_end|>下评论了"燕子你好萌！！"；在视频<|sid_begin|><s_a_1226><s_b_4917><s_c_159><|sid_end|>下评论了"嗯的[憨笑哪吒]、诡秘[猪蹄]"；在视频<|sid_begin|><s_a_5276><s_b_5316><s_c_6908><|sid_end|>下评论了"有人稀饭我的嘛[憨笑哪吒]"；在视频<|sid_begin|><s_a_2475><s_b_5503><s_c_232><|sid_end|>下评论了"棍"；在视频<|sid_begin|><s_a_3675><s_b_7148><s_c_6002><|sid_end|>下评论了"笑死我了"；在视频<|sid_begin|><s_a_5002><s_b_3934><s_c_6392><|sid_end|>下评论了"[惊恐]是吗"；在视频<|sid_begin|><s_a_1800><s_b_2690><s_c_629><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_5954><s_b_55><s_c_4793><|sid_end|>下评论了"滚[汗]"；在视频<|sid_begin|><s_a_6538><s_b_88><s_c_1113><|sid_end|>下评论了"啊不会也是同一位歌手吧[惊恐]"；在视频<|sid_begin|><s_a_3605><s_b_2892><s_c_3766><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_4098><s_b_2090><s_c_7841><|sid_end|>下评论了"？我不行了 [憨笑哪吒]"；在视频<|sid_begin|><s_a_6060><s_b_7477><s_c_7584><|sid_end|>下评论了"就是 两集就看不下去了[大哭]"；在视频<|sid_begin|><s_a_5739><s_b_7148><s_c_2448><|sid_end|>下评论了"这个是真喜欢、礼拿[憨笑哪吒]"；在视频<|sid_begin|><s_a_3735><s_b_6575><s_c_558><|sid_end|>下评论了"？。"；在视频<|sid_begin|><s_a_4743><s_b_2597><s_c_7060><|sid_end|>下评论了"停停停[惊恐]"；在视频<|sid_begin|><s_a_1889><s_b_1199><s_c_7025><|sid_end|>下评论了"175 成熟感要不要[惊恐]、我班主任"；在视频<|sid_begin|><s_a_6060><s_b_5481><s_c_45><|sid_end|>下评论了"沧元图[憨笑哪吒]"；在视频<|sid_begin|><s_a_7159><s_b_201><s_c_167><|sid_end|>下评论了"比例崩了宝宝[猪蹄]"；在视频<|sid_begin|><s_a_1483><s_b_3607><s_c_155><|sid_end|>下评论了"？[惊恐]"；在视频<|sid_begin|><s_a_1483><s_b_1694><s_c_3961><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_4603><s_b_2333><s_c_7207><|sid_end|>下评论了"第一眼看成宋威龙了[惊恐]"；在视频<|sid_begin|><s_a_7411><s_b_5347><s_c_4661><|sid_end|>下评论了"帅bro"；在视频<|sid_begin|><s_a_5107><s_b_5004><s_c_5629><|sid_end|>下评论了"我真没招了[熬夜]"；在视频<|sid_begin|><s_a_7357><s_b_7424><s_c_4793><|sid_end|>下评论了"主播我给你点推荐了"；在视频<|sid_begin|><s_a_7786><s_b_2868><s_c_3228><|sid_end|>下评论了"停停停我都吃胖了[出去丸]"；在视频<|sid_begin|><s_a_5607><s_b_2648><s_c_1556><|sid_end|>下评论了"我[憨笑哪吒]、我[猪蹄]"；在视频<|sid_begin|><s_a_5607><s_b_4807><s_c_1556><|sid_end|>下评论了"我左拇指上有"；在视频<|sid_begin|><s_a_193><s_b_642><s_c_2648><|sid_end|>下评论了"🉑"；在视频<|sid_begin|><s_a_1354><s_b_7810><s_c_6629><|sid_end|>下评论了"劳斯我给你点推荐了[亲吻]"；在视频<|sid_begin|><s_a_1446><s_b_3247><s_c_7713><|sid_end|>下评论了"？[惊恐]"；在视频<|sid_begin|><s_a_5607><s_b_1388><s_c_1556><|sid_end|>下评论了"我也是[猪蹄]"；在视频<|sid_begin|><s_a_4388><s_b_2380><s_c_7316><|sid_end|>下评论了"我呢[出去丸]"；在视频<|sid_begin|><s_a_1299><s_b_1883><s_c_2819><|sid_end|>下评论了"致敬英雄"；在视频<|sid_begin|><s_a_193><s_b_1608><s_c_155><|sid_end|>下评论了"我去"；在视频<|sid_begin|><s_a_376><s_b_4448><s_c_759><|sid_end|>下评论了"兄弟抱一下[猪猪]、屏幕前的兄弟姐妹们觉得我会北大吗[憨笑哪吒]"；在视频<|sid_begin|><s_a_4880><s_b_4685><s_c_7857><|sid_end|>下评论了"🉑、其实没那么帅[憨笑哪吒]"；在视频<|sid_begin|><s_a_2126><s_b_3610><s_c_1894><|sid_end|>下评论了"管他呢、表面意思[亲吻]"；在视频<|sid_begin|><s_a_1802><s_b_1541><s_c_3917><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_7614><s_b_5698><s_c_4724><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_2377><s_b_5700><s_c_1175><|sid_end|>下评论了"刚开始不都是人机局吗[熬夜]、是"；在视频<|sid_begin|><s_a_3208><s_b_633><s_c_5309><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_3062><s_b_7791><s_c_4757><|sid_end|>下评论了"密码比"；在视频<|sid_begin|><s_a_526><s_b_1989><s_c_2448><|sid_end|>下评论了"🉑"；在视频<|sid_begin|><s_a_2452><s_b_5022><s_c_3374><|sid_end|>下评论了"这真好看吗"；在视频<|sid_begin|><s_a_2475><s_b_6998><s_c_7099><|sid_end|>下评论了"仙女下凡救命啊回不来了"；在视频<|sid_begin|><s_a_7756><s_b_7046><s_c_2246><|sid_end|>下评论了"老公"；在视频<|sid_begin|><s_a_5272><s_b_7372><s_c_2149><|sid_end|>下评论了"喜欢"；在视频<|sid_begin|><s_a_6623><s_b_3573><s_c_8001><|sid_end|>下评论了"停停停最后一个算了吧[惊恐]"；在视频<|sid_begin|><s_a_5607><s_b_528><s_c_7485><|sid_end|>下评论了"笑死我了"；在视频<|sid_begin|><s_a_5101><s_b_4396><s_c_4309><|sid_end|>下评论了"完了 我看上瘾了[大哭]"；在视频<|sid_begin|><s_a_2851><s_b_6147><s_c_642><|sid_end|>下评论了"求原图[出去丸]"。 她的关注列表涵盖了这些领域：51.25%是【其他】，30.47%是【明星娱乐】，7.76%是【随手拍】，5.26%是【颜值】，1.94%是【二次元】，0.83%是【游戏】，0.55%是【音乐】，0.55%是【生活】，0.28%是【搞笑】，0.28%是【情感】，0.28%是【美食】，0.28%是【摄影】，0.28%是【读书】。 她最近在平台上观看了不同类型的视频，其中：点赞最多的类型是【其他、明星娱乐】，收藏最多的类型是【明星娱乐、二次元】，分享最多的类型是【二次元、教育】，评论最多的类型是【明星娱乐、自拍】，完播最多的类型是【明星娱乐、二次元】。 她近期点赞了视频<|sid_begin|><s_a_92><s_b_1441><s_c_2860><|sid_end|><|sid_begin|><s_a_5272><s_b_7372><s_c_2149><|sid_end|><|sid_begin|><s_a_4111><s_b_7371><s_c_1527><|sid_end|><|sid_begin|><s_a_3735><s_b_1815><s_c_1845><|sid_end|><|sid_begin|><s_a_2372><s_b_1868><s_c_5348><|sid_end|><|sid_begin|><s_a_6623><s_b_3573><s_c_8001><|sid_end|><|sid_begin|><s_a_4644><s_b_605><s_c_5019><|sid_end|><|sid_begin|><s_a_3319><s_b_5239><s_c_7984><|sid_end|><|sid_begin|><s_a_7012><s_b_7444><s_c_3357><|sid_end|><|sid_begin|><s_a_3735><s_b_5350><s_c_4790><|sid_end|><|sid_begin|><s_a_7611><s_b_7297><s_c_1713><|sid_end|><|sid_begin|><s_a_1451><s_b_4757><s_c_5741><|sid_end|><|sid_begin|><s_a_7783><s_b_4068><s_c_7857><|sid_end|><|sid_begin|><s_a_6941><s_b_5653><s_c_1036><|sid_end|><|sid_begin|><s_a_380><s_b_3208><s_c_4183><|sid_end|><|sid_begin|><s_a_2040><s_b_4119><s_c_899><|sid_end|><|sid_begin|><s_a_1028><s_b_765><s_c_5357><|sid_end|><|sid_begin|><s_a_1943><s_b_4685><s_c_6948><|sid_end|><|sid_begin|><s_a_6546><s_b_5536><s_c_2943><|sid_end|><|sid_begin|><s_a_6711><s_b_3805><s_c_3611><|sid_end|><|sid_begin|><s_a_7357><s_b_6572><s_c_3244><|sid_end|><|sid_begin|><s_a_7173><s_b_3539><s_c_6695><|sid_end|><|sid_begin|><s_a_565><s_b_5836><s_c_6445><|sid_end|><|sid_begin|><s_a_1184><s_b_2893><s_c_1801><|sid_end|><|sid_begin|><s_a_4196><s_b_7082><s_c_4616><|sid_end|><|sid_begin|><s_a_6618><s_b_6180><s_c_5036><|sid_end|><|sid_begin|><s_a_5954><s_b_1341><s_c_1630><|sid_end|><|sid_begin|><s_a_7159><s_b_5243><s_c_19><|sid_end|><|sid_begin|><s_a_6433><s_b_1696><s_c_2587><|sid_end|><|sid_begin|><s_a_92><s_b_1260><s_c_3083><|sid_end|>；收藏了视频<|sid_begin|><s_a_342><s_b_5861><s_c_2851><|sid_end|><|sid_begin|><s_a_513><s_b_1341><s_c_3229><|sid_end|><|sid_begin|><s_a_6948><s_b_3514><s_c_8191><|sid_end|><|sid_begin|><s_a_7229><s_b_6713><s_c_241><|sid_end|><|sid_begin|><s_a_6060><s_b_5481><s_c_45><|sid_end|><|sid_begin|><s_a_1451><s_b_4757><s_c_5741><|sid_end|><|sid_begin|><s_a_4201><s_b_8024><s_c_6674><|sid_end|><|sid_begin|><s_a_4600><s_b_5197><s_c_5546><|sid_end|><|sid_begin|><s_a_2265><s_b_1845><s_c_4635><|sid_end|><|sid_begin|><s_a_2401><s_b_7046><s_c_19><|sid_end|><|sid_begin|><s_a_5843><s_b_4714><s_c_358><|sid_end|><|sid_begin|><s_a_7173><s_b_3539><s_c_6695><|sid_end|><|sid_begin|><s_a_5954><s_b_1341><s_c_1630><|sid_end|><|sid_begin|><s_a_4885><s_b_1190><s_c_363><|sid_end|><|sid_begin|><s_a_7159><s_b_5243><s_c_19><|sid_end|><|sid_begin|><s_a_380><s_b_6661><s_c_6685><|sid_end|><|sid_begin|><s_a_4393><s_b_4612><s_c_4572><|sid_end|><|sid_begin|><s_a_6236><s_b_3391><s_c_2989><|sid_end|><|sid_begin|><s_a_6557><s_b_753><s_c_6754><|sid_end|><|sid_begin|><s_a_2646><s_b_5984><s_c_558><|sid_end|><|sid_begin|><s_a_3219><s_b_7324><s_c_5077><|sid_end|><|sid_begin|><s_a_4717><s_b_2109><s_c_7084><|sid_end|><|sid_begin|><s_a_4535><s_b_7784><s_c_6993><|sid_end|><|sid_begin|><s_a_3219><s_b_4159><s_c_6080><|sid_end|><|sid_begin|><s_a_1324><s_b_4543><s_c_2135><|sid_end|><|sid_begin|><s_a_1317><s_b_1296><s_c_6428><|sid_end|><|sid_begin|><s_a_6395><s_b_6364><s_c_5437><|sid_end|><|sid_begin|><s_a_1411><s_b_3188><s_c_2196><|sid_end|><|sid_begin|><s_a_2718><s_b_1108><s_c_4727><|sid_end|><|sid_begin|><s_a_4689><s_b_5674><s_c_476><|sid_end|>；分享了视频<|sid_begin|><s_a_2894><s_b_8004><s_c_491><|sid_end|><|sid_begin|><s_a_3735><s_b_1815><s_c_1845><|sid_end|><|sid_begin|><s_a_3735><s_b_1815><s_c_1845><|sid_end|><|sid_begin|><s_a_324><s_b_7372><s_c_7797><|sid_end|><|sid_begin|><s_a_4745><s_b_3083><s_c_4058><|sid_end|><|sid_begin|><s_a_5607><s_b_2535><s_c_3658><|sid_end|><|sid_begin|><s_a_4196><s_b_7082><s_c_4616><|sid_end|><|sid_begin|><s_a_6618><s_b_6180><s_c_5036><|sid_end|><|sid_begin|><s_a_6618><s_b_6180><s_c_5036><|sid_end|><|sid_begin|><s_a_380><s_b_3955><s_c_7852><|sid_end|><|sid_begin|><s_a_6432><s_b_6998><s_c_7281><|sid_end|><|sid_begin|><s_a_1317><s_b_1296><s_c_6428><|sid_end|><|sid_begin|><s_a_1932><s_b_5197><s_c_6844><|sid_end|><|sid_begin|><s_a_3913><s_b_402><s_c_2251><|sid_end|><|sid_begin|><s_a_3913><s_b_402><s_c_2251><|sid_end|><|sid_begin|><s_a_8071><s_b_4609><s_c_1154><|sid_end|><|sid_begin|><s_a_3062><s_b_947><s_c_4430><|sid_end|><|sid_begin|><s_a_8085><s_b_7046><s_c_5254><|sid_end|><|sid_begin|><s_a_2215><s_b_2831><s_c_6145><|sid_end|><|sid_begin|><s_a_2475><s_b_4125><s_c_6002><|sid_end|><|sid_begin|><s_a_1469><s_b_4691><s_c_787><|sid_end|><|sid_begin|><s_a_1469><s_b_4691><s_c_787><|sid_end|><|sid_begin|><s_a_2215><s_b_3110><s_c_3491><|sid_end|><|sid_begin|><s_a_1242><s_b_7057><s_c_5019><|sid_end|><|sid_begin|><s_a_6001><s_b_4432><s_c_6715><|sid_end|><|sid_begin|><s_a_3024><s_b_1025><s_c_3328><|sid_end|><|sid_begin|><s_a_3024><s_b_1025><s_c_3328><|sid_end|><|sid_begin|><s_a_7335><s_b_1625><s_c_5700><|sid_end|><|sid_begin|><s_a_8106><s_b_3833><s_c_2204><|sid_end|><|sid_begin|><s_a_8106><s_b_3833><s_c_2204><|sid_end|>。 她最近在平台上搜索了这些内容：鞠婧祎姜保宁素材、25年8月的雨汪浚熙、夫妇双人背景图、王舒心虞书欣、给老婆的保证书、光子被踢出相亲房视频、头像预览模板、水印、鞠婧祎背景图、快手新活动、快手头像鹦鹉怎么获得、鞠婧祎法修散打梦幻联动、鞠婧祎和曾舜晞、少爷三十天后会笑、红米手机怎么分屏小窗口、达达的日常、#柳智敏、cecily鞠婧祎、一图多修、变形计陈思媛考了北大、鹦鹉、快手鹦鹉怎么获得、117什么星座、爸爸一直在家不出去工作 怎么说才能让他上班、鞠婧祎代言公主切、崽崽兑换头像挂件活动入口在哪、名侦探柯南中哪几集有工藤新一、慢性拆磨呕吐室、火崽崽头像框怎么获得、鞠婧祎背景图微博。 她购物车中有这些未购买的商品：1件商品<|sid_begin|><s_a_407><s_b_3573><s_c_1161><|sid_end|>，具体为【游戏/模玩/动漫周边/cos/桌游-潮玩盲盒】分类下的“集卡社沧元图卡片芸芸众生动画豪华版收藏卡牌动漫周边小卡正版”。 她最近一年在平台上变现金额最多的1种短剧类型分别是:[复仇_宅斗]。 她过去一年变现金额最多的1种游戏类型分别是:[休闲模拟经营游戏]。 她对以下挂车商品产生了购买行为：发夹1次，织布机/手工编织/刺绣类1次。 她对这些视频中的广告内容感兴趣：始终认为手工是无法替代的浪漫 希望你平安顺遂喜乐无忧 #刺绣香囊 #手工DIY #礼物 #平安符 ；通通闪开!魔童降世～#jk #yc不知；好朋友~凭咱俩的关系 送我几个漂亮发夹也不过分吧！#少女心爆棚 #是时候安排一下 #；这个新上线的《解压无忧馆》可以赚，夜猫已经替你们试过了，真实有效，可以***到账微信支付宝 小游戏 #赚钱小游戏；对不起..我喜欢女生 #双鱼 #玩物堂假发 #直男；为什么女人从小就有“隐藏的婆家”？#618超会省企划 #得物 #labubu；#小米红米手机最新操作分屏小窗操作 怎么分屏怎么小窗；宝宝们要的包包出来啦 #蜜橘 #双肩包 #学生书包推荐 #应援包 。 她最近30天在平台上观看时间最长的1种短剧类型分别是:[打脸虐渣_豪门恩怨]看了0.18分钟。
+
+用户搜索了"推荐可以和朋友拍的聊天记录"这个关键词，请推荐一些相关的内容。/no_think<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+<|sid_begin|><s_a_7400><s_b_7416><s_c_4833><|sid_end|><|sid_begin|><s_a_3062><s_b_2900><s_c_7978><|sid_end|><|im_end|>
+<|endoftext|><|im_start|>system
+你是一个对话式推荐系统，能够基于用户的兴趣特征和搜索意图，推荐最相关的内容。<|im_end|>
+<|im_start|>user
+用户的兴趣领域包括：
+这是一名平台上31-40岁的女性用户。 她发布的视频类别包括：14个自拍，6个其他，4个颜值，3个宠物，3个情感。 她发布的视频包括：<|sid_begin|><s_a_6396><s_b_238><s_c_5913><|sid_end|>。 她购物车中有这些未购买的商品：1件商品<|sid_begin|><s_a_2477><s_b_2290><s_c_3611><|sid_end|>，具体为【箱包/饰品-箱包-女包】分类下的“双肩包白色少女可爱蝴蝶结猫咪初中生书包大学生温柔日系背包”；1件商品<|sid_begin|><s_a_2234><s_b_2277><s_c_6032><|sid_end|>，具体为【箱包/饰品-箱包-女包】分类下的“双肩包书包ins小众可爱清新高颜值双肩包-网红爆款”；2件商品<|sid_begin|><s_a_2234><s_b_5871><s_c_6032><|sid_end|>，具体为【箱包/饰品-箱包-女包】分类下的“双肩包书包ins小众可爱清新高颜值双肩包-网红爆款”；1件商品<|sid_begin|><s_a_6125><s_b_5123><s_c_1781><|sid_end|>，具体为【女装-T恤】分类下的“新品韩系学院风时尚撞色海军领短袖T恤女2025夏季新款修身显瘦上”；1件商品<|sid_begin|><s_a_1505><s_b_3819><s_c_5533><|sid_end|>，具体为【女装-T恤】分类下的“中性风情侣装腊肠小狗T恤女夏季新款纯棉半袖潮流美式百搭短袖上1”；1件商品<|sid_begin|><s_a_4601><s_b_5918><s_c_2635><|sid_end|>，具体为【手机/数码/电脑办公-手机/配件-手机壳】分类下的“冰淇淋自嘲熊滴胶支架适用苹果16/15手机壳华为P70vivo小米15oppo”；1件商品<|sid_begin|><s_a_5492><s_b_5759><s_c_2032><|sid_end|>，具体为【文化用品/学习用具-文具-笔袋】分类下的“黄色kt猫卡通印花笔袋大学生简约软化妆小包零碎物品收纳书包女”；1件商品<|sid_begin|><s_a_970><s_b_2477><s_c_7406><|sid_end|>，具体为【文化用品/学习用具-文具-笔袋】分类下的“红格子可爱kitty猫笔袋大容量文具盒便携设计感文具袋ins女化妆袋”；1件商品<|sid_begin|><s_a_4484><s_b_4502><s_c_5239><|sid_end|>，具体为【家居生活-居家清洁-纸品湿巾】分类下的“洁柔手帕纸四层山茶香味面巾纸巾小包擦汗不掉屑超mini便携加量”；2件商品<|sid_begin|><s_a_2516><s_b_6317><s_c_108><|sid_end|>，具体为【箱包/饰品-箱包-箱包相关配件】分类下的“个性软萌骨头包包挂件可爱毛绒公仔学生背包挂饰情侣狗骨头钥匙扣”；1件商品<|sid_begin|><s_a_3457><s_b_5658><s_c_179><|sid_end|>，具体为【美容护肤-防晒-防晒霜】分类下的“幽玫防晒霜隔离清爽质地夏季全身防水汗清爽不粘腻官方正品SPF50+”；2件商品<|sid_begin|><s_a_8121><s_b_5871><s_c_4336><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“荧光笔ins记号笔软头马卡龙色笔高颜值学生重点标记笔套装护眼”；2件商品<|sid_begin|><s_a_1397><s_b_2326><s_c_7974><|sid_end|>，具体为【玩具/早教益智-玩具-创意减压】分类下的“小日子咪露小布丁投喂玩具过家家玩具孩童女孩适用好玩布丁玩具”；1件商品<|sid_begin|><s_a_352><s_b_962><s_c_2795><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“蓝果CS兜兜笔红笔黑笔便携口袋ins高颜值学生中性笔速干0.5刷题”；1件商品<|sid_begin|><s_a_5122><s_b_5206><s_c_1200><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“晨光磨砂自动铅笔ins风学生用自动笔0.5/0.7不断铅免削活动铅笔”；1件商品<|sid_begin|><s_a_3779><s_b_74><s_c_3642><|sid_end|>，具体为【文化用品/学习用具-文具-其他文具】分类下的“双面胶高粘度薄款强力固定学生儿童手工强粘不留痕办公文具用品”；1件商品<|sid_begin|><s_a_3706><s_b_5060><s_c_7342><|sid_end|>，具体为【文化用品/学习用具-文具-装订用品】分类下的“彩色燕尾夹长尾夹小号开票收据夹大号文件夹办公用品文具类蝴蝶夹”；1件商品<|sid_begin|><s_a_3317><s_b_3956><s_c_5407><|sid_end|>，具体为【家居生活-居家清洁-消毒用品】分类下的“一次性碘伏消毒棉签家中常备消毒伤口户外急救护理独立包装消毒棉”；1件商品<|sid_begin|><s_a_4185><s_b_7287><s_c_6321><|sid_end|>，具体为【家居生活-居家清洁-纸品湿巾】分类下的“凯蒂猫婴儿手口专用湿巾便携式小包儿童宝宝湿纸巾安全无味zwh”；1件商品<|sid_begin|><s_a_7087><s_b_6254><s_c_5871><|sid_end|>，具体为【文化用品/学习用具-文具-修正带/修正液/修正贴】分类下的“正品防摔静音修正带学生专用涂改带初中学生大容量顺滑ins改正带”；2件商品<|sid_begin|><s_a_5310><s_b_3439><s_c_7585><|sid_end|>，具体为【个护清洁-美发/造型-美发工具】分类下的“新款卡通ins梳子小巧便携镂空造型梳子猫爪按摩软齿可爱蓬松”；1件商品<|sid_begin|><s_a_6872><s_b_3760><s_c_6817><|sid_end|>，具体为【个护清洁-身体护理-祛痱止痒】分类下的“ADMD紫草强效驱蚊液蚊不叮成人儿童防蚊喷雾止痒花露水神器蚊香液”；1件商品<|sid_begin|><s_a_3927><s_b_3816><s_c_5737><|sid_end|>，具体为【家居生活-餐具-餐具配件】分类下的“套装筷子不锈钢勺子套盒ins高颜值餐具三件套收纳盒叉子学生”；1件商品<|sid_begin|><s_a_3050><s_b_74><s_c_4705><|sid_end|>，具体为【户外/垂钓装备-饮水用具/盛水容器-水杯】分类下的“可爱塑料水杯女生高颜值大容量吸管杯子夏双饮学生便携儿童随手杯”；1件商品<|sid_begin|><s_a_7923><s_b_5826><s_c_4007><|sid_end|>，具体为【文化用品/学习用具-文具-装订用品】分类下的“DIY透明订书机玩具总动员贴纸童趣表情订书器学生便携迷你订书机”；2件商品<|sid_begin|><s_a_352><s_b_7287><s_c_433><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“【现货速发】限定云握凯蒂猫ins高颜值按动笔蜡笔小新吉伊卡哇0.5”；2件商品<|sid_begin|><s_a_352><s_b_4750><s_c_300><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“小红书同款鳄鱼按动笔ins高颜值小众学生刷题中性笔0.5mm”；1件商品<|sid_begin|><s_a_1875><s_b_6788><s_c_24><|sid_end|>，具体为【文化用品/学习用具-文具-裁剪用品】分类下的“小丑鱼ins手工剪刀便携式学生刀手裁剪手账圆头带盖美工保护套”；1件商品<|sid_begin|><s_a_5448><s_b_2905><s_c_6548><|sid_end|>，具体为【收纳整理-家庭收纳用具-其他家庭收纳用具】分类下的“卫生巾收纳包姨妈巾月事包便携小型卫生棉m巾收纳袋学生少女迷你”；1件商品<|sid_begin|><s_a_2409><s_b_3702><s_c_5693><|sid_end|>，具体为【文化用品/学习用具-纸张本册-笔记本记事本】分类下的“泼墨动物活页笔记本A5横线可拆卸不硌手本子B5加厚可爱高颜值学生”；1件商品<|sid_begin|><s_a_2516><s_b_8004><s_c_7584><|sid_end|>，具体为【箱包/饰品-箱包-箱包相关配件】分类下的“清透苹果钥匙扣可爱仿真书包挂件水果情侣挂饰饰品闺蜜礼物配饰”；1件商品<|sid_begin|><s_a_791><s_b_7700><s_c_4289><|sid_end|>，具体为【文化用品/学习用具-纸张本册-便条纸N次贴】分类下的“横线便利贴有粘性便签纸小学生初中生高中生专用办公标签贴粘性强”；1件商品<|sid_begin|><s_a_352><s_b_7111><s_c_2233><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“学科速干笔学生按动中性笔ins简约高颜值刷题顺滑0.5mm黑色碳素笔”；1件商品<|sid_begin|><s_a_352><s_b_2922><s_c_4006><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“马卡龙黑煤球速干笔高颜值黑色少女心ins风碳素笔考试搞怪学生笔”；1件商品<|sid_begin|><s_a_2477><s_b_7887><s_c_8164><|sid_end|>，具体为【箱包/饰品-箱包-功能箱包/双肩包】分类下的“书包初中女生大容量小大学生双肩包蝴蝶结kt高颜值印”；1件商品<|sid_begin|><s_a_3014><s_b_7492><s_c_5871><|sid_end|>，具体为【文化用品/学习用具-收纳/陈列用品-风琴包/事务包】分类下的“试卷收纳多层大容量ins高颜值文件夹收纳袋学生专用手提式 风琴包”；1件商品<|sid_begin|><s_a_3457><s_b_1692><s_c_1777><|sid_end|>，具体为【美容护肤-防晒-防晒霜】分类下的“赵露思推荐美白防晒霜SPF50+防紫外线防水防汗宝宝户外乳液学生党”；1件商品<|sid_begin|><s_a_2245><s_b_6682><s_c_6141><|sid_end|>，具体为【美容护肤-防晒-防晒霜】分类下的“【甄选好物】Lancer King防晒乳保湿防晒不搓泥不假白全身可用.z”；1件商品<|sid_begin|><s_a_2174><s_b_5048><s_c_6119><|sid_end|>，具体为【零食/坚果/特产-肉干肉脯/熏腊卤味/肉类熟食-猪肉制品】分类下的“靖江手撕肉脯干小包装30小包蜜汁味肉类零食小吃dsyz”；1件商品<|sid_begin|><s_a_682><s_b_7902><s_c_5661><|sid_end|>，具体为【住宅家具-镜子-化妆镜】分类下的“镜子折叠女学生化妆可立家用台式教室随身便携宿舍高清桌面梳妆镜”；1件商品<|sid_begin|><s_a_8089><s_b_2892><s_c_1207><|sid_end|>，具体为【文化用品/学习用具-纸张本册-文稿纸草稿纸】分类下的“草稿本大学生演草空白草稿纸高中生演算纸加厚数学考研专用打草纸”；1件商品<|sid_begin|><s_a_1423><s_b_377><s_c_2660><|sid_end|>，具体为【收纳整理-家庭收纳用具-推车置物架】分类下的“兴朵zy可移动滑轮小推车置物架家用零食玩具收纳架浴室储物架落地”；1件商品<|sid_begin|><s_a_352><s_b_453><s_c_1450><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“速干刷题笔学生备考写作业考试专用巨能写按动中性笔st笔尖签字笔”；1件商品<|sid_begin|><s_a_352><s_b_2392><s_c_366><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“蓝果按动中性笔套装高颜值ins小清新甜系速干0.5学生考试刷题黑笔”；1件商品<|sid_begin|><s_a_352><s_b_3612><s_c_5386><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“【JW】限定变脸可爱速干刷题黑笔高颜值0.5蜡笔小新Kitty猫考试黑”；2件商品<|sid_begin|><s_a_352><s_b_7287><s_c_4171><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“凯蒂猫软握按动中性笔卡通ins高颜值学生女小众KT猫刷题速干黑笔”；1件商品<|sid_begin|><s_a_754><s_b_4702><s_c_4756><|sid_end|>，具体为【手机/数码/电脑办公-手机/配件-手机支架】分类下的“芒晨手机支架懒人桌面拍视频拍照升降自拍网红手机支架多功能通用”；1件商品<|sid_begin|><s_a_6895><s_b_5759><s_c_5423><|sid_end|>，具体为【箱包/饰品-饰品/流行首饰/时尚饰品-发饰】分类下的“甜美侧边刘海鸭嘴夹卡通kt猫发夹女2025新款洗脸化妆高颜值头饰”；1件商品<|sid_begin|><s_a_3014><s_b_4315><s_c_5871><|sid_end|>，具体为【文化用品/学习用具-收纳/陈列用品-风琴包/事务包】分类下的“A4手提文件夹试卷袋学生多层大容量风琴包ins高颜值卷子收纳袋”；1件商品<|sid_begin|><s_a_352><s_b_3993><s_c_3611><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“库洛米凯蒂猫卡通学生好写速干按动笔高颜值ins中性黑笔0.5刷题笔”；1件商品<|sid_begin|><s_a_7276><s_b_7366><s_c_5523><|sid_end|>，具体为【美妆-香水-女士香水】分类下的“【2.99/瓶】高级黄金香水花香滚珠香水玫瑰茉莉桂花持久留香JJ”；1件商品<|sid_begin|><s_a_5563><s_b_2225><s_c_7793><|sid_end|>，具体为【收纳整理-旅行收纳用具-其他旅行收纳用具】分类下的“旅行分装袋便携一次性洗发水乳液化妆品沐浴露洗护洗漱用品分装瓶”；1件商品<|sid_begin|><s_a_409><s_b_1357><s_c_6053><|sid_end|>，具体为【零食/坚果/特产-糖果零食/果冻/布丁-压片糖】分类下的“【1.99起抢10大盒】现货仿真烟杆棒棒糖整蛊趣味网红创意糖糖果”；1件商品<|sid_begin|><s_a_6726><s_b_5855><s_c_7821><|sid_end|>，具体为【零食/坚果/特产-糕点/点心-中式糕点】分类下的“上行斋17枚和风生巧大福网红巧克力福团糯米糍脏脏团”；1件商品<|sid_begin|><s_a_3170><s_b_1183><s_c_7099><|sid_end|>，具体为【零食/坚果/特产-糖果零食/果冻/布丁-棉花糖/充气糖果】分类下的“【3.99元起抢50包】冻干棉花糖爆款创意解馋酥脆高颜值休闲零食xk”；1件商品<|sid_begin|><s_a_5310><s_b_5759><s_c_7270><|sid_end|>，具体为【个护清洁-美发/造型-美发工具】分类下的“新款kt猫梳子ins镂空造型梳子猫爪按摩软齿可爱蓬松学生小巧便携F”；1件商品<|sid_begin|><s_a_5310><s_b_3439><s_c_5871><|sid_end|>，具体为【户外/垂钓装备-洗漱清洁/护理用品-美发用品】分类下的“新款卡通ins梳子小巧便携镂空造型梳子猫爪按摩软齿可爱蓬松学生”；1件商品<|sid_begin|><s_a_4355><s_b_6863><s_c_7010><|sid_end|>，具体为【收纳整理-家庭整理用具-挂钩/粘钩】分类下的“书包挂钩桌边坚固耐用承重学生版学生教室课桌收纳置物架挂包神器”；1件商品<|sid_begin|><s_a_4355><s_b_7887><s_c_7010><|sid_end|>，具体为【收纳整理-家庭整理用具-挂钩/粘钩】分类下的“周边书包挂钩学生课桌边侧边隐藏挂包可拆卸免粘挂钩”；1件商品<|sid_begin|><s_a_1330><s_b_1330><s_c_4574><|sid_end|>，具体为【咖啡/麦片/冲饮-饮料-碳酸饮料】分类下的“百事可乐 Pepsi 碳酸饮料 多口味可选 300ml*6瓶”。 她搜索过：恋人空间入口、亲嘴、章若楠的壁纸权威、你爱我还是他、隐形眼镜盒、军训怎么才不会头晕、赵露思壁纸、意义不明的猎奇表情包、手势舞最近很火的、混情.⚜️、绿帽子抽象头像、你存在我深深的脑海、寂寞烟火歌曲、小玉米和轩轩恋爱日常VLOG、虞书欣怎么了、黄、轻奢穿搭、眼镜女款高颜值、抑郁症的表现和状态有哪些、军训可以喝的饮料推荐、变装、文案情绪零碎、好看的手势舞、指甲里边疼是怎么回事、初一军训可以喝的饮料、头像女高质量INS、搞笑视频笑到肚子痛、脚指甲边上疼怎么回事、青涩穿搭、赵露思壁纸嘴唇。 她最近在平台上观看了不同类型的直播内容，其中：【游戏-射击游戏】分类下的直播点赞了1次，评论了1次；【闲聊互动-温和闲聊】分类下的直播评论了3次；【商品售卖-商品推荐】分类下的直播分享了1次；【户外-户外综合】分类下的直播点赞了1次，评论了1次。 她最近点赞了视频<|sid_begin|><s_a_740><s_b_5893><s_c_4114><|sid_end|><|sid_begin|><s_a_831><s_b_3280><s_c_4350><|sid_end|><|sid_begin|><s_a_5607><s_b_6621><s_c_5732><|sid_end|><|sid_begin|><s_a_6832><s_b_7985><s_c_2444><|sid_end|><|sid_begin|><s_a_1354><s_b_1565><s_c_2055><|sid_end|><|sid_begin|><s_a_2265><s_b_7691><s_c_3766><|sid_end|><|sid_begin|><s_a_6486><s_b_6033><s_c_4900><|sid_end|><|sid_begin|><s_a_1953><s_b_6053><s_c_4773><|sid_end|><|sid_begin|><s_a_1240><s_b_4201><s_c_4766><|sid_end|><|sid_begin|><s_a_7185><s_b_6162><s_c_7093><|sid_end|><|sid_begin|><s_a_227><s_b_5050><s_c_7009><|sid_end|><|sid_begin|><s_a_6337><s_b_4072><s_c_5203><|sid_end|><|sid_begin|><s_a_5276><s_b_6582><s_c_4535><|sid_end|><|sid_begin|><s_a_934><s_b_6819><s_c_7281><|sid_end|><|sid_begin|><s_a_8166><s_b_1803><s_c_1515><|sid_end|><|sid_begin|><s_a_385><s_b_222><s_c_512><|sid_end|><|sid_begin|><s_a_7814><s_b_6490><s_c_5700><|sid_end|><|sid_begin|><s_a_4810><s_b_7829><s_c_6695><|sid_end|><|sid_begin|><s_a_5489><s_b_6732><s_c_7175><|sid_end|><|sid_begin|><s_a_6615><s_b_5812><s_c_6726><|sid_end|><|sid_begin|><s_a_2790><s_b_7106><s_c_6118><|sid_end|><|sid_begin|><s_a_176><s_b_6635><s_c_1240><|sid_end|><|sid_begin|><s_a_4048><s_b_1732><s_c_2125><|sid_end|><|sid_begin|><s_a_7346><s_b_3722><s_c_7433><|sid_end|><|sid_begin|><s_a_5456><s_b_1785><s_c_5103><|sid_end|><|sid_begin|><s_a_6490><s_b_3208><s_c_6770><|sid_end|><|sid_begin|><s_a_2020><s_b_1193><s_c_2648><|sid_end|><|sid_begin|><s_a_375><s_b_2310><s_c_2050><|sid_end|><|sid_begin|><s_a_227><s_b_7619><s_c_3739><|sid_end|><|sid_begin|><s_a_5944><s_b_1344><s_c_546><|sid_end|>；收藏了视频<|sid_begin|><s_a_6832><s_b_7672><s_c_4683><|sid_end|><|sid_begin|><s_a_349><s_b_6606><s_c_1110><|sid_end|><|sid_begin|><s_a_296><s_b_3830><s_c_444><|sid_end|><|sid_begin|><s_a_6615><s_b_5812><s_c_6726><|sid_end|><|sid_begin|><s_a_7444><s_b_5053><s_c_0><|sid_end|><|sid_begin|><s_a_1354><s_b_3039><s_c_4203><|sid_end|><|sid_begin|><s_a_322><s_b_3239><s_c_6567><|sid_end|><|sid_begin|><s_a_92><s_b_5275><s_c_4834><|sid_end|><|sid_begin|><s_a_1832><s_b_979><s_c_5356><|sid_end|><|sid_begin|><s_a_7210><s_b_4282><s_c_4228><|sid_end|><|sid_begin|><s_a_4879><s_b_3298><s_c_3956><|sid_end|><|sid_begin|><s_a_6425><s_b_6461><s_c_6562><|sid_end|>；分享了视频<|sid_begin|><s_a_137><s_b_6448><s_c_3967><|sid_end|><|sid_begin|><s_a_176><s_b_3280><s_c_6547><|sid_end|><|sid_begin|><s_a_1586><s_b_3488><s_c_8094><|sid_end|><|sid_begin|><s_a_4169><s_b_7687><s_c_774><|sid_end|><|sid_begin|><s_a_2337><s_b_632><s_c_26><|sid_end|><|sid_begin|><s_a_3023><s_b_7895><s_c_2311><|sid_end|><|sid_begin|><s_a_8009><s_b_6033><s_c_8008><|sid_end|><|sid_begin|><s_a_6486><s_b_7691><s_c_6119><|sid_end|><|sid_begin|><s_a_1953><s_b_6053><s_c_4773><|sid_end|><|sid_begin|><s_a_1625><s_b_7715><s_c_7084><|sid_end|><|sid_begin|><s_a_3358><s_b_3933><s_c_3199><|sid_end|><|sid_begin|><s_a_6928><s_b_2440><s_c_1388><|sid_end|><|sid_begin|><s_a_4866><s_b_2333><s_c_2485><|sid_end|><|sid_begin|><s_a_5624><s_b_5491><s_c_7520><|sid_end|><|sid_begin|><s_a_2182><s_b_5005><s_c_5341><|sid_end|><|sid_begin|><s_a_484><s_b_122><s_c_7721><|sid_end|><|sid_begin|><s_a_4469><s_b_6606><s_c_6139><|sid_end|><|sid_begin|><s_a_1160><s_b_8046><s_c_6842><|sid_end|><|sid_begin|><s_a_1513><s_b_837><s_c_3188><|sid_end|><|sid_begin|><s_a_2433><s_b_2926><s_c_8032><|sid_end|><|sid_begin|><s_a_5044><s_b_7141><s_c_251><|sid_end|><|sid_begin|><s_a_3219><s_b_3560><s_c_6216><|sid_end|><|sid_begin|><s_a_1064><s_b_4159><s_c_3188><|sid_end|><|sid_begin|><s_a_6986><s_b_1609><s_c_8059><|sid_end|><|sid_begin|><s_a_5445><s_b_596><s_c_6437><|sid_end|><|sid_begin|><s_a_6615><s_b_5812><s_c_6726><|sid_end|><|sid_begin|><s_a_4764><s_b_7369><s_c_5832><|sid_end|><|sid_begin|><s_a_7814><s_b_3532><s_c_2819><|sid_end|><|sid_begin|><s_a_167><s_b_4917><s_c_5388><|sid_end|><|sid_begin|><s_a_450><s_b_6998><s_c_1748><|sid_end|>。 她在平台上关注了不同领域的博主，类别包括：【其他】占49.4%，【颜值】占19.05%，【随手拍】占11.9%，【游戏】占2.98%，【生活】占2.98%，【明星娱乐】占2.38%，【音乐】占1.79%，【搞笑】占1.19%，【运动】占1.19%，【影视和短剧】占1.19%，【二次元】占1.19%，【汽车】占0.6%，【房产家居】占0.6%，【摄影】占0.6%，【读书】占0.6%，【亲子】占0.6%，【穿搭】占0.6%，【美食】占0.6%，【舞蹈】占0.6%。 她浏览过这些类型的视频：点赞最多的类型是【自拍、其他】，收藏最多的类型是【自拍、其他】，分享最多的类型是【自拍、其他】，评论最多的类型是【自拍、其他】，完播最多的类型是【自拍、其他】。 她近期在在视频<|sid_begin|><s_a_2700><s_b_7729><s_c_4635><|sid_end|>下评论了"……"；在视频<|sid_begin|><s_a_5716><s_b_2459><s_c_6983><|sid_end|>下评论了"语文！！！"；在视频<|sid_begin|><s_a_385><s_b_4504><s_c_992><|sid_end|>下评论了"么么哒、喜欢这个"；在视频<|sid_begin|><s_a_5087><s_b_1028><s_c_7064><|sid_end|>下评论了"乐乐"；在视频<|sid_begin|><s_a_1909><s_b_2662><s_c_2268><|sid_end|>下评论了"桐桐桐、好想你"；在视频<|sid_begin|><s_a_6486><s_b_2539><s_c_4773><|sid_end|>下评论了"……"；在视频<|sid_begin|><s_a_5954><s_b_55><s_c_4793><|sid_end|>下评论了"…"；在视频<|sid_begin|><s_a_5944><s_b_1011><s_c_134><|sid_end|>下评论了"高级"；在视频<|sid_begin|><s_a_5954><s_b_2092><s_c_6345><|sid_end|>下评论了"我不行了"；在视频<|sid_begin|><s_a_3165><s_b_7812><s_c_3328><|sid_end|>下评论了"悦悦、偶遇、是吧"；在视频<|sid_begin|><s_a_6696><s_b_1137><s_c_6904><|sid_end|>下评论了"悦悦、好、怕不怕[奸笑]"；在视频<|sid_begin|><s_a_6615><s_b_5812><s_c_6726><|sid_end|>下评论了"悦悦、是的、好"；在视频<|sid_begin|><s_a_7346><s_b_3722><s_c_7433><|sid_end|>下评论了"是的、诺不诺、好嘛"；在视频<|sid_begin|><s_a_6656><s_b_8133><s_c_3631><|sid_end|>下评论了"没见成[大哭]、好好军训吧、好嘛"；在视频<|sid_begin|><s_a_6396><s_b_238><s_c_5913><|sid_end|>下评论了"玉玉、是吧、最好的"；在视频<|sid_begin|><s_a_4048><s_b_1732><s_c_2125><|sid_end|>下评论了"之前的、哈哈哈、这样啊"；在视频<|sid_begin|><s_a_1260><s_b_2964><s_c_7177><|sid_end|>下评论了"好、嗯对、最好的"；在视频<|sid_begin|><s_a_5469><s_b_4038><s_c_1175><|sid_end|>下评论了"是的"；在视频<|sid_begin|><s_a_6429><s_b_5149><s_c_5304><|sid_end|>下评论了"闪闪发光的我"；在视频<|sid_begin|><s_a_2433><s_b_1613><s_c_3287><|sid_end|>下评论了""；在视频<|sid_begin|><s_a_2515><s_b_1532><s_c_108><|sid_end|>下评论了"我的天"；在视频<|sid_begin|><s_a_7443><s_b_2074><s_c_1435><|sid_end|>下评论了"这个[奸笑]"；在视频<|sid_begin|><s_a_8166><s_b_1803><s_c_1515><|sid_end|>下评论了"行吧"；在视频<|sid_begin|><s_a_30><s_b_2085><s_c_1259><|sid_end|>下评论了"我不行了"。 她近期的购买记录包括：商品<|sid_begin|><s_a_1423><s_b_7190><s_c_2696><|sid_end|>，具体为【收纳整理-家庭收纳用具-推车置物架】分类下的“小推车置物架厨房落地卧室多层零食移动浴室卫生间床头收纳储物架”，花费3.8元；商品<|sid_begin|><s_a_1904><s_b_2521><s_c_764><|sid_end|>，具体为【汽车农机后市场-汽车装饰-车钥匙扣】分类下的“羽毛球钥匙扣羽毛球拍挂件挂饰创意运动礼品纪念品礼物钥匙圈”，花费2.79元；商品<|sid_begin|><s_a_3706><s_b_5060><s_c_6333><|sid_end|>，具体为【文化用品/学习用具-文具-装订用品】分类下的“简约透明夹子高颜值燕尾夹学生试卷夹多功能收纳亚克力夹子”，花费2.88元；商品<|sid_begin|><s_a_2693><s_b_2326><s_c_2091><|sid_end|>，具体为【手机/数码/电脑办公-手机/配件-手机壳】分类下的“睡觉布丁适用iphone16pro/11手机壳苹果15/14/13小米vivo华为oppo”，花费3.88元；商品<|sid_begin|><s_a_5136><s_b_7244><s_c_7622><|sid_end|>，具体为【箱包/饰品-箱包-箱包相关配件】分类下的“【利灵】多种颜色ins少女风蝴蝶结爱心挂链手机壳通用挂件挂饰”，花费3.99元；商品<|sid_begin|><s_a_7923><s_b_4315><s_c_1676><|sid_end|>，具体为【文化用品/学习用具-纸张本册-贴纸】分类下的“2000贴好感度表情包新款卷卷贴学生必入好闺闺恶搞好朋友创意贴纸”，花费2.6元；商品<|sid_begin|><s_a_793><s_b_5386><s_c_2907><|sid_end|>，具体为【零食/坚果/特产-糖果零食/果冻/布丁-硬糖】分类下的“【泰式爆辣青芒】一口酸甜辣糖儿童零食节日整蛊学生上课辣味糖果”，花费3.99元；商品<|sid_begin|><s_a_329><s_b_5759><s_c_5335><|sid_end|>，具体为【箱包/饰品-饰品/流行首饰/时尚饰品-发饰】分类下的“韩系少女心经典格纹kt系列大肠发圈头绳撞色皮筋发饰头饰新款2024”，花费3.6元；商品<|sid_begin|><s_a_7923><s_b_3161><s_c_3361><|sid_end|>，具体为【文化用品/学习用具-纸张本册-贴纸】分类下的“500贴禁止图标卷卷贴创意趣味文字简约个性装饰手账封口贴画自粘”，花费3.88元；商品<|sid_begin|><s_a_2525><s_b_3819><s_c_570><|sid_end|>，具体为【女鞋-拖鞋-棉拖】分类下的“棉拖鞋女冬季居家室内加厚底防滑情侣棉鞋冬天保暖加绒拖鞋男女款”，花费2.8元；商品<|sid_begin|><s_a_352><s_b_4277><s_c_2761><|sid_end|>，具体为【文化用品/学习用具-文具-笔类/书写工具】分类下的“JW限定蜡笔小新ins袋装刷题可爱碳素笔高颜值少女0.5顺滑动笔ST头”，花费4.99元；商品<|sid_begin|><s_a_7923><s_b_1319><s_c_5830><|sid_end|>，具体为【文化用品/学习用具-纸张本册-贴纸】分类下的“54张魔丸专用表情包胡巴开学精神状态网络抽象梗图创意贴纸收藏xx”，花费3.99元；商品<|sid_begin|><s_a_793><s_b_5386><s_c_2907><|sid_end|>，具体为【零食/坚果/特产-糖果零食/果冻/布丁-夹心糖果/流质糖果】分类下的“【2.99起抢100颗】泰式爆辣青芒一口酸甜辣儿童节日整蛊休闲糖果z”，花费3.99元；商品<|sid_begin|><s_a_329><s_b_3612><s_c_6214><|sid_end|>，具体为【箱包/饰品-饰品/流行首饰/时尚饰品-发饰】分类下的“JW超火发圈可以藏东西的神器纯色高颜值布艺隐形拉链发饰大肠发圈”，花费3.99元；商品<|sid_begin|><s_a_329><s_b_5637><s_c_7406><|sid_end|>，具体为【箱包/饰品-饰品/流行首饰/时尚饰品-发饰】分类下的“氛围红色格子大肠发圈女生秋冬韩系复古高级感头饰网红高弹力发绳”，花费2.99元；商品<|sid_begin|><s_a_754><s_b_4702><s_c_4756><|sid_end|>，具体为【手机/数码/电脑办公-手机/配件-手机支架】分类下的“芒晨手机支架懒人桌面拍视频拍照升降自拍网红手机支架多功能通用”，花费3.99元；商品<|sid_begin|><s_a_6895><s_b_5759><s_c_5423><|sid_end|>，具体为【箱包/饰品-饰品/流行首饰/时尚饰品-发饰】分类下的“甜美侧边刘海鸭嘴夹卡通kt猫发夹女2025新款洗脸化妆高颜值头饰”，花费2.28元；商品<|sid_begin|><s_a_3170><s_b_1183><s_c_277><|sid_end|>，具体为【零食/坚果/特产-糖果零食/果冻/布丁-棉花糖/充气糖果】分类下的“【秀姐推荐】冻干棉花糖爆款创意解馋酥脆高颜值休闲零食”，花费3.99元；商品<|sid_begin|><s_a_4190><s_b_7591><s_c_4190><|sid_end|>，具体为【零食/坚果/特产-糖果零食/果冻/布丁-软糖/凝胶糖果】分类下的“【多彩酸棒】同耀迷你酸棒糖果儿童休闲零食节日彩虹糖果酸糖”，花费4.99元；商品<|sid_begin|><s_a_329><s_b_5759><s_c_3013><|sid_end|>，具体为【箱包/饰品-饰品/流行首饰/时尚饰品-发饰】分类下的“可爱古早KT猫咪大肠圈可爱发绳印花发圈甜美少女心头绳丸子头发饰”，花费2.4元；商品<|sid_begin|><s_a_7754><s_b_7299><s_c_640><|sid_end|>，具体为【收纳整理-其他收纳】分类下的“【拍一发三】美瞳盒子韩版高颜值便携隐形眼镜盒收纳盒简约ins风”，花费3.7元。 她近30日观看时间最长的1种短剧类型分别是:[复仇_悬疑]看了0.67分钟。 她最近转化了广告<|sid_begin|><s_a_4990><s_b_3636><s_c_4996><|sid_end|>，产品名：礼物小小，一级品类：3C及电器；二级品类：消费类电子产品，视频内容："有了这个贴纸，我将贴满整个学校～#贴纸 #玩个很新的的东西 #校园 #是时候安排一下了"；转化了广告<|sid_begin|><s_a_6114><s_b_5779><s_c_2680><|sid_end|>，产品名：得物粉条11，一级品类：电商平台；二级品类：综合类电商平台，视频内容："广东街边20一碗的猪红粥～好鲜好好吃！ #街头美食 #广东美食"；转化了广告<|sid_begin|><s_a_401><s_b_1311><s_c_1777><|sid_end|>，产品名：，一级品类：珠宝玉石；二级品类：其他珠宝配饰，视频标题："4.99💰到手6支颜值超高的速干笔 出水顺滑不要在被小卖部薅羊毛啦"，视频内容："有需要的姐妹赶紧冲啦，没有几天就要开学了，不要在被小卖部薅羊毛啦 #中性笔 #学生党必备 #开学笔 "。 她过去一年变现金额最多的1种短剧类型分别是:[逆袭_女性成长]。 她最近点击了广告<|sid_begin|><s_a_2324><s_b_6866><s_c_6080><|sid_end|>，产品名：得物，一级品类：电商平台；二级品类：垂直电商平台，视频内容："水至清则无鱼，但规则其实张弛有度…你品…#情感共鸣 #内容过于真实 #得物"；点击了广告<|sid_begin|><s_a_1038><s_b_2961><s_c_6907><|sid_end|>，产品名：元宝AI，一级品类：工具类软件；二级品类：其他工具类软件；点击了广告<|sid_begin|><s_a_401><s_b_1311><s_c_1777><|sid_end|>，产品名：，一级品类：珠宝玉石；二级品类：其他珠宝配饰，视频标题："4.99💰到手6支颜值超高的速干笔 出水顺滑不要在被小卖部薅羊毛啦"，视频内容："有需要的姐妹赶紧冲啦，没有几天就要开学了，不要在被小卖部薅羊毛啦 #中性笔 #学生党必备 #开学笔 "；点击了广告<|sid_begin|><s_a_2126><s_b_481><s_c_2159><|sid_end|>，产品名：唯艺百店，一级品类：服装配饰；二级品类：时尚配饰；点击了广告<|sid_begin|><s_a_353><s_b_6639><s_c_7167><|sid_end|>，产品名：小猪卷卷，一级品类：文体娱乐；二级品类：文具玩具礼品，视频内容："摘到四叶草啦！幸运爆棚，感觉人生都开了挂 #中性笔 #文具安利 #学生党好物分享 #四叶草 "；点击了广告<|sid_begin|><s_a_7443><s_b_1812><s_c_3994><|sid_end|>，产品名：瓜皮少女。，一级品类：；二级品类：，视频内容："#美味零食推荐 #零食大赏 #网红零食清单 #芝士夹心饼干"；点击了广告<|sid_begin|><s_a_4132><s_b_238><s_c_1842><|sid_end|>，产品名：，一级品类：食品饮料；二级品类：零食/坚果/特产；点击了广告<|sid_begin|><s_a_3837><s_b_7306><s_c_7763><|sid_end|>，产品名：腾讯元宝，一级品类：工具类软件；二级品类：其他工具类软件；点击了广告<|sid_begin|><s_a_3455><s_b_6033><s_c_7597><|sid_end|>，产品名：曼曼爱吃肉，一级品类：珠宝玉石；二级品类：其他珠宝配饰，视频内容："开学基础 贴纸就不基础 拿去去学校不得把我同桌迷成啥样啊~#贴纸 #抽象 #好感度 #玩个很新的东西"；点击了广告<|sid_begin|><s_a_401><s_b_2455><s_c_2630><|sid_end|>，产品名：张小笨文具，一级品类：文体娱乐；二级品类：文具玩具礼品，视频内容："找到一款好用又耐摔的大容量修正带！再也不怕摔坏了！出带顺滑流畅，不卡带不断带#文具安利 #修正带 "；点击了广告<|sid_begin|><s_a_401><s_b_1049><s_c_1197><|sid_end|>，产品名：文家小馆，一级品类：文体娱乐；二级品类：文具玩具礼品，视频内容："#开学必备 #荧光笔 #学习用品 你们荧光笔界是要考研吗?"；点击了广告<|sid_begin|><s_a_484><s_b_3307><s_c_2055><|sid_end|>，产品名：磁力智投，一级品类：传媒资讯；二级品类：其他传媒及内容；点击了广告<|sid_begin|><s_a_5239><s_b_3736><s_c_1489><|sid_end|>，产品名：须赤百货店，一级品类：日化；二级品类：家庭护理品；点击了广告<|sid_begin|><s_a_1372><s_b_2574><s_c_5126><|sid_end|>，产品名：小雅杂货屋，一级品类：文体娱乐；二级品类：文具玩具礼品，视频内容："正姿蝴蝶结按动笔合集#按动笔 #学生党福利 #开学季好物推荐必备 "；点击了广告<|sid_begin|><s_a_1372><s_b_4790><s_c_6954><|sid_end|>，产品名：辰辰的个体店，一级品类：文体娱乐；二级品类：文具玩具礼品；点击了广告<|sid_begin|><s_a_1239><s_b_4108><s_c_2690><|sid_end|>，产品名：小小板鸭店，一级品类：食品饮料；二级品类：零食/坚果/特产；点击了广告<|sid_begin|><s_a_6114><s_b_5779><s_c_2680><|sid_end|>，产品名：得物粉条11，一级品类：电商平台；二级品类：综合类电商平台，视频内容："广东街边20一碗的猪红粥～好鲜好好吃！ #街头美食 #广东美食"；点击了广告<|sid_begin|><s_a_4139><s_b_1936><s_c_7974><|sid_end|>，产品名：心相印官方旗舰店，一级品类：日化；二级品类：日化纸品，视频内容："心中有梦，脚下有路，勇敢追梦，不负韶华。#心相印布丁狗手帕纸 #手帕纸巾 手帕纸推荐 "；点击了广告<|sid_begin|><s_a_4695><s_b_6769><s_c_4152><|sid_end|>，产品名：宅妹小姐，一级品类：服装配饰；二级品类：服饰配件，视频内容："我的好朋友不会让我羡慕任何人！这个草莓🍓kt发圈她会给我买一万个！！！#少女心好物 #头饰发饰 #发圈头绳 #闺蜜同款 #快艾特你想艾特的人"；点击了广告<|sid_begin|><s_a_4990><s_b_3636><s_c_4996><|sid_end|>，产品名：礼物小小，一级品类：3C及电器；二级品类：消费类电子产品，视频内容："有了这个贴纸，我将贴满整个学校～#贴纸 #玩个很新的的东西 #校园 #是时候安排一下了"；点击了广告<|sid_begin|><s_a_119><s_b_441><s_c_2858><|sid_end|>，产品名：宠玩，一级品类：工具类软件；二级品类：其他工具类软件。 她表现出对以下广告视频的兴趣：这么好吃的方块奶酪糖怎么没人推呀❗️奶香奶香的夹杂着水果味儿，独立包装，一口一个，真的好吃😋 # #糖 ；#解压玩具 #捏捏乐 我真的太馋了； 《偷偷下手》点击左下角链接观看精彩后续 #一个人悄悄看 #看完不后悔系列 #超爆小故事 ；八月测评合集来啦#零食测评 # #美食 #零食 ；我滴妈呀 这也太划算了吧 #jk #好物分享；季度测评红黑榜 #零食测评 #美推荐；十八一个的蛋烘糕，大家觉得值得吗？ #蛋烘糕 #美食 #路边摊；个位数到手400枚的刮眉刀，怎么用都不心疼，囤起来 #平价好物 #学生党平价安利 #修眉工具 ；有没有体面一点的头发速干法啊……🥹我的猫以为我犯病了呢🙂 # #懒人 ；能让老款秒变苹果17的手机壳，哈哈，又省钱了，颜值手感超棒！还很高级！ #手机壳 #这个手机壳真的长在我心巴上了 #高级感。 她对以下挂车商品产生了购买行为：贴纸3次，液氮/冷冻榴莲2次，粉扑/洗脸扑2次，眼线笔/液/膏2次，半身裙1次。
+
+用户正在查找"推荐的电影"相关的内容，请给出推荐。/no_think<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+<|sid_begin|><s_a_4166><s_b_2424><s_c_2481><|sid_end|><|sid_begin|><s_a_4166><s_b_5137><s_c_6211><|sid_end|><|sid_begin|><s_a_4166><s_b_4603><s_c_6498><|sid_end|><|im_end|>
+<|endoftext|><|im_start|>system
+你是一个智能化的内容匹配系统，擅长从海量信息中筛选出与用户画像和查询意图高度契合的内容。<|im_end|>
+<|im_start|>user
+用户画像：
+{"性别": "女性", "年龄": "31-40岁", "视频消费类目": {"点赞最多的视频类型": ["其他", "游戏"], "收藏最多的视频类型": ["二次元", "艺术"], "分享最多的视频类型": ["自拍", "其他"], "评论最多的视频类型": ["其他", "自拍"], "完播最多的视频类型": ["游戏", "其他"]}, "曝光并且转化的广告": [{"产品名": "TapTap", "视频内容": " #taptap发现好游戏 #超自然行动组小抄 ", "二级品类": "游戏平台", "广告行为": "转化", "广告ID": "<|sid_begin|><s_a_5719><s_b_3632><s_c_4783><|sid_end|>", "一级品类": "游戏"}, {"视频内容": "那些吃播的，奇奇怪怪流量密码又来啦～#美食 #测评 #得物", "产品名": "得物", "广告ID": "<|sid_begin|><s_a_6722><s_b_4125><s_c_1150><|sid_end|>", "二级品类": "垂直电商平台", "一级品类": "电商平台", "广告行为": "转化"}, {"广告行为": "转化", "产品名": "时大漂亮的快手小店", "一级品类": "美妆", "视频内容": "只需要30分钟，你会怀疑自己去do了脸！所有垮脸胶原流失眼眶凹陷的姐妹们，想要弯道超车，比同龄人年轻的，皱纹少的，重点关注！9月21日周日中午12点，漂亮的回馈之战！机制好的不得了！还有10万瓶独角兽香水，等你来领！", "二级品类": "护肤", "广告ID": "<|sid_begin|><s_a_7744><s_b_1522><s_c_3489><|sid_end|>"}, {"产品名": "回森", "广告ID": "<|sid_begin|><s_a_342><s_b_376><s_c_6206><|sid_end|>", "广告行为": "转化", "二级品类": "网络视听", "一级品类": "网络视听"}, {"广告ID": "<|sid_begin|><s_a_913><s_b_4536><s_c_2243><|sid_end|>", "产品名": "美团拼好饭聚星", "视频内容": "我愿称这一期为疯狂的“石头” #拼好饭动真格的了 #美团拼好饭百万亮厨计划 #vlog", "广告行为": "转化", "一级品类": "网络服务平台", "二级品类": "生活服务综合平台"}, {"广告ID": "<|sid_begin|><s_a_1953><s_b_230><s_c_7755><|sid_end|>", "二级品类": "一般类社交通讯", "产品名": "回森", "广告行为": "转化", "一级品类": "社交通讯"}, {"一级品类": "网络服务平台", "视频内容": "最近带着家人们出来大草原啦 正好趁着这个时刻领我们家的女神拍个蒙古写真 #记录真实生活 #拼好饭动真格的了 #美团拼好饭百万亮厨计划", "产品名": "美团拼好饭聚星", "广告ID": "<|sid_begin|><s_a_3422><s_b_3778><s_c_1983><|sid_end|>", "广告行为": "转化", "二级品类": "生活服务综合平台"}], "最近商业化其他行为": {"近30日短剧支付信息": "观看时间最长的2种短剧类型分别是:[逆袭_女性成长]看了0.82分钟、[复仇_悬疑]看了0.17分钟", "近1年短剧支付信息": "变现金额最多的3种短剧类型分别是:[复仇_家庭伦理]、[打脸虐渣_家庭伦理]、[逆袭_豪门恩怨]"}, "关注博主类型": [{"博主类型": "其他", "占比": 22.58}, {"博主类型": "游戏", "占比": 11.22}, {"博主类型": "颜值", "占比": 8.08}, {"博主类型": "亲子", "占比": 6.55}, {"博主类型": "美食", "占比": 5.68}, {"博主类型": "生活", "占比": 5.21}, {"博主类型": "影视和短剧", "占比": 5.01}, {"博主类型": "随手拍", "占比": 4.14}, {"博主类型": "二次元", "占比": 4.07}, {"博主类型": "才艺", "占比": 3.41}, {"博主类型": "搞笑", "占比": 3.01}, {"博主类型": "明星娱乐", "占比": 2.47}, {"博主类型": "动物", "占比": 2.34}, {"博主类型": "舞蹈", "占比": 2.14}, {"博主类型": "音乐", "占比": 1.94}, {"博主类型": "穿搭", "占比": 1.94}, {"博主类型": "情感", "占比": 1.6}, {"博主类型": "美妆", "占比": 1.47}, {"博主类型": "资讯", "占比": 0.8}, {"博主类型": "高新数码", "占比": 0.67}, {"博主类型": "汽车", "占比": 0.67}, {"博主类型": "奇人异象", "占比": 0.6}, {"博主类型": "房产家居", "占比": 0.6}, {"博主类型": "摄影", "占比": 0.53}, {"博主类型": "三农", "占比": 0.47}, {"博主类型": "读书", "占比": 0.47}, {"博主类型": "运动", "占比": 0.47}, {"博主类型": "健康", "占比": 0.4}, {"博主类型": "旅游", "占比": 0.4}, {"博主类型": "星座命理", "占比": 0.4}, {"博主类型": "财经", "占比": 0.27}, {"博主类型": "教育", "占比": 0.27}, {"博主类型": "科学", "占比": 0.13}], "最近在平台上对以下视频中的广告意图表示感兴趣": "#烤肠 趁你叔叔睡觉，阿姨起来偷吃了。 #快成长潮流生活成长之星；当我把猫吃的东西都吃一遍 #铲屎官的乐趣 #美食测评 #猎奇 ； #泡面神仙吃法碗 ；和闺蜜在家就吃薄脆鸡肉片 #零食 #鸡肉干 #；一年一度的补货视频它来啦！ #沉浸式补货 #手工制做 ；5块 #餐饮创业 #技术配方教学 #小志炸鸡 #吃货的日常 ； #京东超市越来越好 ；#老百姓 #农村人 #黄金 ；挑战超大猪脚的隆江猪脚饭，吃完不仅送店还送老公？？？ #吃肉就香 #老铁饭局中秋篇 #月饼挑战计划 ；到底怎么找到我的？ #我的摆摊日记 #火鸡面摆摊 #老铁家时光 ", "视频生产类目": ["9个自拍", "8个其他", "4个游戏", "2个二次元", "2个舞蹈", "2个颜值", "1个生活", "1个旅游", "1个艺术"], "最近搜索内容": ["手机中间出现一道白屏怎么办", "名字高质量ins女", "海兔", "心动小镇正版下载入口", "频道", "抱抱琴枝小小号", "爱搭哒哒哒", "#小马宝莉心动小镇周年联动", "桐门团播回放选宠物小豪", "打瓦", "疯狂动物园", "傻狗", "混的人素材自取", "怎么洗头才能不油蓬松", "画世界怎么导出图片", "漫格桑", "灌伤害骗骗花dj舞蹈", "逃离病娇男友", "背景图可爱呆萌", "头像女生ins黑色系", "吃凉拌鸡胸肉", "梦想家园新手教程", "满籽大蚕蛾声控", "心动小镇画板画画教程简单", "背景图权威妈妈级别", "补作业", "于朦胧摔下来的视频", "推荐超自然在商城拍的视频", "柳智敏梦女文", "挑战一口气跳完热门舞蹈"], "最近观看的广告": "曝光并且点击的广告有：护肤-球球企业店，家庭护理品-藁城大舞台官方账号的小店，游戏平台-4399游戏盒，生活服务综合平台-美团短视频，其他工具类软件-腾讯元宝", "最近对平台上这些挂车商品感兴趣并产生了消费行为": "直发片4次，泡菜2次，内衣洗衣液1次，避孕套1次，其他周边1次", "视频消费详情": [{"消费行为": "点赞", "视频ID序列": "<|sid_begin|><s_a_2585><s_b_1513><s_c_6848><|sid_end|><|sid_begin|><s_a_3062><s_b_3236><s_c_2811><|sid_end|><|sid_begin|><s_a_6001><s_b_4921><s_c_109><|sid_end|><|sid_begin|><s_a_718><s_b_7039><s_c_1297><|sid_end|><|sid_begin|><s_a_882><s_b_2862><s_c_6472><|sid_end|><|sid_begin|><s_a_7660><s_b_831><s_c_1210><|sid_end|><|sid_begin|><s_a_1020><s_b_7691><s_c_7409><|sid_end|><|sid_begin|><s_a_4432><s_b_4664><s_c_5036><|sid_end|><|sid_begin|><s_a_2265><s_b_6745><s_c_2554><|sid_end|><|sid_begin|><s_a_5202><s_b_7141><s_c_6000><|sid_end|><|sid_begin|><s_a_2486><s_b_3610><s_c_3408><|sid_end|><|sid_begin|><s_a_4990><s_b_376><s_c_1483><|sid_end|><|sid_begin|><s_a_4902><s_b_3898><s_c_1210><|sid_end|><|sid_begin|><s_a_455><s_b_1694><s_c_7905><|sid_end|><|sid_begin|><s_a_5627><s_b_5627><s_c_2189><|sid_end|><|sid_begin|><s_a_474><s_b_7069><s_c_7856><|sid_end|><|sid_begin|><s_a_1116><s_b_2160><s_c_3215><|sid_end|><|sid_begin|><s_a_3180><s_b_7436><s_c_2080><|sid_end|><|sid_begin|><s_a_2063><s_b_1260><s_c_108><|sid_end|><|sid_begin|><s_a_3725><s_b_1860><s_c_1029><|sid_end|><|sid_begin|><s_a_1028><s_b_4301><s_c_5305><|sid_end|><|sid_begin|><s_a_5135><s_b_7150><s_c_2917><|sid_end|><|sid_begin|><s_a_3581><s_b_7742><s_c_2309><|sid_end|><|sid_begin|><s_a_4600><s_b_5197><s_c_7358><|sid_end|><|sid_begin|><s_a_6066><s_b_2943><s_c_3722><|sid_end|><|sid_begin|><s_a_8084><s_b_7783><s_c_5592><|sid_end|><|sid_begin|><s_a_322><s_b_7642><s_c_1682><|sid_end|><|sid_begin|><s_a_5154><s_b_7611><s_c_728><|sid_end|><|sid_begin|><s_a_376><s_b_3298><s_c_7111><|sid_end|><|sid_begin|><s_a_473><s_b_1541><s_c_4342><|sid_end|>"}, {"消费行为": "收藏", "视频ID序列": "<|sid_begin|><s_a_6121><s_b_6172><s_c_5974><|sid_end|><|sid_begin|><s_a_7307><s_b_1605><s_c_145><|sid_end|><|sid_begin|><s_a_7530><s_b_1446><s_c_2448><|sid_end|><|sid_begin|><s_a_7210><s_b_5738><s_c_7167><|sid_end|><|sid_begin|><s_a_7660><s_b_831><s_c_1210><|sid_end|><|sid_begin|><s_a_2398><s_b_528><s_c_5140><|sid_end|><|sid_begin|><s_a_7530><s_b_5197><s_c_3648><|sid_end|><|sid_begin|><s_a_92><s_b_3314><s_c_5386><|sid_end|><|sid_begin|><s_a_4535><s_b_238><s_c_4170><|sid_end|><|sid_begin|><s_a_7159><s_b_3833><s_c_4572><|sid_end|><|sid_begin|><s_a_78><s_b_5197><s_c_4915><|sid_end|><|sid_begin|><s_a_4990><s_b_376><s_c_1483><|sid_end|><|sid_begin|><s_a_5709><s_b_1513><s_c_3785><|sid_end|><|sid_begin|><s_a_5700><s_b_1035><s_c_7101><|sid_end|><|sid_begin|><s_a_4902><s_b_3898><s_c_1210><|sid_end|><|sid_begin|><s_a_4898><s_b_6461><s_c_4331><|sid_end|><|sid_begin|><s_a_8047><s_b_2752><s_c_4601><|sid_end|><|sid_begin|><s_a_4884><s_b_5818><s_c_3165><|sid_end|><|sid_begin|><s_a_474><s_b_7069><s_c_7856><|sid_end|><|sid_begin|><s_a_4357><s_b_7530><s_c_4826><|sid_end|><|sid_begin|><s_a_7436><s_b_6975><s_c_1927><|sid_end|><|sid_begin|><s_a_7530><s_b_5197><s_c_2005><|sid_end|><|sid_begin|><s_a_2063><s_b_1260><s_c_108><|sid_end|><|sid_begin|><s_a_2063><s_b_5861><s_c_5817><|sid_end|><|sid_begin|><s_a_3581><s_b_7742><s_c_2309><|sid_end|><|sid_begin|><s_a_6267><s_b_6819><s_c_4547><|sid_end|><|sid_begin|><s_a_2432><s_b_3083><s_c_5309><|sid_end|><|sid_begin|><s_a_2063><s_b_5197><s_c_1394><|sid_end|><|sid_begin|><s_a_3313><s_b_4253><s_c_756><|sid_end|><|sid_begin|><s_a_962><s_b_6380><s_c_7072><|sid_end|>"}, {"消费行为": "分享", "视频ID序列": "<|sid_begin|><s_a_1845><s_b_4902><s_c_3953><|sid_end|><|sid_begin|><s_a_7819><s_b_4600><s_c_4105><|sid_end|><|sid_begin|><s_a_1901><s_b_1503><s_c_4826><|sid_end|><|sid_begin|><s_a_7355><s_b_5812><s_c_7597><|sid_end|><|sid_begin|><s_a_2585><s_b_3213><s_c_2648><|sid_end|><|sid_begin|><s_a_7777><s_b_1204><s_c_711><|sid_end|><|sid_begin|><s_a_4585><s_b_6767><s_c_917><|sid_end|><|sid_begin|><s_a_7414><s_b_4585><s_c_1977><|sid_end|><|sid_begin|><s_a_1221><s_b_1237><s_c_3715><|sid_end|><|sid_begin|><s_a_4408><s_b_1260><s_c_7584><|sid_end|><|sid_begin|><s_a_2790><s_b_3626><s_c_728><|sid_end|><|sid_begin|><s_a_5102><s_b_6575><s_c_6887><|sid_end|><|sid_begin|><s_a_4419><s_b_5599><s_c_5425><|sid_end|><|sid_begin|><s_a_359><s_b_4216><s_c_4938><|sid_end|><|sid_begin|><s_a_1987><s_b_4807><s_c_4870><|sid_end|><|sid_begin|><s_a_2988><s_b_4884><s_c_4826><|sid_end|><|sid_begin|><s_a_3432><s_b_13><s_c_4939><|sid_end|><|sid_begin|><s_a_4467><s_b_5612><s_c_2624><|sid_end|><|sid_begin|><s_a_4467><s_b_5612><s_c_2624><|sid_end|><|sid_begin|><s_a_3375><s_b_2976><s_c_1430><|sid_end|><|sid_begin|><s_a_3375><s_b_2976><s_c_1430><|sid_end|><|sid_begin|><s_a_7697><s_b_7502><s_c_1846><|sid_end|><|sid_begin|><s_a_7355><s_b_2246><s_c_7173><|sid_end|><|sid_begin|><s_a_7355><s_b_2246><s_c_7173><|sid_end|><|sid_begin|><s_a_3023><s_b_345><s_c_6507><|sid_end|><|sid_begin|><s_a_2988><s_b_5627><s_c_2917><|sid_end|><|sid_begin|><s_a_2988><s_b_5627><s_c_2917><|sid_end|><|sid_begin|><s_a_7690><s_b_5920><s_c_7712><|sid_end|><|sid_begin|><s_a_3034><s_b_6620><s_c_4341><|sid_end|><|sid_begin|><s_a_3034><s_b_6620><s_c_4341><|sid_end|>"}], "最近观看的直播": [{"行为": "评论了4次", "直播类目": "闲聊互动-温和闲聊"}, {"直播类目": "脱口秀-pk主播", "行为": "点赞了1次，评论了9次"}, {"直播类目": "闲聊互动-温和闲聊", "行为": "评论了1次"}, {"行为": "评论了1次", "直播类目": "脱口秀-pk主播"}, {"直播类目": "户外-户外综合", "行为": "评论了5次"}, {"行为": "分享了1次", "直播类目": "户外-户外综合"}, {"直播类目": "脱口秀-pk主播", "行为": "评论了1次"}], "最近评论的视频": [{"视频评论": ["我去本地人"], "视频ID": "<|sid_begin|><s_a_5086><s_b_3126><s_c_6010><|sid_end|>"}, {"视频评论": ["不会的私信我教你们[微笑]", "幼儿园时候会后桥，现在长大不会[微笑]"], "视频ID": "<|sid_begin|><s_a_468><s_b_1819><s_c_2927><|sid_end|>"}, {"视频评论": ["不敢学，以前翻的骨折了[微笑]", "现在前桥可以翻了 后桥翻不了", "好像是以前骨折了一点，然后呢翻之前腰已经闪了 现在好了[微笑]"], "视频ID": "<|sid_begin|><s_a_5504><s_b_6590><s_c_3614><|sid_end|>"}, {"视频评论": ["1"], "视频ID": "<|sid_begin|><s_a_4928><s_b_4244><s_c_3817><|sid_end|>"}, {"视频ID": "<|sid_begin|><s_a_5549><s_b_55><s_c_629><|sid_end|>"}, {"视频评论": ["从一年级到现在都没玩过[早啊]因为不敢"], "视频ID": "<|sid_begin|><s_a_38><s_b_3019><s_c_7433><|sid_end|>"}, {"视频评论": ["可以", "11"], "视频ID": "<|sid_begin|><s_a_2004><s_b_4090><s_c_1210><|sid_end|>"}, {"视频评论": ["除了今天消防演练，那烟差点没给我呛死[做不完]"], "视频ID": "<|sid_begin|><s_a_4747><s_b_1383><s_c_7828><|sid_end|>"}, {"视频评论": ["130可以嘛", "1"], "视频ID": "<|sid_begin|><s_a_6001><s_b_4921><s_c_109><|sid_end|>"}, {"视频评论": ["红色？[错了]"], "视频ID": "<|sid_begin|><s_a_6468><s_b_2602><s_c_3066><|sid_end|>"}, {"视频评论": ["我也来搜主页群[进度99] 动作很简单，穿什么衣服都可以，不要穿裙子 有事可以请假，就这些[龇牙]"], "视频ID": "<|sid_begin|><s_a_5340><s_b_7154><s_c_3561><|sid_end|>"}, {"视频评论": ["谁处闺[错了]"], "视频ID": "<|sid_begin|><s_a_5135><s_b_5832><s_c_7311><|sid_end|>"}, {"视频评论": ["怎么老点不进你主页，每次都点到得物[捂脸]"], "视频ID": "<|sid_begin|><s_a_6722><s_b_4125><s_c_1150><|sid_end|>"}, {"视频评论": ["你家蛋仔主场吗？你来叫啥[捂脸]"], "视频ID": "<|sid_begin|><s_a_63><s_b_3882><s_c_2493><|sid_end|>"}, {"视频评论": ["我以前也是这样拍，但是进小卖部很尴尬[进度99]"], "视频ID": "<|sid_begin|><s_a_6378><s_b_5715><s_c_4635><|sid_end|>"}, {"视频评论": ["谁知道为什么我的手机分屏键有一条划不了，有一条又划得了（ Oppo）"], "视频ID": "<|sid_begin|><s_a_5408><s_b_4618><s_c_2034><|sid_end|>"}, {"视频评论": ["嗯对高清[吃瓜]"], "视频ID": "<|sid_begin|><s_a_6121><s_b_6832><s_c_6695><|sid_end|>"}, {"视频评论": ["哇哦好像在哪见过你[错了]"], "视频ID": "<|sid_begin|><s_a_2486><s_b_66><s_c_1036><|sid_end|>"}, {"视频评论": ["1[错了]"], "视频ID": "<|sid_begin|><s_a_476><s_b_4018><s_c_179><|sid_end|>"}, {"视频评论": ["好像遇到过这图[进度99]"], "视频ID": "<|sid_begin|><s_a_5765><s_b_3239><s_c_1823><|sid_end|>"}, {"视频评论": ["宝宝你很美不要在意别人的眼光，其实你真的很丑[进度99]"], "视频ID": "<|sid_begin|><s_a_712><s_b_4814><s_c_411><|sid_end|>"}, {"视频评论": ["16[微笑]"], "视频ID": "<|sid_begin|><s_a_7601><s_b_1148><s_c_6104><|sid_end|>"}, {"视频评论": ["可能会 已经掉白蚁窝里了[捂脸]"], "视频ID": "<|sid_begin|><s_a_4626><s_b_6025><s_c_3988><|sid_end|>"}, {"视频评论": ["建议不要给 有可能是假的"], "视频ID": "<|sid_begin|><s_a_3955><s_b_853><s_c_6870><|sid_end|>"}, {"视频评论": ["我不行了宝子是人吗[捂脸]"], "视频ID": "<|sid_begin|><s_a_4018><s_b_2261><s_c_3841><|sid_end|>"}, {"视频评论": ["对", "1"], "视频ID": "<|sid_begin|><s_a_4928><s_b_1025><s_c_2845><|sid_end|>"}, {"视频评论": ["不是睡衣吗？[做不完]"], "视频ID": "<|sid_begin|><s_a_2565><s_b_6458><s_c_4806><|sid_end|>"}, {"视频评论": ["校服白色的怎么办[微笑]"], "视频ID": "<|sid_begin|><s_a_1961><s_b_1319><s_c_513><|sid_end|>"}, {"视频评论": ["你来[微笑]", "好[吹口哨]", "呆脚香"], "视频ID": "<|sid_begin|><s_a_474><s_b_7816><s_c_1377><|sid_end|>"}, {"视频评论": ["奶奶你看西瓜皮那么厚，我只能挖着吃了[吹口哨]"], "视频ID": "<|sid_begin|><s_a_7991><s_b_2774><s_c_1619><|sid_end|>"}, {"视频评论": ["停停停宝子你继续"], "视频ID": "<|sid_begin|><s_a_526><s_b_1137><s_c_3133><|sid_end|>"}, {"视频评论": ["111", "求[ILoveU]"], "视频ID": "<|sid_begin|><s_a_6639><s_b_2665><s_c_4095><|sid_end|>"}, {"视频评论": ["姗"], "视频ID": "<|sid_begin|><s_a_5335><s_b_7339><s_c_1513><|sid_end|>"}, {"视频评论": ["小猫[亲吻]", "对", "谢谢[亲吻]"], "视频ID": "<|sid_begin|><s_a_3252><s_b_3><s_c_5186><|sid_end|>"}, {"视频评论": ["以前搞骨折了"], "视频ID": "<|sid_begin|><s_a_3325><s_b_323><s_c_3406><|sid_end|>"}, {"视频评论": ["炫耀一下头像框[龇牙]"], "视频ID": "<|sid_begin|><s_a_5686><s_b_641><s_c_1515><|sid_end|>"}, {"视频评论": ["生日快乐小胖[龇牙]"], "视频ID": "<|sid_begin|><s_a_3578><s_b_1006><s_c_1161><|sid_end|>"}, {"视频评论": ["往上看[微笑]"], "视频ID": "<|sid_begin|><s_a_894><s_b_6802><s_c_3658><|sid_end|>"}, {"视频评论": ["你的老公呗"], "视频ID": "<|sid_begin|><s_a_3950><s_b_2662><s_c_7177><|sid_end|>"}, {"视频评论": ["还差两章[微笑]"], "视频ID": "<|sid_begin|><s_a_5716><s_b_7279><s_c_258><|sid_end|>"}, {"视频评论": ["偶遇偶遇好可爱[吹口哨]"], "视频ID": "<|sid_begin|><s_a_895><s_b_7715><s_c_2116><|sid_end|>"}, {"视频评论": ["点了萌[错了]"], "视频ID": "<|sid_begin|><s_a_5561><s_b_2405><s_c_4927><|sid_end|>"}, {"视频评论": ["你才你才"], "视频ID": "<|sid_begin|><s_a_7611><s_b_1343><s_c_1771><|sid_end|>"}, {"视频评论": ["那没叫你吃吧[吃瓜]", "那你发出来不就是让人回复的吗？[微笑]"], "视频ID": "<|sid_begin|><s_a_1105><s_b_2764><s_c_108><|sid_end|>"}, {"视频评论": ["#小马宝莉心动小镇周年联动"], "视频ID": "<|sid_begin|><s_a_4902><s_b_847><s_c_13><|sid_end|>"}, {"视频评论": ["我叫姗姗[错了]"], "视频ID": "<|sid_begin|><s_a_3051><s_b_5050><s_c_7659><|sid_end|>"}, {"视频评论": ["摸到我们全班都感觉好恶心[做不完]"], "视频ID": "<|sid_begin|><s_a_5876><s_b_4536><s_c_4675><|sid_end|>"}, {"视频评论": ["我的"], "视频ID": "<|sid_begin|><s_a_3208><s_b_1640><s_c_2452><|sid_end|>"}, {"视频评论": ["处"], "视频ID": "<|sid_begin|><s_a_5477><s_b_310><s_c_6291><|sid_end|>"}, {"视频评论": ["我不是来收麦当劳汉堡歌吗？[吃瓜]"], "视频ID": "<|sid_begin|><s_a_3019><s_b_3061><s_c_5343><|sid_end|>"}, {"视频评论": ["128[略略略]"], "视频ID": "<|sid_begin|><s_a_6653><s_b_5470><s_c_1463><|sid_end|>"}, {"视频ID": "<|sid_begin|><s_a_5557><s_b_5462><s_c_629><|sid_end|>"}, {"视频评论": ["然后呢，直播你看了吗？别人夸他还在那里骂别人给我逗死了[做不完]"], "视频ID": "<|sid_begin|><s_a_2436><s_b_5835><s_c_1113><|sid_end|>"}, {"视频评论": ["女神明天开学了，怎么不把头发染回去[吹口哨]"], "视频ID": "<|sid_begin|><s_a_1171><s_b_2031><s_c_4855><|sid_end|>"}, {"视频评论": ["玫瑰花呢[吹口哨]"], "视频ID": "<|sid_begin|><s_a_2967><s_b_1053><s_c_7640><|sid_end|>"}, {"视频评论": ["上次在学校吃饭有鸡腿 我不想吃脆骨我同学捡起来了[错了]"], "视频ID": "<|sid_begin|><s_a_1983><s_b_277><s_c_7435><|sid_end|>"}, {"视频评论": ["OPPO[微笑]"], "视频ID": "<|sid_begin|><s_a_6576><s_b_1135><s_c_4095><|sid_end|>"}, {"视频评论": ["嗯", "有的宝子"], "视频ID": "<|sid_begin|><s_a_6653><s_b_4755><s_c_4727><|sid_end|>"}, {"视频评论": ["痛吗[捂脸]", "没筐子[捂脸]"], "视频ID": "<|sid_begin|><s_a_3866><s_b_2069><s_c_8158><|sid_end|>"}, {"视频评论": ["今天我就站第5人格这了，看谁说这是超自然金樽[早啊]"], "视频ID": "<|sid_begin|><s_a_2452><s_b_2549><s_c_2091><|sid_end|>"}, {"视频评论": ["可以看一下他吃芒果的那个视频，后面有吃火龙果的，你注意一下文字[错了]"], "视频ID": "<|sid_begin|><s_a_2638><s_b_5478><s_c_3199><|sid_end|>"}, {"视频评论": ["下一个是谁[吃瓜]"], "视频ID": "<|sid_begin|><s_a_6678><s_b_4585><s_c_6837><|sid_end|>"}, {"视频评论": ["宝贝[做不完]"], "视频ID": "<|sid_begin|><s_a_5006><s_b_6337><s_c_387><|sid_end|>"}, {"视频评论": ["特效哦", "好呀"], "视频ID": "<|sid_begin|><s_a_4408><s_b_1260><s_c_7584><|sid_end|>"}, {"视频评论": ["死"], "视频ID": "<|sid_begin|><s_a_3023><s_b_345><s_c_6507><|sid_end|>"}, {"视频评论": ["小鸭子现在已经变白了，变大了噢[龇牙]小仓鼠已经s了[上吊]荷兰猪也死了[错了]", "能看得出来小鸭子变大了吗？[错了]"], "视频ID": "<|sid_begin|><s_a_1728><s_b_2191><s_c_6133><|sid_end|>"}, {"视频评论": ["今天熬夜会不会被鬼压床[吃瓜]"], "视频ID": "<|sid_begin|><s_a_2571><s_b_6802><s_c_2091><|sid_end|>"}, {"视频评论": ["[微笑][出魂儿][哼]。。。"], "视频ID": "<|sid_begin|><s_a_1354><s_b_4212><s_c_7527><|sid_end|>"}, {"视频评论": ["喵喵喵我的[龇牙]"], "视频ID": "<|sid_begin|><s_a_7355><s_b_5812><s_c_7597><|sid_end|>"}, {"视频评论": ["1[亲吻]", "111"], "视频ID": "<|sid_begin|><s_a_4267><s_b_887><s_c_255><|sid_end|>"}, {"视频评论": ["我进"], "视频ID": "<|sid_begin|><s_a_7660><s_b_4090><s_c_3631><|sid_end|>"}, {"视频评论": ["不是她哥哥给她买吗[错了]"], "视频ID": "<|sid_begin|><s_a_1406><s_b_3933><s_c_414><|sid_end|>"}, {"视频评论": ["对呀我以前去广东天天跳这个[龇牙]"], "视频ID": "<|sid_begin|><s_a_2878><s_b_1959><s_c_66><|sid_end|>"}, {"视频评论": ["我真服了，一边刷一边玩，结果没看视频看听到这个声音，还以为在水里面 找了一圈没找到[吃瓜]"], "视频ID": "<|sid_begin|><s_a_5765><s_b_5942><s_c_4222><|sid_end|>"}, {"视频评论": ["我爱你老师在上面好好吃饭好好过[错了]"], "视频ID": "<|sid_begin|><s_a_6522><s_b_2672><s_c_208><|sid_end|>"}, {"视频评论": ["我服了 官方知道什么火什么不火吗[捂脸]"], "视频ID": "<|sid_begin|><s_a_7660><s_b_2831><s_c_1403><|sid_end|>"}, {"视频评论": ["有的没拍到[早啊]"], "视频ID": "<|sid_begin|><s_a_5313><s_b_4762><s_c_2360><|sid_end|>"}, {"视频评论": ["。"], "视频ID": "<|sid_begin|><s_a_1370><s_b_7972><s_c_3381><|sid_end|>"}, {"视频评论": ["上"], "视频ID": "<|sid_begin|><s_a_1350><s_b_7113><s_c_6211><|sid_end|>"}, {"视频评论": ["这种容易把<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>
+====================================================================================================
+
+
+rank0Dict: keys=8
+rank0'input_ids':
+rank0  Tensor: shape=(1, 32832), dtype=torch.int64, device=cpu, data=[151644, 8948, 198, 56568]...[151643, 151643, 151643, 151643]
+rank0    stat0:  Full - mean: 72704.789062, variance: 3916521472.000000, max: 176246.000000, min: 0.000000, non-zeros: 32831
+rank0    stat1:  first half (16416 elements) - mean: 70015.875000, variance: 4086003968.000000, max: 176246.000000, min: 1.000000, non-zeros: 16416
+rank0    stat2:  first 10000 elements (magnitude-based) - mean: 72277.210938, variance: 4118680576.000000, max: 176246.000000, min: 1.000000, non-zeros: 10000
+rank0    stat3:  first 1000 elements (1/10 of magnitude-based) - mean: 53599.558594, variance: 2252007424.000000, max: 151645.000000, min: 2.000000, non-zeros: 1000
+rank0'position_ids':
+rank0  Tensor: shape=(1, 32832), dtype=torch.int64, device=cpu, data=[0, 1, 2, 3]...[0, 0, 0, 0]
+rank0    stat0:  Full - mean: 2504.957764, variance: 4255015.500000, max: 7633.000000, min: 0.000000, non-zeros: 32758
+rank0    stat1:  first half (16416 elements) - mean: 2143.711914, variance: 4397980.500000, max: 7471.000000, min: 0.000000, non-zeros: 16409
+rank0    stat2:  first 10000 elements (magnitude-based) - mean: 1774.668457, variance: 2019448.250000, max: 5156.000000, min: 0.000000, non-zeros: 9996
+rank0    stat3:  first 1000 elements (1/10 of magnitude-based) - mean: 499.500000, variance: 83333.250000, max: 999.000000, min: 0.000000, non-zeros: 999
+rank0'loss_mask':
+rank0  Tensor: shape=(1, 32832), dtype=torch.int64, device=cpu, data=[0, 0, 0, 0]...[0, 0, 0, 0]
+rank0    stat0:  Full - mean: 0.003838, variance: 0.003823, max: 1.000000, min: 0.000000, non-zeros: 126
+rank0    stat1:  first half (16416 elements) - mean: 0.005117, variance: 0.005091, max: 1.000000, min: 0.000000, non-zeros: 84
+rank0    stat2:  first 10000 elements (magnitude-based) - mean: 0.002700, variance: 0.002693, max: 1.000000, min: 0.000000, non-zeros: 27
+rank0    stat3:  first 1000 elements (1/10 of magnitude-based) - mean: 0.000000, variance: 0.000000, max: 0.000000, min: 0.000000, non-zeros: 0
+rank0'itemic_id_mask':
+rank0  Tensor: shape=(1, 32832), dtype=torch.int64, device=cpu, data=[0, 0, 0, 0]...[0, 0, 0, 0]
+rank0    stat0:  Full - mean: 0.187013, variance: 0.152039, max: 1.000000, min: 0.000000, non-zeros: 6140
+rank0    stat1:  first half (16416 elements) - mean: 0.187135, variance: 0.152115, max: 1.000000, min: 0.000000, non-zeros: 3072
+rank0    stat2:  first 10000 elements (magnitude-based) - mean: 0.197500, variance: 0.158494, max: 1.000000, min: 0.000000, non-zeros: 1975
+rank0    stat3:  first 1000 elements (1/10 of magnitude-based) - mean: 0.000000, variance: 0.000000, max: 0.000000, min: 0.000000, non-zeros: 0
+rank0'cu_seqlens':
+rank0  Tensor: shape=(12,), dtype=torch.int32, device=cpu, data=[0, 2373, 3945, 4843]...[20382, 28016, 32768, 32832]
+rank0    stat0:  Full - mean: 15271.000000, variance: 121186472.000000, max: 32832.000000, min: 0.000000, non-zeros: 11
+rank0    stat1:  first half (6 elements) - mean: 6203.333496, variance: 25719582.000000, max: 13744.000000, min: 0.000000, non-zeros: 5
+rank0    stat2:  first 10 elements (magnitude-based) - mean: 11765.200195, variance: 71679760.000000, max: 28016.000000, min: 0.000000, non-zeros: 9
+rank0    stat3:  first 1 elements (1/10 of magnitude-based) - mean: 0.000000, variance: 0.000000, max: 0.000000, min: 0.000000, non-zeros: 0
+rank0'sample_idx':
+rank0  Tensor: shape=(1, 32832), dtype=torch.int32, device=cpu, data=[0, 0, 0, 0]...[-1, -1, -1, -1]
+rank0    stat0:  Full - mean: 5.397052, variance: 8.559334, max: 9.000000, min: -1.000000, non-zeros: 30459
+rank0    stat1:  first half (16416 elements) - mean: 2.823465, variance: 2.899513, max: 6.000000, min: 0.000000, non-zeros: 14043
+rank0    stat2:  first 10000 elements (magnitude-based) - mean: 1.883900, variance: 1.608621, max: 3.000000, min: 0.000000, non-zeros: 7627
+rank0    stat3:  first 1000 elements (1/10 of magnitude-based) - mean: 0.000000, variance: 0.000000, max: 0.000000, min: 0.000000, non-zeros: 0
+rank0'epoch_idx':
+rank0  Tensor: shape=(1,), dtype=torch.float32, device=cpu, data=[0.0]...[0.0]
+rank0    stat0:  Full - mean: 0.000000, variance: 0.000000, max: 0.000000, min: 0.000000, non-zeros: 0
+rank0    stat1:  first half (1 elements) - mean: 0.000000, variance: 0.000000, max: 0.000000, min: 0.000000, non-zeros: 0
+rank0    stat2:  no elements (total <= 1) - mean: nan, variance: nan, max: nan, min: nan, non-zeros: 0
+rank0    stat3:  no elements (1/10 of magnitude-based <= 0) - mean: nan, variance: nan, max: nan, min: nan, non-zeros: 0
+rank0'data_source':
+rank0  List: length=10
+rank0  [0]:
+rank0    String: length=20, value='RecIF_InteractiveRec'
+rank0  [1]:
+rank0    String: length=20, value='RecIF_InteractiveRec'
+rank0  [2]:
+rank0    String: length=20, value='RecIF_InteractiveRec'
+rank0  [3]:
+rank0    String: length=20, value='RecIF_InteractiveRec'
+rank0  [4]:
+rank0    String: length=20, value='RecIF_InteractiveRec'
+rank0  [5]:
+rank0    String: length=20, value='RecIF_InteractiveRec'
+rank0  [6]:
+rank0    String: length=20, value='RecIF_InteractiveRec'
+rank0  [7]:
+rank0    String: length=20, value='RecIF_InteractiveRec'
+rank0  [8]:
+rank0    String: length=20, value='RecIF_InteractiveRec'
+rank0  [9]:
+rank0    String: length=20, value='RecIF_InteractiveRec'
+End... Show data elapsed: 0.235 
+Start... Fwd
+End... Fwd elapsed: 4.103 
+Start... bwd
+End... bwd elapsed: 0.226 
+Start... Fwd
+End... Fwd elapsed: 4.012 
+Start... bwd
+End... bwd elapsed: 0.108 
+Start... Fwd
+End... Fwd elapsed: 3.711 
+Start... bwd
+End... bwd elapsed: 0.093 
+Start... Fwd
+End... Fwd elapsed: 3.786 
+Start... bwd
+End... bwd elapsed: 0.097 
+Start... Fwd
+End... Fwd elapsed: 4.519 
+Start... bwd
+End... bwd elapsed: 0.142 
+Step: 5, Loss: 3.1374, Learning Rate: 5.00e-05, Grad Norm: 1.0000, Sec per Step:
+5.4703 {
+  "training/loss": 3.137444257736206,
+  "training/itemic_token_loss": 0.047763883322477343,
+  "training/text_token_loss": 0.002895054679538589,
+  "training/grad_norm": 0.9999998211860657,
+  "training/learning_rate": 5e-05,
+  "perf/sec_per_step": 5.470265579223633,
+  "perf/tokens_per_sec_per_gpu_current": 6001.902380150925,
+  "perf/samples_per_sec_per_gpu_current": 1.8280648087691658,
+  "perf/total_num_tokens": 164160,
+  "perf/total_num_samples": 50,
+  "perf/num_sample_per_gpu": 50.0,
+  "perf/samples_per_step_per_gpu_current": 10.0,
+  "perf/num_sample_per_sec_per_gpu": 1.8280648087691658,
+  "perf/valid_total_num_tokens": 605,
+  "perf/valid_tokens_per_sec_per_gpu_current": 22.119584186106906,
+  "perf/valid_token_ratio": 0.003685428849902534,
+  "perf/mfu_per_step_per_gpu_current": 0.22608352083716465,
+  "perf/llm_flops_per_step_per_gpu_current": 385.861913444352,
+  "perf/mfu_per_step_per_gpu_avg": 0.22608352083716463,
+  "perf/llm_flops_per_step_per_gpu_avg": 385.861913444352,
+  "perf/samples_per_step_per_gpu_avg": 10.0,
+  "perf/samples_per_sec_per_gpu_avg": 1.8280648087691658,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6001.902380150925,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 128620637814784.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3746447859712.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 220735262720.0,
+        "attn_v": 220735262720.0,
+        "attn_out": 275414777856,
+        "total": 1267714859008.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 10,
+        "seq_len_per_sample": 3283
+      }
+    },
+    "avg_flops_per_layer": 3746447859712.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 385.861913444352,
+    "total_flops/gpu_flops": 1.2367369020652308,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 385.861913444352,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 10,
+      "secs_per_step": 5.470265579223633
+    },
+    "mfu": 0.22608352083716465
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.008927688798576128,
+    "absolute@next_batch": 0.6434067203997984,
+    "absolute@to_cuda(batch)": 0.09869742820010288,
+    "absolute@compute_metrics": 4.505301580400555,
+    "absolute@optimizer.step": 0.21391998740000417
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9637542109994683,
+    'absolute@llm': 1.5065548589991522,
+    'absolute@done': 2.6632232170013594
+}
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    Exception in thread self.run()
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/summary/writer/event_file_writer.py", line 244, in run
+Thread-2 (_write_async):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self._run()
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/summary/writer/event_file_writer.py", line 275, in _run
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/recipes/train_qwen3.py", line 154, in _write_async
+    self._record_writer.write(data)
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/summary/writer/record_writer.py", line 40, in write
+    tb_writer.add_scalar(
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/tensorboard/writer.py", line 381, in add_scalar
+    self._writer.write(header + header_crc + data + footer_crc)
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 773, in write
+    self._get_file_writer().add_summary(summary, global_step, walltime)
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/tensorboard/writer.py", line 115, in add_summary
+    self.add_event(event, global_step, walltime)
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/tensorboard/writer.py", line 99, in add_event
+    self.event_writer.add_event(event)
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/summary/writer/event_file_writer.py", line 117, in add_event
+    self.fs.append(self.filename, file_content, self.binary_mode)
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 167, in append
+        self._async_writer.write(event.SerializeToString())self._write(filename, file_content, "ab" if binary_mode else "a")
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 171, in _write
+
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/summary/writer/event_file_writer.py", line 178, in write
+    with io.open(filename, mode, encoding=encoding) as f:
+FileNotFoundError:     self._check_worker_status()
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/summary/writer/event_file_writer.py", line 212, in _check_worker_status
+[Errno 2] No such file or directory: b'/home/v-daqianding/workspace/outputs/sft/log/events.out.tfevents.1777053603.f151e8a38652.172.0'
+    raise exception
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/summary/writer/event_file_writer.py", line 244, in run
+    self._run()
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/summary/writer/event_file_writer.py", line 275, in _run
+    self._record_writer.write(data)
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/summary/writer/record_writer.py", line 40, in write
+    self._writer.write(header + header_crc + data + footer_crc)
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 773, in write
+    self.fs.append(self.filename, file_content, self.binary_mode)
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 167, in append
+    self._write(filename, file_content, "ab" if binary_mode else "a")
+  File "/usr/local/lib/python3.10/dist-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 171, in _write
+    with io.open(filename, mode, encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: b'/home/v-daqianding/workspace/outputs/sft/log/events.out.tfevents.1777053603.f151e8a38652.172.0'
+Start... Fwd
+End... Fwd elapsed: 3.764 
+Start... bwd
+End... bwd elapsed: 0.098 
+Start... Fwd
+End... Fwd elapsed: 3.678 
+Start... bwd
+End... bwd elapsed: 0.094 
+Start... Fwd
+End... Fwd elapsed: 5.062 
+Start... bwd
+End... bwd elapsed: 0.007 
+Start... Fwd
+End... Fwd elapsed: 3.752 
+Start... bwd
+End... bwd elapsed: 0.090 
+Start... Fwd
+End... Fwd elapsed: 4.463 
+Start... bwd
+End... bwd elapsed: 0.007 
+Step: 10, Loss: 2.9852, Learning Rate: 1.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.5672 {
+  "training/loss": 2.985216474533081,
+  "training/itemic_token_loss": 0.08660599067807198,
+  "training/text_token_loss": 0.00348207171773538,
+  "training/grad_norm": 1.0,
+  "training/learning_rate": 0.0001,
+  "perf/sec_per_step": 4.567224597930908,
+  "perf/tokens_per_sec_per_gpu_current": 7188.610784517559,
+  "perf/samples_per_sec_per_gpu_current": 2.6712064927849117,
+  "perf/total_num_tokens": 328320,
+  "perf/total_num_samples": 111,
+  "perf/num_sample_per_gpu": 111.0,
+  "perf/samples_per_step_per_gpu_current": 12.2,
+  "perf/num_sample_per_sec_per_gpu": 2.6712064927849117,
+  "perf/valid_total_num_tokens": 1719,
+  "perf/valid_tokens_per_sec_per_gpu_current": 48.78236119610478,
+  "perf/valid_token_ratio": 0.0052357456140350875,
+  "perf/mfu_per_step_per_gpu_current": 0.26645052579545264,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.24626702331630862,
+  "perf/llm_flops_per_step_per_gpu_avg": 382.773502427136,
+  "perf/samples_per_step_per_gpu_avg": 11.1,
+  "perf/samples_per_sec_per_gpu_avg": 2.2117082665273724,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6541.874396993396,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.567224597930908
+    },
+    "mfu": 0.26645052579545264
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.006529601602233015,
+    "absolute@next_batch": 0.004312458800268359,
+    "absolute@to_cuda(batch)": 0.07076720180048142,
+    "absolute@compute_metrics": 4.443333522399189,
+    "absolute@optimizer.step": 0.04228182419901714
+  }
+} 
+
+{
+    'absolute@lm_head': 0.8820278689963743,
+    'absolute@llm': 1.6881617920007557,
+    'absolute@done': 2.4866645260044606
+}
+Start... Fwd
+End... Fwd elapsed: 4.672 
+Start... bwd
+End... bwd elapsed: 0.007 
+Start... Fwd
+End... Fwd elapsed: 4.412 
+Start... bwd
+End... bwd elapsed: 0.093 
+Start... Fwd
+End... Fwd elapsed: 6.023 
+Start... bwd
+End... bwd elapsed: 0.008 
+Start... Fwd
+End... Fwd elapsed: 3.872 
+Start... bwd
+End... bwd elapsed: 0.099 
+Start... Fwd
+End... Fwd elapsed: 4.634 
+Start... bwd
+End... bwd elapsed: 0.007 
+Step: 15, Loss: 2.8892, Learning Rate: 1.50e-04, Grad Norm: 1.0000, Sec per 
+Step: 5.0551 {
+  "training/loss": 2.8891613483428955,
+  "training/itemic_token_loss": 0.09959354512393474,
+  "training/text_token_loss": 1.8033820521168308e-05,
+  "training/grad_norm": 0.9999999403953552,
+  "training/learning_rate": 0.00015000000000000001,
+  "perf/sec_per_step": 5.055087089538574,
+  "perf/tokens_per_sec_per_gpu_current": 6494.843593880969,
+  "perf/samples_per_sec_per_gpu_current": 2.096897602800264,
+  "perf/total_num_tokens": 492480,
+  "perf/total_num_samples": 164,
+  "perf/num_sample_per_gpu": 164.0,
+  "perf/samples_per_step_per_gpu_current": 10.6,
+  "perf/num_sample_per_sec_per_gpu": 2.096897602800264,
+  "perf/valid_total_num_tokens": 2806,
+  "perf/valid_tokens_per_sec_per_gpu_current": 43.00618291026202,
+  "perf/valid_token_ratio": 0.00569769330734243,
+  "perf/mfu_per_step_per_gpu_current": 0.24250664056448965,
+  "perf/llm_flops_per_step_per_gpu_current": 382.478362607616,
+  "perf/mfu_per_step_per_gpu_avg": 0.24501356239903563,
+  "perf/llm_flops_per_step_per_gpu_avg": 382.675122487296,
+  "perf/samples_per_step_per_gpu_avg": 10.933333333333334,
+  "perf/samples_per_sec_per_gpu_avg": 2.173253740591033,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6526.121964428487,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 127492787535872.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3706167492608.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 200595079168.0,
+        "attn_v": 200595079168.0,
+        "attn_out": 275414777856,
+        "total": 1227434491904.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 11,
+        "seq_len_per_sample": 2984
+      }
+    },
+    "avg_flops_per_layer": 3706167492608.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 382.478362607616,
+    "total_flops/gpu_flops": 1.2258921878449232,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 382.478362607616,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 11,
+      "secs_per_step": 5.055087089538574
+    },
+    "mfu": 0.24250664056448965
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.001503996599058155,
+    "absolute@next_batch": 0.003479266000795178,
+    "absolute@to_cuda(batch)": 0.0714452196014463,
+    "absolute@compute_metrics": 4.932077001797734,
+    "absolute@optimizer.step": 0.04658163960120874
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9123730520004756,
+    'absolute@llm': 1.7068639179997263,
+    'absolute@done': 2.629480951000005
+}
+Start... Fwd
+ERROR:onerec_llm.data.qwen3_dataset:Qwen3ChatCompletionDataset process sample error. worker=r0_w1source_name='RecIF_InteractiveRec', error_ratio=0.010309278350515464, sample_key='842da5f8-9999-4653-a6d7-8d064e1b0543', sample_url='/home/v-daqianding/workspace/data/split_data_sft/part-00192-of-00426.parquet', sample=
+{'__key__': '842da5f8-9999-4653-a6d7-8d064e1b0543'errmsg=Traceback (most recent call last):
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 518, in __iter__
+    inputs = self._process(sample, source_name)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 383, in _process
+    inputs = self._process_chat(sample)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 357, in _process_chat
+    raise ValueError(f"Sample too long: {input_ids.shape[-1]} > {self.max_length}")
+ValueError: Sample too long: 43443 > 32768
+
+End... Fwd elapsed: 4.726 
+Start... bwd
+End... bwd elapsed: 0.008 
+Start... Fwd
+End... Fwd elapsed: 3.813 
+Start... bwd
+End... bwd elapsed: 0.092 
+Start... Fwd
+End... Fwd elapsed: 3.830 
+Start... bwd
+End... bwd elapsed: 0.101 
+Start... Fwd
+End... Fwd elapsed: 3.675 
+Start... bwd
+End... bwd elapsed: 0.091 
+Start... Fwd
+End... Fwd elapsed: 3.887 
+Start... bwd
+End... bwd elapsed: 0.104 
+Step: 20, Loss: 2.7428, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.5072 {
+  "training/loss": 2.742831754684448,
+  "training/itemic_token_loss": 0.07576579228043556,
+  "training/text_token_loss": 7.803415524776369e-06,
+  "training/grad_norm": 0.9999999403953552,
+  "training/learning_rate": 0.0002,
+  "perf/sec_per_step": 4.507165145874024,
+  "perf/tokens_per_sec_per_gpu_current": 7284.401378115747,
+  "perf/samples_per_sec_per_gpu_current": 2.7511749844248072,
+  "perf/total_num_tokens": 656640,
+  "perf/total_num_samples": 226,
+  "perf/num_sample_per_gpu": 226.0,
+  "perf/samples_per_step_per_gpu_current": 12.4,
+  "perf/num_sample_per_sec_per_gpu": 2.7511749844248072,
+  "perf/valid_total_num_tokens": 3733,
+  "perf/valid_tokens_per_sec_per_gpu_current": 41.134503396158,
+  "perf/valid_token_ratio": 0.005685002436647174,
+  "perf/mfu_per_step_per_gpu_current": 0.27000106633737025,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.2512604383836193,
+  "perf/llm_flops_per_step_per_gpu_avg": 381.927614717952,
+  "perf/samples_per_step_per_gpu_avg": 11.3,
+  "perf/samples_per_sec_per_gpu_avg": 2.3061527569371654,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6700.496222633718,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.507165145874024
+    },
+    "mfu": 0.27000106633737025
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0015110090011148714,
+    "absolute@next_batch": 0.003763450399856083,
+    "absolute@to_cuda(batch)": 0.0733336222008802,
+    "absolute@compute_metrics": 4.388260471599642,
+    "absolute@optimizer.step": 0.0402963437983999
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9073390699995798,
+    'absolute@llm': 1.4030471029982436,
+    'absolute@done': 2.177696858001582
+}
+Start... save checkpoint
+Saving checkpoint to 
+/home/v-daqianding/workspace/outputs/sft/step20/global_step20
+Saving model checkpoint synchronously to 
+/home/v-daqianding/workspace/outputs/sft/step20/global_step20
+/usr/local/lib/python3.10/dist-packages/torch/distributed/checkpoint/filesystem.py:116: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  if tensor.storage().size() != tensor.numel():
+The full model checkpoint, including all the weights and configurations, has 
+been saved successfully by the DistributedCheckpointer. You can now use this 
+checkpoint for further training.
+Saved dataloader state to 
+/home/v-daqianding/workspace/outputs/sft/step20/dataloader_ckpt
+Saved optimizer state to 
+/home/v-daqianding/workspace/outputs/sft/step20/optimizer_ckpt
+End... save checkpoint elapsed: 94.994 
+Start... Fwd
+End... Fwd elapsed: 4.138 
+Start... bwd
+End... bwd elapsed: 0.008 
+Start... Fwd
+End... Fwd elapsed: 3.988 
+Start... bwd
+End... bwd elapsed: 0.096 
+Start... Fwd
+End... Fwd elapsed: 4.394 
+Start... bwd
+End... bwd elapsed: 0.008 
+Start... Fwd
+End... Fwd elapsed: 3.779 
+Start... bwd
+End... bwd elapsed: 0.093 
+Start... Fwd
+End... Fwd elapsed: 3.613 
+Start... bwd
+End... bwd elapsed: 0.089 
+Step: 25, Loss: 3.0694, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 23.4537 {
+  "training/loss": 3.0693870544433595,
+  "training/itemic_token_loss": 0.11408518999814987,
+  "training/text_token_loss": 3.7328999724195454e-06,
+  "training/grad_norm": 1.0,
+  "training/learning_rate": 0.00019980973490458728,
+  "perf/sec_per_step": 23.45373406410217,
+  "perf/tokens_per_sec_per_gpu_current": 1399.8623805602033,
+  "perf/samples_per_sec_per_gpu_current": 0.5798650211872187,
+  "perf/total_num_tokens": 820800,
+  "perf/total_num_samples": 294,
+  "perf/num_sample_per_gpu": 294.0,
+  "perf/samples_per_step_per_gpu_current": 13.6,
+  "perf/num_sample_per_sec_per_gpu": 0.5798650211872187,
+  "perf/valid_total_num_tokens": 4930,
+  "perf/valid_tokens_per_sec_per_gpu_current": 10.207329858251482,
+  "perf/valid_token_ratio": 0.0060063352826510725,
+  "perf/mfu_per_step_per_gpu_current": 0.051282990912670336,
+  "perf/llm_flops_per_step_per_gpu_current": 375.266620833792,
+  "perf/mfu_per_step_per_gpu_avg": 0.21126494888942948,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.59541594112,
+  "perf/samples_per_step_per_gpu_avg": 11.76,
+  "perf/samples_per_sec_per_gpu_avg": 1.3657433687582403,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 3812.932507063822,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 125088873611264.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3620313423872.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 157668044800.0,
+        "attn_v": 157668044800.0,
+        "attn_out": 275414777856,
+        "total": 1141580423168.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 14,
+        "seq_len_per_sample": 2345
+      }
+    },
+    "avg_flops_per_layer": 3620313423872.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 375.266620833792,
+    "total_flops/gpu_flops": 1.2027776308775384,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 375.266620833792,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 14,
+      "secs_per_step": 23.45373406410217
+    },
+    "mfu": 0.051282990912670336
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 1.977099891519174e-05,
+    "absolute@next_batch": 0.0035682428002473897,
+    "absolute@to_cuda(batch)": 0.05819116799975745,
+    "absolute@compute_metrics": 4.280037533599534,
+    "absolute@optimizer.step": 0.04577383700088831,
+    "absolute@save_ckpt*9999": 95.33071861499775
+  }
+} 
+
+{
+    'absolute@lm_head': 0.8788510390004376,
+    'absolute@llm': 1.3476464449995547,
+    'absolute@done': 1.9867083989956882
+}
+Start... Fwd
+End... Fwd elapsed: 3.676 
+Start... bwd
+End... bwd elapsed: 0.090 
+Start... Fwd
+End... Fwd elapsed: 3.849 
+Start... bwd
+End... bwd elapsed: 0.101 
+Start... Fwd
+End... Fwd elapsed: 4.417 
+Start... bwd
+End... bwd elapsed: 0.135 
+Start... Fwd
+End... Fwd elapsed: 3.663 
+Start... bwd
+End... bwd elapsed: 0.091 
+Start... Fwd
+End... Fwd elapsed: 3.699 
+Start... bwd
+End... bwd elapsed: 0.095 
+Step: 30, Loss: 2.8412, Learning Rate: 1.99e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.4954 {
+  "training/loss": 2.8412066459655763,
+  "training/itemic_token_loss": 0.0876737080514431,
+  "training/text_token_loss": 9.928254876001575e-08,
+  "training/grad_norm": 0.9999997615814209,
+  "training/learning_rate": 0.00019924038765061042,
+  "perf/sec_per_step": 4.495386266708374,
+  "perf/tokens_per_sec_per_gpu_current": 7303.488076907872,
+  "perf/samples_per_sec_per_gpu_current": 2.669403536881532,
+  "perf/total_num_tokens": 984960,
+  "perf/total_num_samples": 354,
+  "perf/num_sample_per_gpu": 354.0,
+  "perf/samples_per_step_per_gpu_current": 12.0,
+  "perf/num_sample_per_sec_per_gpu": 2.669403536881532,
+  "perf/valid_total_num_tokens": 5925,
+  "perf/valid_tokens_per_sec_per_gpu_current": 44.26760865328541,
+  "perf/valid_token_ratio": 0.006015472709551657,
+  "perf/mfu_per_step_per_gpu_current": 0.27070852721977245,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.22117221194448664,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.44369518592,
+  "perf/samples_per_step_per_gpu_avg": 11.8,
+  "perf/samples_per_sec_per_gpu_avg": 1.488994602922666,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 4142.93820365737,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.495386266708374
+    },
+    "mfu": 0.27070852721977245
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.001571683400834445,
+    "absolute@next_batch": 0.0037538676013355145,
+    "absolute@to_cuda(batch)": 0.07865002600010484,
+    "absolute@compute_metrics": 4.373523196000315,
+    "absolute@optimizer.step": 0.0378873969981214,
+    "absolute@save_ckpt*9999": 95.33071861499775
+  }
+} 
+
+{
+    'absolute@lm_head': 0.8768273159948876,
+    'absolute@llm': 1.3658834790039691,
+    'absolute@done': 2.047647749001044
+}
+Start... Fwd
+End... Fwd elapsed: 3.859 
+Start... bwd
+End... bwd elapsed: 0.104 
+Start... Fwd
+End... Fwd elapsed: 3.680 
+Start... bwd
+End... bwd elapsed: 0.091 
+Start... Fwd
+End... Fwd elapsed: 3.840 
+Start... bwd
+End... bwd elapsed: 0.099 
+Start... Fwd
+End... Fwd elapsed: 3.739 
+Start... bwd
+End... bwd elapsed: 0.093 
+Start... Fwd
+End... Fwd elapsed: 3.754 
+Start... bwd
+End... bwd elapsed: 0.095 
+Step: 35, Loss: 2.9114, Learning Rate: 1.98e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.3890 {
+  "training/loss": 2.911370277404785,
+  "training/itemic_token_loss": 0.08393661230802536,
+  "training/text_token_loss": 3.9182739470788873e-07,
+  "training/grad_norm": 0.9999998807907104,
+  "training/learning_rate": 0.00019829629131445342,
+  "perf/sec_per_step": 4.388973188400269,
+  "perf/tokens_per_sec_per_gpu_current": 7480.565177926479,
+  "perf/samples_per_sec_per_gpu_current": 2.6885559545422897,
+  "perf/total_num_tokens": 1149120,
+  "perf/total_num_samples": 413,
+  "perf/num_sample_per_gpu": 413.0,
+  "perf/samples_per_step_per_gpu_current": 11.8,
+  "perf/num_sample_per_sec_per_gpu": 2.6885559545422897,
+  "perf/valid_total_num_tokens": 6866,
+  "perf/valid_tokens_per_sec_per_gpu_current": 42.88018903769991,
+  "perf/valid_token_ratio": 0.005975006961849067,
+  "perf/mfu_per_step_per_gpu_current": 0.27727200493292964,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.2291864680856928,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.33532321792,
+  "perf/samples_per_step_per_gpu_avg": 11.8,
+  "perf/samples_per_sec_per_gpu_avg": 1.590362758057494,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 4424.982209537597,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.388973188400269
+    },
+    "mfu": 0.27727200493292964
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0015930947993183509,
+    "absolute@next_batch": 0.003500739000446629,
+    "absolute@to_cuda(batch)": 0.07830572779930663,
+    "absolute@compute_metrics": 4.267108903199551,
+    "absolute@optimizer.step": 0.038464652601396664,
+    "absolute@save_ckpt*9999": 95.33071861499775
+  }
+} 
+
+{
+    'absolute@lm_head': 0.8916745759997866,
+    'absolute@llm': 1.3792273910003132,
+    'absolute@done': 2.086756331002107
+}
+Start... Fwd
+End... Fwd elapsed: 3.729 
+Start... bwd
+End... bwd elapsed: 0.092 
+Start... Fwd
+End... Fwd elapsed: 3.706 
+Start... bwd
+End... bwd elapsed: 0.092 
+Start... Fwd
+End... Fwd elapsed: 3.798 
+Start... bwd
+End... bwd elapsed: 0.096 

@@ -1,0 +1,30 @@
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+NOTE: The SHMEM allocation limit is set to the default of 64MB.  This may be
+   insufficient for PyTorch.  NVIDIA recommends the use of the following flags:
+   docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 ...
+
+[notice] A new release of pip is available: 24.2 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+2026-04-24 16:29:01,186 - INFO - ============================================================
+2026-04-24 16:29:01,186 - INFO - Step 1: Finding general text data files...
+2026-04-24 16:29:01,186 - ERROR - Program execution failed: Directory does not exist: /ws/empty_general
+Traceback (most recent call last):
+  File "/ws/code/OpenOneRec/data/scripts/split_data.py", line 203, in main
+    general_text_files = find_parquet_files(
+  File "/ws/code/OpenOneRec/data/scripts/split_data.py", line 38, in find_parquet_files
+    raise FileNotFoundError(f"Directory does not exist: {directory}")
+FileNotFoundError: Directory does not exist: /ws/empty_general

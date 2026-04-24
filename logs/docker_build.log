@@ -1,0 +1,20 @@
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM nvcr.io/nvidia/pytorch:24.08-py3
+#4 DONE 0.0s
+
+#5 [2/4] WORKDIR /workspace
+#5 CACHED
+
+#6 [3/4] RUN pip install --no-cache-dir     transformers==4.53.0 easydict sortedcontainers datasets accelerate     pyarrow pandas numpy tqdm safetensors sentencepiece tokenizers einops torchdata webdataset fastparquet
+#6 CACHED
+
+#7 [4/4] RUN pip install --no-cache-dir torchao==0.10 || echo 'torchao install skipped'
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers done
+#8 writing image sha256:ee25332cdcd634d5f4bafc63404300f1588dc7a2ae0ac7e6dffe9c4f92f2a483 done
+#8 naming to docker.io/library/onerec-train:latest done
+#8 DONE 0.0s
