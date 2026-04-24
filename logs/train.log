@@ -75704,3 +75704,2171 @@ Start... Fwd
 End... Fwd elapsed: 3.925 
 Start... bwd
 End... bwd elapsed: 0.102 
+Start... Fwd
+End... Fwd elapsed: 4.404 
+Start... bwd
+End... bwd elapsed: 0.007 
+Start... Fwd
+End... Fwd elapsed: 3.770 
+Start... bwd
+End... bwd elapsed: 0.090 
+Step: 3675, Loss: 2.5104, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.5064 {
+  "training/loss": 2.5103932857513427,
+  "training/itemic_token_loss": 0.08789695352315903,
+  "training/text_token_loss": 1.4158048289303337e-09,
+  "training/grad_norm": 0.9999997615814209,
+  "training/learning_rate": 0.00019984586668665642,
+  "perf/sec_per_step": 4.506426763534546,
+  "perf/tokens_per_sec_per_gpu_current": 7285.594934255346,
+  "perf/samples_per_sec_per_gpu_current": 2.6184825848018116,
+  "perf/total_num_tokens": 120657600,
+  "perf/total_num_samples": 43940,
+  "perf/num_sample_per_gpu": 43940.0,
+  "perf/samples_per_step_per_gpu_current": 11.8,
+  "perf/num_sample_per_sec_per_gpu": 2.6184825848018116,
+  "perf/valid_total_num_tokens": 747002,
+  "perf/valid_tokens_per_sec_per_gpu_current": 49.08545319984413,
+  "perf/valid_token_ratio": 0.006191089496227341,
+  "perf/mfu_per_step_per_gpu_current": 0.2700453062705778,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.26788462759782145,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.28746943646223,
+  "perf/samples_per_step_per_gpu_avg": 11.956462585034014,
+  "perf/samples_per_sec_per_gpu_avg": 2.5003013547231765,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6865.734199764386,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.506426763534546
+    },
+    "mfu": 0.2700453062705778
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.001912018000439275,
+    "absolute@next_batch": 0.004774103399540763,
+    "absolute@to_cuda(batch)": 0.07497265780111775,
+    "absolute@compute_metrics": 4.384105162799824,
+    "absolute@optimizer.step": 0.040662932998384346,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.4369799679989228,
+    'absolute@llm': 1.4728529839994735,
+    'absolute@done': 2.008208020000893
+}
+Start... Fwd
+End... Fwd elapsed: 3.879 
+Start... bwd
+End... bwd elapsed: 0.105 
+Start... Fwd
+End... Fwd elapsed: 3.733 
+Start... bwd
+End... bwd elapsed: 0.096 
+Start... Fwd
+End... Fwd elapsed: 3.652 
+Start... bwd
+End... bwd elapsed: 0.089 
+Start... Fwd
+End... Fwd elapsed: 3.676 
+Start... bwd
+End... bwd elapsed: 0.091 
+Start... Fwd
+End... Fwd elapsed: 3.907 
+Start... bwd
+End... bwd elapsed: 0.105 
+Step: 3680, Loss: 2.5798, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.3886 {
+  "training/loss": 2.5797954559326173,
+  "training/itemic_token_loss": 0.09053015857934951,
+  "training/text_token_loss": 2.6790649920727105e-09,
+  "training/grad_norm": 0.9999997615814209,
+  "training/learning_rate": 0.0001998435759686937,
+  "perf/sec_per_step": 4.388622045516968,
+  "perf/tokens_per_sec_per_gpu_current": 7481.163713685096,
+  "perf/samples_per_sec_per_gpu_current": 2.8254882446910083,
+  "perf/total_num_tokens": 120821760,
+  "perf/total_num_samples": 44002,
+  "perf/num_sample_per_gpu": 44002.0,
+  "perf/samples_per_step_per_gpu_current": 12.4,
+  "perf/num_sample_per_sec_per_gpu": 2.8254882446910083,
+  "perf/valid_total_num_tokens": 748155,
+  "perf/valid_tokens_per_sec_per_gpu_current": 52.544966873044075,
+  "perf/valid_token_ratio": 0.006192220672832443,
+  "perf/mfu_per_step_per_gpu_current": 0.27729419004941064,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.2678974123294133,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.28665098805664,
+  "perf/samples_per_step_per_gpu_avg": 11.957065217391305,
+  "perf/samples_per_sec_per_gpu_avg": 2.50070688341445,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6866.501679429314,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.388622045516968
+    },
+    "mfu": 0.27729419004941064
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0019626195993623697,
+    "absolute@next_batch": 0.004718946198408958,
+    "absolute@to_cuda(batch)": 0.07812559840094764,
+    "absolute@compute_metrics": 4.268167173799884,
+    "absolute@optimizer.step": 0.03564766560157295,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9104248360017664,
+    'absolute@llm': 1.4066184030016302,
+    'absolute@done': 2.191623452003114
+}
+Start... Fwd
+End... Fwd elapsed: 3.641 
+Start... bwd
+End... bwd elapsed: 0.090 
+Start... Fwd
+End... Fwd elapsed: 3.851 
+Start... bwd
+End... bwd elapsed: 0.102 
+Start... Fwd
+End... Fwd elapsed: 3.770 
+Start... bwd
+End... bwd elapsed: 0.098 
+Start... Fwd
+End... Fwd elapsed: 3.751 
+Start... bwd
+End... bwd elapsed: 0.097 
+Start... Fwd
+ERROR:onerec_llm.data.qwen3_dataset:Qwen3ChatCompletionDataset process sample error. worker=r0_w0source_name='RecIF_InteractiveRec', error_ratio=0.001519607843137255, sample_key='5e187530-326d-41ab-8fad-911adc1be7e7', sample_url='/home/v-daqianding/workspace/data/split_data_sft/part-00138-of-00426.parquet', sample=
+{'__key__': '5e187530-326d-41ab-8fad-911adc1be7e7'errmsg=Traceback (most recent call last):
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 518, in __iter__
+    inputs = self._process(sample, source_name)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 383, in _process
+    inputs = self._process_chat(sample)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 357, in _process_chat
+    raise ValueError(f"Sample too long: {input_ids.shape[-1]} > {self.max_length}")
+ValueError: Sample too long: 46748 > 32768
+
+ERROR:onerec_llm.data.qwen3_dataset:Qwen3ChatCompletionDataset process sample error. worker=r0_w0source_name='RecIF_InteractiveRec', error_ratio=0.0015685505612469976, sample_key='f72c9ba2-bbf2-464a-838a-7af1f681d426', sample_url='/home/v-daqianding/workspace/data/split_data_sft/part-00138-of-00426.parquet', sample=
+{'__key__': 'f72c9ba2-bbf2-464a-838a-7af1f681d426'errmsg=Traceback (most recent call last):
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 518, in __iter__
+    inputs = self._process(sample, source_name)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 383, in _process
+    inputs = self._process_chat(sample)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 357, in _process_chat
+    raise ValueError(f"Sample too long: {input_ids.shape[-1]} > {self.max_length}")
+ValueError: Sample too long: 46747 > 32768
+
+ERROR:onerec_llm.data.qwen3_dataset:Qwen3ChatCompletionDataset process sample error. worker=r0_w0source_name='RecIF_InteractiveRec', error_ratio=0.0016174884815214196, sample_key='03226aa0-a884-4629-b9d7-56e7dc40289b', sample_url='/home/v-daqianding/workspace/data/split_data_sft/part-00138-of-00426.parquet', sample=
+{'__key__': '03226aa0-a884-4629-b9d7-56e7dc40289b'errmsg=Traceback (most recent call last):
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 518, in __iter__
+    inputs = self._process(sample, source_name)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 383, in _process
+    inputs = self._process_chat(sample)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 357, in _process_chat
+    raise ValueError(f"Sample too long: {input_ids.shape[-1]} > {self.max_length}")
+ValueError: Sample too long: 46760 > 32768
+
+ERROR:onerec_llm.data.qwen3_dataset:Qwen3ChatCompletionDataset process sample error. worker=r0_w0source_name='RecIF_InteractiveRec', error_ratio=0.0016664216046659804, sample_key='1257158c-8ad8-446a-908c-93fc51a4236f', sample_url='/home/v-daqianding/workspace/data/split_data_sft/part-00138-of-00426.parquet', sample=
+{'__key__': '1257158c-8ad8-446a-908c-93fc51a4236f'errmsg=Traceback (most recent call last):
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 518, in __iter__
+    inputs = self._process(sample, source_name)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 383, in _process
+    inputs = self._process_chat(sample)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 357, in _process_chat
+    raise ValueError(f"Sample too long: {input_ids.shape[-1]} > {self.max_length}")
+ValueError: Sample too long: 46752 > 32768
+
+End... Fwd elapsed: 3.684 
+Start... bwd
+End... bwd elapsed: 0.094 
+Step: 3685, Loss: 2.2373, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.3522 {
+  "training/loss": 2.2373249530792236,
+  "training/itemic_token_loss": 0.0531887449324131,
+  "training/text_token_loss": 6.780321371024911e-09,
+  "training/grad_norm": 0.9999997615814209,
+  "training/learning_rate": 0.00019984126838048534,
+  "perf/sec_per_step": 4.352233505249023,
+  "perf/tokens_per_sec_per_gpu_current": 7543.7128914160685,
+  "perf/samples_per_sec_per_gpu_current": 2.7112515874363305,
+  "perf/total_num_tokens": 120985920,
+  "perf/total_num_samples": 44061,
+  "perf/num_sample_per_gpu": 44061.0,
+  "perf/samples_per_step_per_gpu_current": 11.8,
+  "perf/num_sample_per_sec_per_gpu": 2.7112515874363305,
+  "perf/valid_total_num_tokens": 749006,
+  "perf/valid_tokens_per_sec_per_gpu_current": 39.10635764251385,
+  "perf/valid_token_ratio": 0.006190852621528191,
+  "perf/mfu_per_step_per_gpu_current": 0.2796126159308599,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.2679133081280584,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.28583476067786,
+  "perf/samples_per_step_per_gpu_avg": 11.95685210312076,
+  "perf/samples_per_sec_per_gpu_avg": 2.5009669473417606,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6867.33816785217,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.352233505249023
+    },
+    "mfu": 0.2796126159308599
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0013658905998454429,
+    "absolute@next_batch": 0.005018539600132499,
+    "absolute@to_cuda(batch)": 0.07821133219840704,
+    "absolute@compute_metrics": 4.232212036801502,
+    "absolute@optimizer.step": 0.03542562340007862,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9074265160015784,
+    'absolute@llm': 1.3645629969978472,
+    'absolute@done': 2.029445680003846
+}
+Start... Fwd
+End... Fwd elapsed: 3.786 
+Start... bwd
+End... bwd elapsed: 0.099 
+Start... Fwd
+End... Fwd elapsed: 3.705 
+Start... bwd
+End... bwd elapsed: 0.093 
+Start... Fwd
+End... Fwd elapsed: 3.697 
+Start... bwd
+End... bwd elapsed: 0.094 
+Start... Fwd
+End... Fwd elapsed: 3.651 
+Start... bwd
+End... bwd elapsed: 0.091 
+Start... Fwd
+End... Fwd elapsed: 3.825 
+Start... bwd
+End... bwd elapsed: 0.100 
+Step: 3690, Loss: 2.2571, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.3443 {
+  "training/loss": 2.257051110267639,
+  "training/itemic_token_loss": 0.0595798023045063,
+  "training/text_token_loss": 6.223862936138858e-09,
+  "training/grad_norm": 0.9999997615814209,
+  "training/learning_rate": 0.00019983894392281237,
+  "perf/sec_per_step": 4.3443187236785885,
+  "perf/tokens_per_sec_per_gpu_current": 7557.456551484147,
+  "perf/samples_per_sec_per_gpu_current": 2.8082654096036364,
+  "perf/total_num_tokens": 121150080,
+  "perf/total_num_samples": 44122,
+  "perf/num_sample_per_gpu": 44122.0,
+  "perf/samples_per_step_per_gpu_current": 12.2,
+  "perf/num_sample_per_sec_per_gpu": 2.8082654096036364,
+  "perf/valid_total_num_tokens": 749900,
+  "perf/valid_tokens_per_sec_per_gpu_current": 41.1572012489451,
+  "perf/valid_token_ratio": 0.006189843209348273,
+  "perf/mfu_per_step_per_gpu_current": 0.28012203361409027,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.26792985111652184,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.28502074529746,
+  "perf/samples_per_step_per_gpu_avg": 11.957181571815719,
+  "perf/samples_per_sec_per_gpu_avg": 2.501345364256565,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6868.188001162957,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.3443187236785885
+    },
+    "mfu": 0.28012203361409027
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.001857804399332963,
+    "absolute@next_batch": 0.004805909201968462,
+    "absolute@to_cuda(batch)": 0.07881956639903365,
+    "absolute@compute_metrics": 4.223799627000699,
+    "absolute@optimizer.step": 0.03503602599957958,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9024554019997595,
+    'absolute@llm': 1.3899888300002203,
+    'absolute@done': 2.134156999003608
+}
+Start... Fwd
+End... Fwd elapsed: 3.660 
+Start... bwd
+End... bwd elapsed: 0.092 
+Start... Fwd
+End... Fwd elapsed: 3.731 
+Start... bwd
+End... bwd elapsed: 0.096 
+Start... Fwd
+End... Fwd elapsed: 3.882 
+Start... bwd
+End... bwd elapsed: 0.105 
+Start... Fwd
+End... Fwd elapsed: 3.830 
+Start... bwd
+End... bwd elapsed: 0.101 
+Start... Fwd
+End... Fwd elapsed: 3.759 
+Start... bwd
+End... bwd elapsed: 0.097 
+Step: 3695, Loss: 2.5039, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.3914 {
+  "training/loss": 2.5039002895355225,
+  "training/itemic_token_loss": 0.07083679139614105,
+  "training/text_token_loss": 3.72024602235399e-09,
+  "training/grad_norm": 0.9999995827674866,
+  "training/learning_rate": 0.00019983660259646153,
+  "perf/sec_per_step": 4.391390705108643,
+  "perf/tokens_per_sec_per_gpu_current": 7476.447031188891,
+  "perf/samples_per_sec_per_gpu_current": 2.641532211311864,
+  "perf/total_num_tokens": 121314240,
+  "perf/total_num_samples": 44180,
+  "perf/num_sample_per_gpu": 44180.0,
+  "perf/samples_per_step_per_gpu_current": 11.6,
+  "perf/num_sample_per_sec_per_gpu": 2.641532211311864,
+  "perf/valid_total_num_tokens": 750817,
+  "perf/valid_tokens_per_sec_per_gpu_current": 41.76353513401689,
+  "perf/valid_token_ratio": 0.006189026119275033,
+  "perf/mfu_per_step_per_gpu_current": 0.27711936315047336,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.26794228618016724,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.28420893293566,
+  "perf/samples_per_step_per_gpu_avg": 11.956698240866036,
+  "perf/samples_per_sec_per_gpu_avg": 2.50151964827212,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6868.944204961512,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.391390705108643
+    },
+    "mfu": 0.27711936315047336
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0018478675978258253,
+    "absolute@next_batch": 0.004792625801928807,
+    "absolute@to_cuda(batch)": 0.07798625899886247,
+    "absolute@compute_metrics": 4.271106197999325,
+    "absolute@optimizer.step": 0.03565745240193792,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9185964100033743,
+    'absolute@llm': 1.3813366019967361,
+    'absolute@done': 2.0850714200059883
+}
+Start... Fwd
+End... Fwd elapsed: 3.857 
+Start... bwd
+End... bwd elapsed: 0.104 
+Start... Fwd
+End... Fwd elapsed: 3.659 
+Start... bwd
+End... bwd elapsed: 0.091 
+Start... Fwd
+End... Fwd elapsed: 3.743 
+Start... bwd
+End... bwd elapsed: 0.094 
+Start... Fwd
+End... Fwd elapsed: 3.708 
+Start... bwd
+End... bwd elapsed: 0.092 
+Start... Fwd
+End... Fwd elapsed: 4.052 
+Start... bwd
+End... bwd elapsed: 0.114 
+Step: 3700, Loss: 2.5006, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.4283 {
+  "training/loss": 2.5005571842193604,
+  "training/itemic_token_loss": 0.07150441408157349,
+  "training/text_token_loss": 3.611081100807212e-09,
+  "training/grad_norm": 0.9999998211860657,
+  "training/learning_rate": 0.00019983424440222532,
+  "perf/sec_per_step": 4.428296947479248,
+  "perf/tokens_per_sec_per_gpu_current": 7414.136944607836,
+  "perf/samples_per_sec_per_gpu_current": 2.7098453744911684,
+  "perf/total_num_tokens": 121478400,
+  "perf/total_num_samples": 44240,
+  "perf/num_sample_per_gpu": 44240.0,
+  "perf/samples_per_step_per_gpu_current": 12.0,
+  "perf/num_sample_per_sec_per_gpu": 2.7098453744911684,
+  "perf/valid_total_num_tokens": 751767,
+  "perf/valid_tokens_per_sec_per_gpu_current": 42.90588509611016,
+  "perf/valid_token_ratio": 0.006188482890785522,
+  "perf/mfu_per_step_per_gpu_current": 0.27480979933772115,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.2679515666033531,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.2833993146613,
+  "perf/samples_per_step_per_gpu_avg": 11.956756756756757,
+  "perf/samples_per_sec_per_gpu_avg": 2.5017804939999264,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6869.626843632926,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.428296947479248
+    },
+    "mfu": 0.27480979933772115
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0018277020004461519,
+    "absolute@next_batch": 0.004716718399140518,
+    "absolute@to_cuda(batch)": 0.07778535260003991,
+    "absolute@compute_metrics": 4.307934020200628,
+    "absolute@optimizer.step": 0.03603328619938111,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9184721659985371,
+    'absolute@llm': 1.4349750300025335,
+    'absolute@done': 2.300548560000607
+}
+Start... Fwd
+End... Fwd elapsed: 3.860 
+Start... bwd
+End... bwd elapsed: 0.101 
+Start... Fwd
+End... Fwd elapsed: 3.689 
+Start... bwd
+End... bwd elapsed: 0.093 
+Start... Fwd
+End... Fwd elapsed: 3.703 
+Start... bwd
+End... bwd elapsed: 0.093 
+Start... Fwd
+End... Fwd elapsed: 3.981 
+Start... bwd
+End... bwd elapsed: 0.110 
+Start... Fwd
+End... Fwd elapsed: 3.788 
+Start... bwd
+End... bwd elapsed: 0.100 
+Step: 3705, Loss: 2.6368, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.4292 {
+  "training/loss": 2.6368274688720703,
+  "training/itemic_token_loss": 0.08720754981040954,
+  "training/text_token_loss": 2.445296409803177e-09,
+  "training/grad_norm": 0.9999999403953552,
+  "training/learning_rate": 0.00019983186934090184,
+  "perf/sec_per_step": 4.429198932647705,
+  "perf/tokens_per_sec_per_gpu_current": 7412.627091096482,
+  "perf/samples_per_sec_per_gpu_current": 2.618983743199293,
+  "perf/total_num_tokens": 121642560,
+  "perf/total_num_samples": 44298,
+  "perf/num_sample_per_gpu": 44298.0,
+  "perf/samples_per_step_per_gpu_current": 11.6,
+  "perf/num_sample_per_sec_per_gpu": 2.618983743199293,
+  "perf/valid_total_num_tokens": 752794,
+  "perf/valid_tokens_per_sec_per_gpu_current": 46.37407421147714,
+  "perf/valid_token_ratio": 0.006188574130633226,
+  "perf/mfu_per_step_per_gpu_current": 0.27475383563707945,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.2679607464536011,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.2825918815915,
+  "perf/samples_per_step_per_gpu_avg": 11.956275303643725,
+  "perf/samples_per_sec_per_gpu_avg": 2.501927091098039,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6870.306024978976,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.429198932647705
+    },
+    "mfu": 0.27475383563707945
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0014429374001338146,
+    "absolute@next_batch": 0.004994672800239641,
+    "absolute@to_cuda(batch)": 0.07814872659946559,
+    "absolute@compute_metrics": 4.308833575798781,
+    "absolute@optimizer.step": 0.035779310601355974,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9484142619985505,
+    'absolute@llm': 1.3778517169994302,
+    'absolute@done': 2.115867533997516
+}
+Start... Fwd
+End... Fwd elapsed: 4.000 
+Start... bwd
+End... bwd elapsed: 0.110 
+Start... Fwd
+End... Fwd elapsed: 3.726 
+Start... bwd
+End... bwd elapsed: 0.093 
+Start... Fwd
+End... Fwd elapsed: 3.873 
+Start... bwd
+End... bwd elapsed: 0.103 
+Start... Fwd
+End... Fwd elapsed: 3.722 
+Start... bwd
+End... bwd elapsed: 0.093 
+Start... Fwd
+End... Fwd elapsed: 3.755 
+Start... bwd
+End... bwd elapsed: 0.095 
+Step: 3710, Loss: 2.4599, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.4391 {
+  "training/loss": 2.459872674942017,
+  "training/itemic_token_loss": 0.06261968910694123,
+  "training/text_token_loss": 1.6658001200653416e-09,
+  "training/grad_norm": 0.9999997615814209,
+  "training/learning_rate": 0.000199829477413295,
+  "perf/sec_per_step": 4.439080476760864,
+  "perf/tokens_per_sec_per_gpu_current": 7396.1263310903205,
+  "perf/samples_per_sec_per_gpu_current": 2.162610038330503,
+  "perf/total_num_tokens": 121806720,
+  "perf/total_num_samples": 44346,
+  "perf/num_sample_per_gpu": 44346.0,
+  "perf/samples_per_step_per_gpu_current": 9.6,
+  "perf/num_sample_per_sec_per_gpu": 2.162610038330503,
+  "perf/valid_total_num_tokens": 753546,
+  "perf/valid_tokens_per_sec_per_gpu_current": 33.880890600511215,
+  "perf/valid_token_ratio": 0.006186407449441213,
+  "perf/mfu_per_step_per_gpu_current": 0.27860204574792047,
+  "perf/llm_flops_per_step_per_gpu_current": 385.861913444352,
+  "perf/mfu_per_step_per_gpu_avg": 0.2679750878273131,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.290111182889,
+  "perf/samples_per_step_per_gpu_avg": 11.953099730458222,
+  "perf/samples_per_sec_per_gpu_avg": 2.5015022611189752,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6870.96435979538,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 128620637814784.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3746447859712.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 220735262720.0,
+        "attn_v": 220735262720.0,
+        "attn_out": 275414777856,
+        "total": 1267714859008.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 10,
+        "seq_len_per_sample": 3283
+      }
+    },
+    "avg_flops_per_layer": 3746447859712.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 385.861913444352,
+    "total_flops/gpu_flops": 1.2367369020652308,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 385.861913444352,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 10,
+      "secs_per_step": 4.439080476760864
+    },
+    "mfu": 0.27860204574792047
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.001608352200128138,
+    "absolute@next_batch": 0.005151420400943607,
+    "absolute@to_cuda(batch)": 0.07715710619959282,
+    "absolute@compute_metrics": 4.318814710399602,
+    "absolute@optimizer.step": 0.03634875819989247,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.8945467459998326,
+    'absolute@llm': 1.3754804950003745,
+    'absolute@done': 2.087746328994399
+}
+Start... Fwd
+End... Fwd elapsed: 3.826 
+Start... bwd
+End... bwd elapsed: 0.101 
+Start... Fwd
+End... Fwd elapsed: 3.727 
+Start... bwd
+End... bwd elapsed: 0.094 
+Start... Fwd
+End... Fwd elapsed: 3.740 
+Start... bwd
+End... bwd elapsed: 0.095 
+Start... Fwd
+End... Fwd elapsed: 3.807 
+Start... bwd
+End... bwd elapsed: 0.102 
+Start... Fwd
+End... Fwd elapsed: 3.812 
+Start... bwd
+End... bwd elapsed: 0.100 
+Step: 3715, Loss: 2.6868, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.3997 {
+  "training/loss": 2.6868141651153565,
+  "training/itemic_token_loss": 0.10590955466032029,
+  "training/text_token_loss": 9.780764531619468e-10,
+  "training/grad_norm": 0.9999999403953552,
+  "training/learning_rate": 0.00019982706862021435,
+  "perf/sec_per_step": 4.399730777740478,
+  "perf/tokens_per_sec_per_gpu_current": 7462.274775108211,
+  "perf/samples_per_sec_per_gpu_current": 2.545610303399487,
+  "perf/total_num_tokens": 121970880,
+  "perf/total_num_samples": 44402,
+  "perf/num_sample_per_gpu": 44402.0,
+  "perf/samples_per_step_per_gpu_current": 11.2,
+  "perf/num_sample_per_sec_per_gpu": 2.545610303399487,
+  "perf/valid_total_num_tokens": 754750,
+  "perf/valid_tokens_per_sec_per_gpu_current": 54.73062152308897,
+  "perf/valid_token_ratio": 0.0061879524030653875,
+  "perf/mfu_per_step_per_gpu_current": 0.27862890930669426,
+  "perf/llm_flops_per_step_per_gpu_current": 382.478362607616,
+  "perf/mfu_per_step_per_gpu_avg": 0.2679894267525882,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.2930563395845,
+  "perf/samples_per_step_per_gpu_avg": 11.952086137281292,
+  "perf/samples_per_sec_per_gpu_avg": 2.501556927679127,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6871.697217222636,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 127492787535872.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3706167492608.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 200595079168.0,
+        "attn_v": 200595079168.0,
+        "attn_out": 275414777856,
+        "total": 1227434491904.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 11,
+        "seq_len_per_sample": 2984
+      }
+    },
+    "avg_flops_per_layer": 3706167492608.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 382.478362607616,
+    "total_flops/gpu_flops": 1.2258921878449232,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 382.478362607616,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 11,
+      "secs_per_step": 4.399730777740478
+    },
+    "mfu": 0.27862890930669426
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0019396818010136486,
+    "absolute@next_batch": 0.004699298400373664,
+    "absolute@to_cuda(batch)": 0.0777482149991556,
+    "absolute@compute_metrics": 4.280045602598693,
+    "absolute@optimizer.step": 0.03529776480136206,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9200672320002923,
+    'absolute@llm': 1.390757000001031,
+    'absolute@done': 2.1241653170000063
+}
+Start... Fwd
+End... Fwd elapsed: 3.710 
+Start... bwd
+End... bwd elapsed: 0.092 
+Start... Fwd
+End... Fwd elapsed: 3.684 
+Start... bwd
+End... bwd elapsed: 0.092 
+Start... Fwd
+End... Fwd elapsed: 3.783 
+Start... bwd
+End... bwd elapsed: 0.098 
+Start... Fwd
+End... Fwd elapsed: 3.951 
+Start... bwd
+End... bwd elapsed: 0.107 
+Start... Fwd
+End... Fwd elapsed: 3.813 
+Start... bwd
+End... bwd elapsed: 0.100 
+Step: 3720, Loss: 2.2360, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.4085 {
+  "training/loss": 2.236040949821472,
+  "training/itemic_token_loss": 0.06530942022800446,
+  "training/text_token_loss": 9.202287598597536e-10,
+  "training/grad_norm": 0.9999997019767761,
+  "training/learning_rate": 0.00019982464296247523,
+  "perf/sec_per_step": 4.40848741531372,
+  "perf/tokens_per_sec_per_gpu_current": 7447.452358818536,
+  "perf/samples_per_sec_per_gpu_current": 2.585920957923103,
+  "perf/total_num_tokens": 122135040,
+  "perf/total_num_samples": 44459,
+  "perf/num_sample_per_gpu": 44459.0,
+  "perf/samples_per_step_per_gpu_current": 11.4,
+  "perf/num_sample_per_sec_per_gpu": 2.585920957923103,
+  "perf/valid_total_num_tokens": 755738,
+  "perf/valid_tokens_per_sec_per_gpu_current": 44.82262993733378,
+  "perf/valid_token_ratio": 0.006187724669349599,
+  "perf/mfu_per_step_per_gpu_current": 0.27807546497389407,
+  "perf/llm_flops_per_step_per_gpu_current": 382.478362607616,
+  "perf/mfu_per_step_per_gpu_avg": 0.2680029832555738,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.29599357919204,
+  "perf/samples_per_step_per_gpu_avg": 11.951344086021505,
+  "perf/samples_per_sec_per_gpu_avg": 2.501661564803169,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6872.411329172894,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 127492787535872.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3706167492608.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 200595079168.0,
+        "attn_v": 200595079168.0,
+        "attn_out": 275414777856,
+        "total": 1227434491904.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 11,
+        "seq_len_per_sample": 2984
+      }
+    },
+    "avg_flops_per_layer": 3706167492608.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 382.478362607616,
+    "total_flops/gpu_flops": 1.2258921878449232,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 382.478362607616,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 11,
+      "secs_per_step": 4.40848741531372
+    },
+    "mfu": 0.27807546497389407
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0014885082011460327,
+    "absolute@next_batch": 0.004718443597084843,
+    "absolute@to_cuda(batch)": 0.07848969040205703,
+    "absolute@compute_metrics": 4.28794565720018,
+    "absolute@optimizer.step": 0.03584528119827155,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9416191469936166,
+    'absolute@llm': 1.385382352003944,
+    'absolute@done': 2.131757686001947
+}
+Start... Fwd
+End... Fwd elapsed: 4.190 
+Start... bwd
+End... bwd elapsed: 0.119 
+Start... Fwd
+End... Fwd elapsed: 5.018 
+Start... bwd
+End... bwd elapsed: 0.007 
+Start... Fwd
+End... Fwd elapsed: 4.099 
+Start... bwd
+End... bwd elapsed: 0.116 
+Start... Fwd
+End... Fwd elapsed: 3.771 
+Start... bwd
+End... bwd elapsed: 0.098 
+Start... Fwd
+ERROR:onerec_llm.data.qwen3_dataset:Qwen3ChatCompletionDataset process sample error. worker=r0_w0source_name='RecIF_InteractiveRec', error_ratio=0.0016994416120417577, sample_key='f2f7d828-04b8-41c8-95c3-82f187ec37ec', sample_url='/home/v-daqianding/workspace/data/split_data_sft/part-00293-of-00426.parquet', sample=
+{'__key__': 'f2f7d828-04b8-41c8-95c3-82f187ec37ec'errmsg=Traceback (most recent call last):
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 518, in __iter__
+    inputs = self._process(sample, source_name)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 383, in _process
+    inputs = self._process_chat(sample)
+  File "/home/v-daqianding/workspace/code/OpenOneRec/pretrain/onerec_llm/data/qwen3_dataset.py", line 357, in _process_chat
+    raise ValueError(f"Sample too long: {input_ids.shape[-1]} > {self.max_length}")
+ValueError: Sample too long: 69161 > 32768
+
+End... Fwd elapsed: 4.130 
+Start... bwd
+End... bwd elapsed: 0.119 
+Step: 3725, Loss: 2.2802, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.8054 {
+  "training/loss": 2.2802273988723756,
+  "training/itemic_token_loss": 0.04183333516120911,
+  "training/text_token_loss": 8.661391659448014e-10,
+  "training/grad_norm": 0.9999997019767761,
+  "training/learning_rate": 0.00019982220044089858,
+  "perf/sec_per_step": 4.805372095108032,
+  "perf/tokens_per_sec_per_gpu_current": 6832.353322529103,
+  "perf/samples_per_sec_per_gpu_current": 1.4150829249877528,
+  "perf/total_num_tokens": 122299200,
+  "perf/total_num_samples": 44493,
+  "perf/num_sample_per_gpu": 44493.0,
+  "perf/samples_per_step_per_gpu_current": 6.8,
+  "perf/num_sample_per_sec_per_gpu": 1.4150829249877528,
+  "perf/valid_total_num_tokens": 756269,
+  "perf/valid_tokens_per_sec_per_gpu_current": 22.100265681426375,
+  "perf/valid_token_ratio": 0.006183760809555581,
+  "perf/mfu_per_step_per_gpu_current": 0.2679658897086554,
+  "perf/llm_flops_per_step_per_gpu_current": 401.754852360192,
+  "perf/mfu_per_step_per_gpu_avg": 0.26800293346557796,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.324797416482,
+  "perf/samples_per_step_per_gpu_avg": 11.944429530201342,
+  "perf/samples_per_sec_per_gpu_avg": 2.5001945303920126,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6872.357245214277,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 133918284120064.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3935649513472.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 315336089600.0,
+        "attn_v": 315336089600.0,
+        "attn_out": 275414777856,
+        "total": 1456916512768.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 7,
+        "seq_len_per_sample": 4690
+      }
+    },
+    "avg_flops_per_layer": 3935649513472.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 401.754852360192,
+    "total_flops/gpu_flops": 1.2876758088467692,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 401.754852360192,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 7,
+      "secs_per_step": 4.805372095108032
+    },
+    "mfu": 0.2679658897086554
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0019784617994446307,
+    "absolute@next_batch": 0.0047410935992957095,
+    "absolute@to_cuda(batch)": 0.07483420200005639,
+    "absolute@compute_metrics": 4.684378941800969,
+    "absolute@optimizer.step": 0.039439358601521236,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9464592129952507,
+    'absolute@llm': 1.4408065710013034,
+    'absolute@done': 2.3648292330035474
+}
+Start... Fwd
+End... Fwd elapsed: 3.649 
+Start... bwd
+End... bwd elapsed: 0.091 
+Start... Fwd
+End... Fwd elapsed: 3.918 
+Start... bwd
+End... bwd elapsed: 0.106 
+Start... Fwd
+End... Fwd elapsed: 3.747 
+Start... bwd
+End... bwd elapsed: 0.097 
+Start... Fwd
+End... Fwd elapsed: 3.632 
+Start... bwd
+End... bwd elapsed: 0.091 
+Start... Fwd
+End... Fwd elapsed: 3.686 
+Start... bwd
+End... bwd elapsed: 0.093 
+Step: 3730, Loss: 2.5274, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.3352 {
+  "training/loss": 2.5273974418640135,
+  "training/itemic_token_loss": 0.08700670525431634,
+  "training/text_token_loss": 1.950691741470223e-09,
+  "training/grad_norm": 0.9999997019767761,
+  "training/learning_rate": 0.00019981974105631116,
+  "perf/sec_per_step": 4.3351637840271,
+  "perf/tokens_per_sec_per_gpu_current": 7573.416284978534,
+  "perf/samples_per_sec_per_gpu_current": 3.091002016895479,
+  "perf/total_num_tokens": 122463360,
+  "perf/total_num_samples": 44560,
+  "perf/num_sample_per_gpu": 44560.0,
+  "perf/samples_per_step_per_gpu_current": 13.4,
+  "perf/num_sample_per_sec_per_gpu": 3.091002016895479,
+  "perf/valid_total_num_tokens": 757397,
+  "perf/valid_tokens_per_sec_per_gpu_current": 52.039556344150746,
+  "perf/valid_token_ratio": 0.006184682504220038,
+  "perf/mfu_per_step_per_gpu_current": 0.27894688024565495,
+  "perf/llm_flops_per_step_per_gpu_current": 377.295488827392,
+  "perf/mfu_per_step_per_gpu_avg": 0.2680176036355244,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.3207366811079,
+  "perf/samples_per_step_per_gpu_avg": 11.94638069705094,
+  "perf/samples_per_sec_per_gpu_avg": 2.5009132755863135,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6873.210116627153,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 125765162942464.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3644466614272.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 169744640000.0,
+        "attn_v": 169744640000.0,
+        "attn_out": 275414777856,
+        "total": 1165733613568.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 13,
+        "seq_len_per_sample": 2525
+      }
+    },
+    "avg_flops_per_layer": 3644466614272.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 377.295488827392,
+    "total_flops/gpu_flops": 1.2092804129083077,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 377.295488827392,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 13,
+      "secs_per_step": 4.3351637840271
+    },
+    "mfu": 0.27894688024565495
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0017478976005804725,
+    "absolute@next_batch": 0.004926255799364299,
+    "absolute@to_cuda(batch)": 0.07784482059796574,
+    "absolute@compute_metrics": 4.215228756600117,
+    "absolute@optimizer.step": 0.03541591440152843,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.8864649509996525,
+    'absolute@llm': 1.3678388789994642,
+    'absolute@done': 2.0289289860011195
+}
+Start... Fwd
+End... Fwd elapsed: 3.701 
+Start... bwd
+End... bwd elapsed: 0.092 
+Start... Fwd
+End... Fwd elapsed: 4.536 
+Start... bwd
+End... bwd elapsed: 0.007 
+Start... Fwd
+End... Fwd elapsed: 4.590 
+Start... bwd
+End... bwd elapsed: 0.008 
+Start... Fwd
+End... Fwd elapsed: 3.810 
+Start... bwd
+End... bwd elapsed: 0.092 
+Start... Fwd
+End... Fwd elapsed: 4.409 
+Start... bwd
+End... bwd elapsed: 0.007 
+Step: 3735, Loss: 2.5987, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.5438 {
+  "training/loss": 2.5986555099487303,
+  "training/itemic_token_loss": 0.09427574351429939,
+  "training/text_token_loss": 2.8534497431564885e-09,
+  "training/grad_norm": 0.9999998807907104,
+  "training/learning_rate": 0.00019981726480954533,
+  "perf/sec_per_step": 4.543792819976806,
+  "perf/tokens_per_sec_per_gpu_current": 7225.681561811964,
+  "perf/samples_per_sec_per_gpu_current": 2.9050620314302487,
+  "perf/total_num_tokens": 122627520,
+  "perf/total_num_samples": 44626,
+  "perf/num_sample_per_gpu": 44626.0,
+  "perf/samples_per_step_per_gpu_current": 13.2,
+  "perf/num_sample_per_sec_per_gpu": 2.9050620314302487,
+  "perf/valid_total_num_tokens": 758671,
+  "perf/valid_tokens_per_sec_per_gpu_current": 56.07650042488086,
+  "perf/valid_token_ratio": 0.006186792328508315,
+  "perf/mfu_per_step_per_gpu_current": 0.26613898582516804,
+  "perf/llm_flops_per_step_per_gpu_current": 377.295488827392,
+  "perf/mfu_per_step_per_gpu_avg": 0.26801508875224417,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.3166868178499,
+  "perf/samples_per_step_per_gpu_avg": 11.94805890227577,
+  "perf/samples_per_sec_per_gpu_avg": 2.5014279467167624,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6873.658978276536,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 125765162942464.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3644466614272.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 169744640000.0,
+        "attn_v": 169744640000.0,
+        "attn_out": 275414777856,
+        "total": 1165733613568.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 13,
+        "seq_len_per_sample": 2525
+      }
+    },
+    "avg_flops_per_layer": 3644466614272.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 377.295488827392,
+    "total_flops/gpu_flops": 1.2092804129083077,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 377.295488827392,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 13,
+      "secs_per_step": 4.543792819976806
+    },
+    "mfu": 0.26613898582516804
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0014403408000362105,
+    "absolute@next_batch": 0.004743682801199611,
+    "absolute@to_cuda(batch)": 0.0720534821972251,
+    "absolute@compute_metrics": 4.416944733602577,
+    "absolute@optimizer.step": 0.04861021759861615,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.8927259490010329,
+    'absolute@llm': 1.685142812995764,
+    'absolute@done': 2.4379634780052584
+}
+Start... Fwd
+End... Fwd elapsed: 3.888 
+Start... bwd
+End... bwd elapsed: 0.099 
+Start... Fwd
+End... Fwd elapsed: 3.643 
+Start... bwd
+End... bwd elapsed: 0.089 
+Start... Fwd
+End... Fwd elapsed: 4.709 
+Start... bwd
+End... bwd elapsed: 0.007 
+Start... Fwd
+End... Fwd elapsed: 3.776 
+Start... bwd
+End... bwd elapsed: 0.089 
+Start... Fwd
+End... Fwd elapsed: 3.739 
+Start... bwd
+End... bwd elapsed: 0.092 
+Step: 3740, Loss: 2.2215, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.4619 {
+  "training/loss": 2.2214809894561767,
+  "training/itemic_token_loss": 0.07040662243962288,
+  "training/text_token_loss": 2.3726331122020382e-09,
+  "training/grad_norm": 0.9999997019767761,
+  "training/learning_rate": 0.00019981477170143925,
+  "perf/sec_per_step": 4.461914920806885,
+  "perf/tokens_per_sec_per_gpu_current": 7358.275669241743,
+  "perf/samples_per_sec_per_gpu_current": 2.6894282416819237,
+  "perf/total_num_tokens": 122791680,
+  "perf/total_num_samples": 44686,
+  "perf/num_sample_per_gpu": 44686.0,
+  "perf/samples_per_step_per_gpu_current": 12.0,
+  "perf/num_sample_per_sec_per_gpu": 2.6894282416819237,
+  "perf/valid_total_num_tokens": 759735,
+  "perf/valid_tokens_per_sec_per_gpu_current": 47.69252748582611,
+  "perf/valid_token_ratio": 0.006187186297964162,
+  "perf/mfu_per_step_per_gpu_current": 0.27273926489941813,
+  "perf/llm_flops_per_step_per_gpu_current": 379.68509140992,
+  "perf/mfu_per_step_per_gpu_avg": 0.2680214044957564,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.3158424389623,
+  "perf/samples_per_step_per_gpu_avg": 11.948128342245989,
+  "perf/samples_per_sec_per_gpu_avg": 2.501662751587168,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6874.26424519561,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 126561697136640.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3672914264064.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 183968464896.0,
+        "attn_v": 183968464896.0,
+        "attn_out": 275414777856,
+        "total": 1194181263360.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 12,
+        "seq_len_per_sample": 2736
+      }
+    },
+    "avg_flops_per_layer": 3672914264064.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 379.68509140992,
+    "total_flops/gpu_flops": 1.2169393955446153,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 379.68509140992,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 12,
+      "secs_per_step": 4.461914920806885
+    },
+    "mfu": 0.27273926489941813
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0014889810016029514,
+    "absolute@next_batch": 0.005169693598872982,
+    "absolute@to_cuda(batch)": 0.07169593019934836,
+    "absolute@compute_metrics": 4.341813588600781,
+    "absolute@optimizer.step": 0.04174708479986293,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.8914231050002854,
+    'absolute@llm': 1.3766760459984653,
+    'absolute@done': 2.0690811419990496
+}
+Start... Fwd
+End... Fwd elapsed: 3.910 
+Start... bwd
+End... bwd elapsed: 0.106 
+Start... Fwd
+End... Fwd elapsed: 4.132 
+Start... bwd
+End... bwd elapsed: 0.115 
+Start... Fwd
+End... Fwd elapsed: 3.767 
+Start... bwd
+End... bwd elapsed: 0.095 
+Start... Fwd
+End... Fwd elapsed: 3.720 
+Start... bwd
+End... bwd elapsed: 0.092 
+Start... Fwd
+End... Fwd elapsed: 5.011 
+Start... bwd
+End... bwd elapsed: 0.007 
+Step: 3745, Loss: 2.4194, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.6483 {
+  "training/loss": 2.4194270610809325,
+  "training/itemic_token_loss": 0.06529564559459686,
+  "training/text_token_loss": 2.0399488986910796e-09,
+  "training/grad_norm": 0.9999998807907104,
+  "training/learning_rate": 0.00019981226173283672,
+  "perf/sec_per_step": 4.648267316818237,
+  "perf/tokens_per_sec_per_gpu_current": 7063.277079871919,
+  "perf/samples_per_sec_per_gpu_current": 2.2373928371913974,
+  "perf/total_num_tokens": 122955840,
+  "perf/total_num_samples": 44738,
+  "perf/num_sample_per_gpu": 44738.0,
+  "perf/samples_per_step_per_gpu_current": 10.4,
+  "perf/num_sample_per_sec_per_gpu": 2.2373928371913974,
+  "perf/valid_total_num_tokens": 760548,
+  "perf/valid_tokens_per_sec_per_gpu_current": 34.980776473780885,
+  "perf/valid_token_ratio": 0.006185537832119239,
+  "perf/mfu_per_step_per_gpu_current": 0.26606406597798327,
+  "perf/llm_flops_per_step_per_gpu_current": 385.861913444352,
+  "perf/mfu_per_step_per_gpu_avg": 0.2680187912267073,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.3232470731484,
+  "perf/samples_per_step_per_gpu_avg": 11.946061415220294,
+  "perf/samples_per_sec_per_gpu_avg": 2.5013193507085543,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6874.509854589496,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 128620637814784.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3746447859712.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 220735262720.0,
+        "attn_v": 220735262720.0,
+        "attn_out": 275414777856,
+        "total": 1267714859008.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 10,
+        "seq_len_per_sample": 3283
+      }
+    },
+    "avg_flops_per_layer": 3746447859712.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 385.861913444352,
+    "total_flops/gpu_flops": 1.2367369020652308,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 385.861913444352,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 10,
+      "secs_per_step": 4.648267316818237
+    },
+    "mfu": 0.26606406597798327
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0019619551982032134,
+    "absolute@next_batch": 0.004848849000700284,
+    "absolute@to_cuda(batch)": 0.07698216820281231,
+    "absolute@compute_metrics": 4.522913560197049,
+    "absolute@optimizer.step": 0.04156099920073757,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9351101069987635,
+    'absolute@llm': 1.7733867120041396,
+    'absolute@done': 2.9107705329952296
+}
+Start... Fwd
+End... Fwd elapsed: 3.790 
+Start... bwd
+End... bwd elapsed: 0.091 
+Start... Fwd
+End... Fwd elapsed: 3.897 
+Start... bwd
+End... bwd elapsed: 0.103 
+Start... Fwd
+End... Fwd elapsed: 3.820 
+Start... bwd
+End... bwd elapsed: 0.099 
+Start... Fwd
+End... Fwd elapsed: 3.681 
+Start... bwd
+End... bwd elapsed: 0.091 
+Start... Fwd
+End... Fwd elapsed: 4.447 
+Start... bwd
+End... bwd elapsed: 0.008 
+Step: 3750, Loss: 2.4826, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.4500 {
+  "training/loss": 2.482568883895874,
+  "training/itemic_token_loss": 0.09253390207886696,
+  "training/text_token_loss": 2.245924335397831e-09,
+  "training/grad_norm": 0.9999997019767761,
+  "training/learning_rate": 0.00019980973490458728,
+  "perf/sec_per_step": 4.450012588500977,
+  "perf/tokens_per_sec_per_gpu_current": 7377.956656760769,
+  "perf/samples_per_sec_per_gpu_current": 3.146058515918944,
+  "perf/total_num_tokens": 123120000,
+  "perf/total_num_samples": 44808,
+  "perf/num_sample_per_gpu": 44808.0,
+  "perf/samples_per_step_per_gpu_current": 14.0,
+  "perf/num_sample_per_sec_per_gpu": 3.146058515918944,
+  "perf/valid_total_num_tokens": 761788,
+  "perf/valid_tokens_per_sec_per_gpu_current": 55.730179424849865,
+  "perf/valid_token_ratio": 0.006187361923326836,
+  "perf/mfu_per_step_per_gpu_current": 0.2702863434556494,
+  "perf/llm_flops_per_step_per_gpu_current": 375.266620833792,
+  "perf/mfu_per_step_per_gpu_avg": 0.2680218146296793,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.3165049048293,
+  "perf/samples_per_step_per_gpu_avg": 11.9488,
+  "perf/samples_per_sec_per_gpu_avg": 2.502120416052232,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6875.135369227611,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 125088873611264.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3620313423872.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 157668044800.0,
+        "attn_v": 157668044800.0,
+        "attn_out": 275414777856,
+        "total": 1141580423168.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 14,
+        "seq_len_per_sample": 2345
+      }
+    },
+    "avg_flops_per_layer": 3620313423872.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 375.266620833792,
+    "total_flops/gpu_flops": 1.2027776308775384,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 375.266620833792,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 14,
+      "secs_per_step": 4.450012588500977
+    },
+    "mfu": 0.2702863434556494
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0020035124005516993,
+    "absolute@next_batch": 0.004757797198544722,
+    "absolute@to_cuda(batch)": 0.07434677699930034,
+    "absolute@compute_metrics": 4.326920046001033,
+    "absolute@optimizer.step": 0.041984394201426765,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.8932214259984903,
+    'absolute@llm': 1.6909379740027362,
+    'absolute@done': 2.4670689039994613
+}
+Start... Fwd
+End... Fwd elapsed: 3.787 
+Start... bwd
+End... bwd elapsed: 0.091 
+Start... Fwd
+End... Fwd elapsed: 3.601 
+Start... bwd
+End... bwd elapsed: 0.085 
+Start... Fwd
+End... Fwd elapsed: 3.745 
+Start... bwd
+End... bwd elapsed: 0.093 
+Start... Fwd
+End... Fwd elapsed: 4.450 
+Start... bwd
+End... bwd elapsed: 0.121 
+Start... Fwd
+End... Fwd elapsed: 3.638 
+Start... bwd
+End... bwd elapsed: 0.089 
+Step: 3755, Loss: 2.2467, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.4588 {
+  "training/loss": 2.246683859825134,
+  "training/itemic_token_loss": 0.07517502065747976,
+  "training/text_token_loss": 5.8366352417849045e-09,
+  "training/grad_norm": 0.9999997615814209,
+  "training/learning_rate": 0.0001998071912175462,
+  "perf/sec_per_step": 4.45875244140625,
+  "perf/tokens_per_sec_per_gpu_current": 7363.4947065249235,
+  "perf/samples_per_sec_per_gpu_current": 3.3193141342765857,
+  "perf/total_num_tokens": 123284160,
+  "perf/total_num_samples": 44882,
+  "perf/num_sample_per_gpu": 44882.0,
+  "perf/samples_per_step_per_gpu_current": 14.8,
+  "perf/num_sample_per_sec_per_gpu": 3.3193141342765857,
+  "perf/valid_total_num_tokens": 762974,
+  "perf/valid_tokens_per_sec_per_gpu_current": 53.19873734124366,
+  "perf/valid_token_ratio": 0.006188743144293639,
+  "perf/mfu_per_step_per_gpu_current": 0.2684763290951803,
+  "perf/llm_flops_per_step_per_gpu_current": 373.485680197632,
+  "perf/mfu_per_step_per_gpu_avg": 0.2680224198420168,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.3074092660714,
+  "perf/samples_per_step_per_gpu_avg": 11.9525965379494,
+  "perf/samples_per_sec_per_gpu_avg": 2.503136479228289,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6875.74257401669,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 124495226732544.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3599111749632.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 147067207680.0,
+        "attn_v": 147067207680.0,
+        "attn_out": 275414777856,
+        "total": 1120378748928.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 15,
+        "seq_len_per_sample": 2188
+      }
+    },
+    "avg_flops_per_layer": 3599111749632.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 373.485680197632,
+    "total_flops/gpu_flops": 1.197069487812923,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 373.485680197632,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 15,
+      "secs_per_step": 4.45875244140625
+    },
+    "mfu": 0.2684763290951803
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.001552817401534412,
+    "absolute@next_batch": 0.0053563387977192175,
+    "absolute@to_cuda(batch)": 0.07457546240329975,
+    "absolute@compute_metrics": 4.34013213479775,
+    "absolute@optimizer.step": 0.037132168999232815,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9826313750018016,
+    'absolute@llm': 1.3605012279949733,
+    'absolute@done': 1.9940363339992473
+}
+Start... Fwd
+End... Fwd elapsed: 3.942 
+Start... bwd
+End... bwd elapsed: 0.106 
+Start... Fwd
+End... Fwd elapsed: 4.414 
+Start... bwd
+End... bwd elapsed: 0.007 
+Start... Fwd
+End... Fwd elapsed: 4.741 
+Start... bwd
+End... bwd elapsed: 0.007 
+Start... Fwd
+End... Fwd elapsed: 4.559 
+Start... bwd
+End... bwd elapsed: 0.007 
+Start... Fwd
+End... Fwd elapsed: 4.015 
+Start... bwd
+End... bwd elapsed: 0.108 
+Step: 3760, Loss: 2.4456, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.6845 {
+  "training/loss": 2.445566987991333,
+  "training/itemic_token_loss": 0.052604136243462565,
+  "training/text_token_loss": 4.229344030548532e-09,
+  "training/grad_norm": 0.9999998211860657,
+  "training/learning_rate": 0.00019980463067257437,
+  "perf/sec_per_step": 4.684480857849121,
+  "perf/tokens_per_sec_per_gpu_current": 7008.674172504743,
+  "perf/samples_per_sec_per_gpu_current": 2.134708264042624,
+  "perf/total_num_tokens": 123448320,
+  "perf/total_num_samples": 44932,
+  "perf/num_sample_per_gpu": 44932.0,
+  "perf/samples_per_step_per_gpu_current": 10.0,
+  "perf/num_sample_per_sec_per_gpu": 2.134708264042624,
+  "perf/valid_total_num_tokens": 763704,
+  "perf/valid_tokens_per_sec_per_gpu_current": 31.166740655022313,
+  "perf/valid_token_ratio": 0.006186426838372527,
+  "perf/mfu_per_step_per_gpu_current": 0.26400724852851215,
+  "perf/llm_flops_per_step_per_gpu_current": 385.861913444352,
+  "perf/mfu_per_step_per_gpu_avg": 0.2680170805184616,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.3147955748191,
+  "perf/samples_per_step_per_gpu_avg": 11.95,
+  "perf/samples_per_sec_per_gpu_avg": 2.502655828357585,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6875.915996371233,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 128620637814784.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3746447859712.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 220735262720.0,
+        "attn_v": 220735262720.0,
+        "attn_out": 275414777856,
+        "total": 1267714859008.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 10,
+        "seq_len_per_sample": 3283
+      }
+    },
+    "avg_flops_per_layer": 3746447859712.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 385.861913444352,
+    "total_flops/gpu_flops": 1.2367369020652308,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 385.861913444352,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 10,
+      "secs_per_step": 4.684480857849121
+    },
+    "mfu": 0.26400724852851215
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0014900515991030261,
+    "absolute@next_batch": 0.004699124998296611,
+    "absolute@to_cuda(batch)": 0.0707031886006007,
+    "absolute@compute_metrics": 4.560705639401567,
+    "absolute@optimizer.step": 0.04688616460043704,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.46271074499964016,
+    'absolute@llm': 1.4622247970037279,
+    'absolute@done': 2.2375797249987954
+}
+Start... Fwd
+End... Fwd elapsed: 3.805 
+Start... bwd
+End... bwd elapsed: 0.100 
+Start... Fwd
+End... Fwd elapsed: 3.946 
+Start... bwd
+End... bwd elapsed: 0.107 
+Start... Fwd
+End... Fwd elapsed: 3.766 
+Start... bwd
+End... bwd elapsed: 0.092 
+Start... Fwd
+End... Fwd elapsed: 3.886 
+Start... bwd
+End... bwd elapsed: 0.100 
+Start... Fwd
+End... Fwd elapsed: 3.845 
+Start... bwd
+End... bwd elapsed: 0.097 
+Step: 3765, Loss: 2.6665, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.4788 {
+  "training/loss": 2.666481304168701,
+  "training/itemic_token_loss": 0.061737997084856035,
+  "training/text_token_loss": 7.21716288731855e-08,
+  "training/grad_norm": 0.9999996423721313,
+  "training/learning_rate": 0.0001998020532705385,
+  "perf/sec_per_step": 4.478780841827392,
+  "perf/tokens_per_sec_per_gpu_current": 7330.566321392984,
+  "perf/samples_per_sec_per_gpu_current": 1.9201653985130258,
+  "perf/total_num_tokens": 123612480,
+  "perf/total_num_samples": 44975,
+  "perf/num_sample_per_gpu": 44975.0,
+  "perf/samples_per_step_per_gpu_current": 8.6,
+  "perf/num_sample_per_sec_per_gpu": 1.9201653985130258,
+  "perf/valid_total_num_tokens": 764471,
+  "perf/valid_tokens_per_sec_per_gpu_current": 34.25039210836025,
+  "perf/valid_token_ratio": 0.0061844160071863295,
+  "perf/mfu_per_step_per_gpu_current": 0.2790847376924537,
+  "perf/llm_flops_per_step_per_gpu_current": 389.987325444096,
+  "perf/mfu_per_step_per_gpu_avg": 0.26803177860235805,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.3276409000107,
+  "perf/samples_per_step_per_gpu_avg": 11.94555112881806,
+  "perf/samples_per_sec_per_gpu_avg": 2.5019301860002474,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6876.4823808416195,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 129995775148032.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3795559907328.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 245291286528.0,
+        "attn_v": 245291286528.0,
+        "attn_out": 275414777856,
+        "total": 1316826906624.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 9,
+        "seq_len_per_sample": 3648
+      }
+    },
+    "avg_flops_per_layer": 3795559907328.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 389.987325444096,
+    "total_flops/gpu_flops": 1.2499593764233845,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 389.987325444096,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 9,
+      "secs_per_step": 4.478780841827392
+    },
+    "mfu": 0.2790847376924537
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.00156718080106657,
+    "absolute@next_batch": 0.005168193398276344,
+    "absolute@to_cuda(batch)": 0.07721246100118151,
+    "absolute@compute_metrics": 4.358349941598135,
+    "absolute@optimizer.step": 0.03648347780108452,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9412228369983495,
+    'absolute@llm': 1.3902379200008,
+    'absolute@done': 2.1491632489996846
+}
+Start... Fwd
+End... Fwd elapsed: 4.132 
+Start... bwd
+End... bwd elapsed: 0.117 
+Start... Fwd
+End... Fwd elapsed: 3.746 
+Start... bwd
+End... bwd elapsed: 0.093 
+Start... Fwd
+End... Fwd elapsed: 4.272 
+Start... bwd
+End... bwd elapsed: 0.124 
+Start... Fwd
+End... Fwd elapsed: 3.875 
+Start... bwd
+End... bwd elapsed: 0.102 
+Start... Fwd
+End... Fwd elapsed: 3.748 
+Start... bwd
+End... bwd elapsed: 0.092 
+Step: 3770, Loss: 2.4089, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.6047 {
+  "training/loss": 2.408895397186279,
+  "training/itemic_token_loss": 0.06707256026566029,
+  "training/text_token_loss": 1.4957076688304483e-09,
+  "training/grad_norm": 0.9999997615814209,
+  "training/learning_rate": 0.0001997994590123109,
+  "perf/sec_per_step": 4.604687166213989,
+  "perf/tokens_per_sec_per_gpu_current": 7130.126068258994,
+  "perf/samples_per_sec_per_gpu_current": 2.0848321837014603,
+  "perf/total_num_tokens": 123776640,
+  "perf/total_num_samples": 45023,
+  "perf/num_sample_per_gpu": 45023.0,
+  "perf/samples_per_step_per_gpu_current": 9.6,
+  "perf/num_sample_per_sec_per_gpu": 2.0848321837014603,
+  "perf/valid_total_num_tokens": 765293,
+  "perf/valid_tokens_per_sec_per_gpu_current": 35.702751145887504,
+  "perf/valid_token_ratio": 0.006182854858558125,
+  "perf/mfu_per_step_per_gpu_current": 0.2685821766871702,
+  "perf/llm_flops_per_step_per_gpu_current": 385.861913444352,
+  "perf/mfu_per_step_per_gpu_avg": 0.2680325085732928,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.33498078402175,
+  "perf/samples_per_step_per_gpu_avg": 11.942440318302387,
+  "perf/samples_per_sec_per_gpu_avg": 2.5013966590276944,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6876.8068267701765,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 128620637814784.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3746447859712.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 220735262720.0,
+        "attn_v": 220735262720.0,
+        "attn_out": 275414777856,
+        "total": 1267714859008.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 10,
+        "seq_len_per_sample": 3283
+      }
+    },
+    "avg_flops_per_layer": 3746447859712.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 385.861913444352,
+    "total_flops/gpu_flops": 1.2367369020652308,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 385.861913444352,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 10,
+      "secs_per_step": 4.604687166213989
+    },
+    "mfu": 0.2685821766871702
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0015089902008185163,
+    "absolute@next_batch": 0.005124673202226404,
+    "absolute@to_cuda(batch)": 0.07790318279876374,
+    "absolute@compute_metrics": 4.484385554800975,
+    "absolute@optimizer.step": 0.03576470619736938,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.9281961589949788,
+    'absolute@llm': 1.3799718010050128,
+    'absolute@done': 2.0741406099987216
+}
+Start... Fwd
+End... Fwd elapsed: 3.780 
+Start... bwd
+End... bwd elapsed: 0.095 
+Start... Fwd
+End... Fwd elapsed: 3.703 
+Start... bwd
+End... bwd elapsed: 0.090 
+Start... Fwd
+End... Fwd elapsed: 3.690 
+Start... bwd
+End... bwd elapsed: 0.089 
+Start... Fwd
+End... Fwd elapsed: 3.706 
+Start... bwd
+End... bwd elapsed: 0.090 
+Start... Fwd
+End... Fwd elapsed: 3.700 
+Start... bwd
+End... bwd elapsed: 0.090 
+Step: 3775, Loss: 2.5391, Learning Rate: 2.00e-04, Grad Norm: 1.0000, Sec per 
+Step: 4.3197 {
+  "training/loss": 2.5390802383422852,
+  "training/itemic_token_loss": 0.0843303494155407,
+  "training/text_token_loss": 2.9060386319557097e-09,
+  "training/grad_norm": 0.9999997615814209,
+  "training/learning_rate": 0.00019979684789876964,
+  "perf/sec_per_step": 4.31966347694397,
+  "perf/tokens_per_sec_per_gpu_current": 7600.59207742443,
+  "perf/samples_per_sec_per_gpu_current": 2.9168938893624454,
+  "perf/total_num_tokens": 123940800,
+  "perf/total_num_samples": 45086,
+  "perf/num_sample_per_gpu": 45086.0,
+  "perf/samples_per_step_per_gpu_current": 12.6,
+  "perf/num_sample_per_sec_per_gpu": 2.9168938893624454,
+  "perf/valid_total_num_tokens": 766400,
+  "perf/valid_tokens_per_sec_per_gpu_current": 51.25399262736868,
+  "perf/valid_token_ratio": 0.0061835973303383555,
+  "perf/mfu_per_step_per_gpu_current": 0.2799478291220585,
+  "perf/llm_flops_per_step_per_gpu_current": 377.295488827392,
+  "perf/mfu_per_step_per_gpu_avg": 0.2680482904548143,
+  "perf/llm_flops_per_step_per_gpu_avg": 380.33095496686065,
+  "perf/samples_per_step_per_gpu_avg": 11.943311258278145,
+  "perf/samples_per_sec_per_gpu_avg": 2.501894642996934,
+  "perf/tokens_per_step_per_gpu_avg": 32832.0,
+  "perf/tokens_per_sec_per_gpu_avg": 6877.674301751195,
+  "perf/epoch_idx": 0.0
+} 
+ {
+  "mfu_stats": {
+    "total_flops": 125765162942464.0,
+    "per_layer_flops": {
+      "layer_index": 0,
+      "total_flops": 3644466614272.0,
+      "attention": {
+        "q_proj": 275414777856,
+        "k_proj": 137707388928,
+        "v_proj": 137707388928,
+        "attn_scores": 169744640000.0,
+        "attn_v": 169744640000.0,
+        "attn_out": 275414777856,
+        "total": 1165733613568.0
+      },
+      "ffn_flops": 2478733000704,
+      "batch_info": {
+        "batch_size": 13,
+        "seq_len_per_sample": 2525
+      }
+    },
+    "avg_flops_per_layer": 3644466614272.0,
+    "num_layers": 28,
+    "lm_head_flops": 23720097742848,
+    "total_flops*3(T)": 377.295488827392,
+    "total_flops/gpu_flops": 1.2092804129083077,
+    "gpu_flops": 312000000000000.0,
+    "llm_total_flops*3(T)": 377.295488827392,
+    "llm_percentage": 100,
+    "input_args": {
+      "config_path": 
+"/home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain/config.json",
+      "total_seq_len": 32832,
+      "llm_batch_size": 13,
+      "secs_per_step": 4.31966347694397
+    },
+    "mfu": 0.2799478291220585
+  },
+  "step_time_tracker": {
+    "absolute@enter_context(torch_profiler)": 0.0014015728011145256,
+    "absolute@next_batch": 0.004736095399130136,
+    "absolute@to_cuda(batch)": 0.07836390619922895,
+    "absolute@compute_metrics": 4.198715049002203,
+    "absolute@optimizer.step": 0.03644671579822898,
+    "absolute@save_ckpt*500": 96.85274643860029
+  }
+} 
+
+{
+    'absolute@lm_head': 0.8866738889992121,
+    'absolute@llm': 1.3673892629958573,
+    'absolute@done': 2.045029215005343
+}
+Start... Fwd
+End... Fwd elapsed: 3.660 
+Start... bwd
+End... bwd elapsed: 0.087 
+Start... Fwd
+End... Fwd elapsed: 3.637 
+Start... bwd
+End... bwd elapsed: 0.086 
+Start... Fwd
