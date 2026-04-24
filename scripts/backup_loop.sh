@@ -1,0 +1,99 @@
+#!/bin/bash
+# Backup loop: 
+# - Every 5min: poll latest ckpt step
+# - For every NEW ckpt step (>=5000, multiple of 1000): convert distcp -> HF safetensors (~3.4GB), upload to HF/weights/step{N}/
+# - Milestone steps 15000 & 30000: ALSO upload full distcp ckpt (22GB) to HF/ckpt/step{N}/
+# - Every 500 steps: push logs/scripts to GitHub backup repo
+export HF_TOKEN=$(cat ~/.hf_token)
+export PATH=$HOME/.local/bin:$PATH
+WS=$HOME/workspace
+FEISHU=https://open.feishu.cn/open-apis/bot/v2/hook/cec8c727-b5a8-46e4-995a-051bfa2ea9a2
+HF_REPO=dqding/OneRec-1.7B-sft-interactive-1gpu
+SRC_HF=$WS/data/hf_models/OneRec-1.7B-pretrain  # source for tokenizer/config
+PUSHED=$WS/backup_pushed.txt
+PUSHED_FULL=$WS/backup_pushed_full.txt
+touch $PUSHED $PUSHED_FULL
+LAST_LOG_STEP=0
+WEIGHTS_INTERVAL=2000   # convert+push weights every N steps (must be multiple of 500)
+WEIGHTS_FROM=5000       # start pushing weights from this step
+FULL_MILESTONES=(15000 30000)
+
+notify(){ curl -s -X POST -H "Content-Type: application/json" $FEISHU -d "{\"msg_type\":\"text\",\"content\":{\"text\":\"$1\"}}" >/dev/null||true; }
+
+convert_and_push_weights() {
+    local STEP=$1
+    local CKPT_DIR=$WS/outputs/sft/step$STEP
+    local TMP_OUT=$WS/tmp_hf_step$STEP
+    rm -rf $TMP_OUT
+    notify "[OneRec] converting step$STEP -> HF safetensors"
+    sudo docker run --rm --ipc=host \
+        -v $WS:$WS -w $WS/code/OpenOneRec/pretrain \
+        onerec-train:latest \
+        python3 tools/model_converter/convert_checkpoint_to_hf.py \
+            --checkpoint_dir $CKPT_DIR/global_step$STEP \
+            --output_dir $TMP_OUT \
+            --source_hf_model_path $SRC_HF \
+            --use_safetensor --dtype bf16 --max_gb_per_shard 5 \
+        2>&1 | tail -10
+    if [ ! -f $TMP_OUT/config.json ]; then
+        notify "[OneRec][ERR] convert step$STEP failed"
+        return 1
+    fi
+    SIZE=$(du -sh $TMP_OUT | awk "{print \$1}")
+    notify "[OneRec] converted step$STEP ($SIZE), uploading"
+    hf upload $HF_REPO $TMP_OUT weights/step$STEP --repo-type model \
+        --commit-message "weights step$STEP (bf16 safetensors)" 2>&1 | tail -3 || true
+    rm -rf $TMP_OUT
+    echo $STEP >> $PUSHED
+    notify "[OneRec] ✅ pushed weights/step$STEP"
+}
+
+push_full_ckpt() {
+    local STEP=$1
+    notify "[OneRec] pushing FULL distcp ckpt step$STEP (22GB) for resume backup"
+    hf upload $HF_REPO $WS/outputs/sft/step$STEP ckpt/step$STEP --repo-type model \
+        --commit-message "full distcp ckpt step$STEP (resume-able)" 2>&1 | tail -3 || true
+    echo $STEP >> $PUSHED_FULL
+    notify "[OneRec] ✅ pushed full ckpt/step$STEP"
+}
+
+while true; do
+    sleep 300
+    LATEST_DIR=$(ls -1 $WS/outputs/sft/ 2>/dev/null | grep -E "^step[0-9]+$" | sed "s/step//" | sort -n | tail -1)
+    STEP=${LATEST_DIR:-0}
+
+    # Weights push: every WEIGHTS_INTERVAL after WEIGHTS_FROM
+    if [ "$STEP" -ge $WEIGHTS_FROM ]; then
+        # find largest unpushed multiple of WEIGHTS_INTERVAL <= STEP
+        for CAND in $(ls -1 $WS/outputs/sft/ | grep -E "^step[0-9]+$" | sed "s/step//" | sort -n); do
+            if [ "$CAND" -lt $WEIGHTS_FROM ]; then continue; fi
+            if [ $((CAND % WEIGHTS_INTERVAL)) -ne 0 ]; then continue; fi
+            if [ "$CAND" -gt "$STEP" ]; then break; fi
+            if grep -q "^$CAND$" $PUSHED; then continue; fi
+            convert_and_push_weights $CAND
+        done
+    fi
+
+    # Full ckpt push: only at milestones
+    for M in "${FULL_MILESTONES[@]}"; do
+        if [ "$STEP" -ge "$M" ] && ! grep -q "^$M$" $PUSHED_FULL; then
+            if [ -d $WS/outputs/sft/step$M ]; then
+                push_full_ckpt $M
+            fi
+        fi
+    done
+
+    # GitHub log push every 500 steps
+    if [ "$STEP" -ge $((LAST_LOG_STEP + 500)) ] && [ "$STEP" -gt 0 ]; then
+        cd $WS/backup
+        mkdir -p logs scripts
+        cp $WS/logs/*.log logs/ 2>/dev/null || true
+        cp $WS/code/OpenOneRec/pretrain/examples/posttrain_sft_1gpu.sh scripts/ 2>/dev/null || true
+        cp $WS/run_full_train.sh scripts/ 2>/dev/null || true
+        cp $WS/backup_loop.sh scripts/ 2>/dev/null || true
+        git add -A
+        git -c user.name=dqding -c user.email=dingdraqian@hotmail.com commit -qm "logs at step $STEP" 2>/dev/null && \
+            git push -q origin main 2>&1 | tail -3 || true
+        LAST_LOG_STEP=$STEP
+    fi
+done
