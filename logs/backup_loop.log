@@ -27,3 +27,26 @@ rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step6000/merges.txt': Per
 rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step6000/model-00000-of-00001.safetensors': Permission denied
 rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step6000/added_tokens.json': Permission denied
 rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step6000/generation_config.json': Permission denied
+2026-04-25 04:42:43,994 - INFO - Splitting state_dict into shards (max 5 GB per shard)...
+Creating shards:   0%|          | 0/311 [00:00<?, ?it/s]Creating shards: 100%|██████████| 311/311 [00:00<00:00, 1271372.85it/s]
+2026-04-25 04:42:43,995 - INFO - Writing 1 shard files...
+Writing shards:   0%|          | 0/1 [00:00<?, ?it/s]2026-04-25 04:42:46,249 - INFO - Shard 1/1: 3.97 GiB saved to /home/v-daqianding/workspace/tmp_hf_step8000/model-00000-of-00001.safetensors
+Writing shards: 100%|██████████| 1/1 [00:02<00:00,  2.25s/it]Writing shards: 100%|██████████| 1/1 [00:02<00:00,  2.25s/it]
+2026-04-25 04:42:46,250 - INFO - Index file saved to /home/v-daqianding/workspace/tmp_hf_step8000/model.safetensors.index.json
+2026-04-25 04:42:46,250 - INFO - Total model size: 3.97 GiB
+2026-04-25 04:42:46,283 - INFO - Copying config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step8000
+2026-04-25 04:42:46,297 - INFO - Successfully copied 8 config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step8000
+2026-04-25 04:42:46,297 - INFO - Conversion completed successfully!
+  File "/home/v-daqianding/.local/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/vocab.json': Permission denied
+rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/config.json': Permission denied
+rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/tokenizer.json': Permission denied
+rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/special_tokens_map.json': Permission denied
+rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/tokenizer_config.json': Permission denied
+rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/model.safetensors.index.json': Permission denied
+rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/merges.txt': Permission denied
+rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/model-00000-of-00001.safetensors': Permission denied
+rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/added_tokens.json': Permission denied
+rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/generation_config.json': Permission denied
