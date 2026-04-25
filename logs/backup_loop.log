@@ -76,3 +76,16 @@ rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/generation_confi
   ..._step10000/tokenizer.json: 100%|██████████| 16.0MB / 16.0MB            
 [32m✓ Uploaded[0m
   url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/064779f7eb5363a03ddd967df1bdf88de33346dd
+2026-04-25 09:53:05,407 - INFO - Splitting state_dict into shards (max 5 GB per shard)...
+Creating shards:   0%|          | 0/311 [00:00<?, ?it/s]Creating shards: 100%|██████████| 311/311 [00:00<00:00, 1163629.39it/s]
+2026-04-25 09:53:05,407 - INFO - Writing 1 shard files...
+Writing shards:   0%|          | 0/1 [00:00<?, ?it/s]2026-04-25 09:53:07,143 - INFO - Shard 1/1: 3.97 GiB saved to /home/v-daqianding/workspace/tmp_hf_step12000/model-00000-of-00001.safetensors
+Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.74s/it]Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.74s/it]
+2026-04-25 09:53:07,144 - INFO - Index file saved to /home/v-daqianding/workspace/tmp_hf_step12000/model.safetensors.index.json
+2026-04-25 09:53:07,144 - INFO - Total model size: 3.97 GiB
+2026-04-25 09:53:07,195 - INFO - Copying config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step12000
+2026-04-25 09:53:07,209 - INFO - Successfully copied 8 config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step12000
+2026-04-25 09:53:07,209 - INFO - Conversion completed successfully!
+  ..._step12000/tokenizer.json: 100%|██████████| 16.0MB / 16.0MB            
+[32m✓ Uploaded[0m
+  url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/aeabb9884626cf562ee2938b4c91b0154ecc2489
