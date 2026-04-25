@@ -102,3 +102,6 @@ rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/generation_confi
   ..._step14000/tokenizer.json: 100%|██████████| 16.0MB / 16.0MB            
 [32m✓ Uploaded[0m
   url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/29311d8e8f49cc1d225a7072e076df7fa03b1c83
+  .../dataloader_ckpt/rank0.pt: 100%|██████████| 41.4kB / 41.4kB            
+[32m✓ Uploaded[0m
+  url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/bad49098c4fb3146d45d806ac91f18f98d7a3a38
