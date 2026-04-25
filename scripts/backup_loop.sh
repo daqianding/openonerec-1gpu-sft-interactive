@@ -1,32 +1,41 @@
 #!/bin/bash
-# Backup loop: 
-# - Every 5min: poll latest ckpt step
-# - For every NEW ckpt step (>=5000, multiple of 1000): convert distcp -> HF safetensors (~3.4GB), upload to HF/weights/step{N}/
-# - Milestone steps 15000 & 30000: ALSO upload full distcp ckpt (22GB) to HF/ckpt/step{N}/
-# - Every 500 steps: push logs/scripts to GitHub backup repo
 export HF_TOKEN=$(cat ~/.hf_token)
 export PATH=$HOME/.local/bin:$PATH
 WS=$HOME/workspace
 FEISHU=https://open.feishu.cn/open-apis/bot/v2/hook/cec8c727-b5a8-46e4-995a-051bfa2ea9a2
 HF_REPO=dqding/OneRec-1.7B-sft-interactive-1gpu
-SRC_HF=$WS/data/hf_models/OneRec-1.7B-pretrain  # source for tokenizer/config
+SRC_HF=$WS/data/hf_models/OneRec-1.7B-pretrain
 PUSHED=$WS/backup_pushed.txt
 PUSHED_FULL=$WS/backup_pushed_full.txt
 touch $PUSHED $PUSHED_FULL
 LAST_LOG_STEP=0
-WEIGHTS_INTERVAL=2000   # convert+push weights every N steps (must be multiple of 500)
-WEIGHTS_FROM=5000       # start pushing weights from this step
+WEIGHTS_INTERVAL=2000
+WEIGHTS_FROM=5000
 FULL_MILESTONES=(15000 30000)
+USR=$(id -u):$(id -g)
 
 notify(){ curl -s -X POST -H "Content-Type: application/json" $FEISHU -d "{\"msg_type\":\"text\",\"content\":{\"text\":\"$1\"}}" >/dev/null||true; }
+
+retry_upload() {
+    local SRC=$1 DEST=$2 MSG=$3
+    for try in 1 2 3 4 5; do
+        if hf upload $HF_REPO $SRC $DEST --repo-type model --commit-message "$MSG" 2>&1 | tail -3; then
+            return 0
+        fi
+        notify "[OneRec][WARN] upload retry $try for $DEST"
+        sleep $((try * 30))
+    done
+    notify "[OneRec][ERR] upload FAILED after 5 retries: $DEST"
+    return 1
+}
 
 convert_and_push_weights() {
     local STEP=$1
     local CKPT_DIR=$WS/outputs/sft/step$STEP
     local TMP_OUT=$WS/tmp_hf_step$STEP
-    rm -rf $TMP_OUT
+    sudo rm -rf $TMP_OUT 2>/dev/null
     notify "[OneRec] converting step$STEP -> HF safetensors"
-    sudo docker run --rm --ipc=host \
+    sudo docker run --rm -u $USR --ipc=host \
         -v $WS:$WS -w $WS/code/OpenOneRec/pretrain \
         onerec-train:latest \
         python3 tools/model_converter/convert_checkpoint_to_hf.py \
@@ -37,24 +46,25 @@ convert_and_push_weights() {
         2>&1 | tail -10
     if [ ! -f $TMP_OUT/config.json ]; then
         notify "[OneRec][ERR] convert step$STEP failed"
+        sudo rm -rf $TMP_OUT 2>/dev/null
         return 1
     fi
     SIZE=$(du -sh $TMP_OUT | awk "{print \$1}")
     notify "[OneRec] converted step$STEP ($SIZE), uploading"
-    hf upload $HF_REPO $TMP_OUT weights/step$STEP --repo-type model \
-        --commit-message "weights step$STEP (bf16 safetensors)" 2>&1 | tail -3 || true
-    rm -rf $TMP_OUT
-    echo $STEP >> $PUSHED
-    notify "[OneRec] ✅ pushed weights/step$STEP"
+    if retry_upload $TMP_OUT weights/step$STEP "weights step$STEP (bf16 safetensors)"; then
+        echo $STEP >> $PUSHED
+        notify "[OneRec] ✅ pushed weights/step$STEP"
+    fi
+    sudo rm -rf $TMP_OUT 2>/dev/null || rm -rf $TMP_OUT 2>/dev/null
 }
 
 push_full_ckpt() {
     local STEP=$1
-    notify "[OneRec] pushing FULL distcp ckpt step$STEP (22GB) for resume backup"
-    hf upload $HF_REPO $WS/outputs/sft/step$STEP ckpt/step$STEP --repo-type model \
-        --commit-message "full distcp ckpt step$STEP (resume-able)" 2>&1 | tail -3 || true
-    echo $STEP >> $PUSHED_FULL
-    notify "[OneRec] ✅ pushed full ckpt/step$STEP"
+    notify "[OneRec] pushing FULL distcp ckpt step$STEP (22GB)"
+    if retry_upload $WS/outputs/sft/step$STEP ckpt/step$STEP "full distcp ckpt step$STEP"; then
+        echo $STEP >> $PUSHED_FULL
+        notify "[OneRec] ✅ pushed full ckpt/step$STEP"
+    fi
 }
 
 while true; do
@@ -62,9 +72,7 @@ while true; do
     LATEST_DIR=$(ls -1 $WS/outputs/sft/ 2>/dev/null | grep -E "^step[0-9]+$" | sed "s/step//" | sort -n | tail -1)
     STEP=${LATEST_DIR:-0}
 
-    # Weights push: every WEIGHTS_INTERVAL after WEIGHTS_FROM
     if [ "$STEP" -ge $WEIGHTS_FROM ]; then
-        # find largest unpushed multiple of WEIGHTS_INTERVAL <= STEP
         for CAND in $(ls -1 $WS/outputs/sft/ | grep -E "^step[0-9]+$" | sed "s/step//" | sort -n); do
             if [ "$CAND" -lt $WEIGHTS_FROM ]; then continue; fi
             if [ $((CAND % WEIGHTS_INTERVAL)) -ne 0 ]; then continue; fi
@@ -74,7 +82,6 @@ while true; do
         done
     fi
 
-    # Full ckpt push: only at milestones
     for M in "${FULL_MILESTONES[@]}"; do
         if [ "$STEP" -ge "$M" ] && ! grep -q "^$M$" $PUSHED_FULL; then
             if [ -d $WS/outputs/sft/step$M ]; then
@@ -83,7 +90,6 @@ while true; do
         fi
     done
 
-    # GitHub log push every 500 steps
     if [ "$STEP" -ge $((LAST_LOG_STEP + 500)) ] && [ "$STEP" -gt 0 ]; then
         cd $WS/backup
         mkdir -p logs scripts
