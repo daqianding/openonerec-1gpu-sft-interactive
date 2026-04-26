@@ -219,3 +219,4 @@ docker: Error response from daemon: failed to create task for container: mkdir /
   url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/b6e53135a07892a8450857372c96e7a69daace4c
 [cleanup] removing local step23000
 [cleanup] removing local step23500
+[cleanup] removing local step24000
