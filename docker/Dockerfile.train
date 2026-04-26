@@ -1,0 +1,6 @@
+FROM nvcr.io/nvidia/pytorch:24.08-py3
+WORKDIR /workspace
+RUN pip install --no-cache-dir \
+    transformers==4.53.0 easydict sortedcontainers datasets accelerate \
+    pyarrow pandas numpy tqdm safetensors sentencepiece tokenizers einops torchdata webdataset fastparquet
+RUN pip install --no-cache-dir torchao==0.10 || echo 'torchao install skipped'
