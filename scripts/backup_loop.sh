@@ -12,6 +12,7 @@ LAST_LOG_STEP=0
 WEIGHTS_INTERVAL=2000
 WEIGHTS_FROM=5000
 FULL_MILESTONES=(15000 30000)
+KEEP_RECENT=2
 USR=$(id -u):$(id -g)
 
 notify(){ curl -s -X POST -H "Content-Type: application/json" $FEISHU -d "{\"msg_type\":\"text\",\"content\":{\"text\":\"$1\"}}" >/dev/null||true; }
@@ -67,6 +68,30 @@ push_full_ckpt() {
     fi
 }
 
+cleanup_local_ckpts() {
+    # Keep: latest KEEP_RECENT ckpts + any FULL_MILESTONES
+    local ALL=($(ls -1 $WS/outputs/sft/ | grep -E "^step[0-9]+$" | sed "s/step//" | sort -n))
+    local N=${#ALL[@]}
+    if [ $N -le $KEEP_RECENT ]; then return; fi
+    local KEEP_FROM=$((N - KEEP_RECENT))
+    for i in $(seq 0 $((N-1))); do
+        local S=${ALL[$i]}
+        # Always keep recent
+        if [ $i -ge $KEEP_FROM ]; then continue; fi
+        # Always keep milestones
+        local IS_MS=0
+        for M in "${FULL_MILESTONES[@]}"; do
+            if [ "$S" = "$M" ]; then IS_MS=1; break; fi
+        done
+        if [ $IS_MS -eq 1 ]; then continue; fi
+        # Only delete if weights already pushed (safety)
+        if grep -q "^$S$" $PUSHED 2>/dev/null || [ $((S % WEIGHTS_INTERVAL)) -ne 0 ]; then
+            echo "[cleanup] removing local step$S"
+            sudo rm -rf $WS/outputs/sft/step$S
+        fi
+    done
+}
+
 while true; do
     sleep 300
     LATEST_DIR=$(ls -1 $WS/outputs/sft/ 2>/dev/null | grep -E "^step[0-9]+$" | sed "s/step//" | sort -n | tail -1)
@@ -89,6 +114,14 @@ while true; do
             fi
         fi
     done
+
+    cleanup_local_ckpts
+
+    DISK_PCT=$(df / | tail -1 | awk "{print \$5}" | tr -d %)
+    if [ "$DISK_PCT" -gt 85 ]; then
+        notify "[OneRec][WARN] disk ${DISK_PCT}% used, force-cleaning all non-recent non-milestone"
+        cleanup_local_ckpts
+    fi
 
     if [ "$STEP" -ge $((LAST_LOG_STEP + 500)) ] && [ "$STEP" -gt 0 ]; then
         cd $WS/backup

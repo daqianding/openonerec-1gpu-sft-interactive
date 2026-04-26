@@ -144,3 +144,47 @@ rm: cannot remove '/home/v-daqianding/workspace/tmp_hf_step8000/generation_confi
   ...0000-of-00001.safetensors: 100%|██████████| 4.26GB / 4.26GB            
 [32m✓ Uploaded[0m
   url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/2d1ef7c5880baf781143af1cf92b09aa15816f9c
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/a1989ddca88fc6dc78525edceac3d9e79f17a432e2f600a6db24030318495789: no space left on device
+
+Run 'docker run --help' for more information
+fatal: unable to write loose object file: No space left on device
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/c9eed796469d0be5412cbced361dc0ef6ca36cabd15a37523a94d2cc4cb0de18: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/eab741f8ad5b3d363ca69a2b41ae7c690839e6107822d39cbd5b895230fb2ad7: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/c074f753c08f6eed8cca3a09104e2dbdb77cf9d9ea0c1d56f3ff67789b824880: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/41b1e32a50581de6c716d296c3bf4a4c3f07a4d75bb2b34beb2128b2c8144e7b: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/43cf16a564bc669e09af5990f6f73fdeaec492e8e4146d815230ec68a88bd515: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/d25007ee4a82f611cf50157049a5a7d70476a06bcafdd29373af96ae4e8595f3: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/05f81423728b4972334417c5ef447e082927b0716fd2a0253271c5815f093994: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/505fabcd392c45c3ba3d2d465554f5a0e2155956ecd277cf2f3459c0bfc133a9: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/e323060fb87c5891a4ac0caed02d7196a8346a5448af0fdd4f089291e49b7fec: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/c32eeff47c40a799f0252fbaf991aeac385f0b50cba5e639e19a7c5bac484259: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/d6482e159a61fcfd316e2df90611729654a5091f7a9696aa377475a84b57b659: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/16d163731b7d85a7d10967221ce09621a719988533934474fe37594afc7a10a0: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/862c58f959ab6f8a7de0723d2942f3cbd762cfed02d4e08bd5be23305f9d5f8d: no space left on device
+
+Run 'docker run --help' for more information
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/f1d241b13a422a61d157e6542bf02b9
