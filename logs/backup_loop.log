@@ -187,4 +187,17 @@ Run 'docker run --help' for more information
 docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/862c58f959ab6f8a7de0723d2942f3cbd762cfed02d4e08bd5be23305f9d5f8d: no space left on device
 
 Run 'docker run --help' for more information
-docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/f1d241b13a422a61d157e6542bf02b9
+docker: Error response from daemon: failed to create task for container: mkdir /var/lib/containerd/io.containerd.runtime.v2.task/moby/f1d241b13a422a61d157e6542bf02b92026-04-26 03:48:10,614 - INFO - Splitting state_dict into shards (max 5 GB per shard)...
+Creating shards:   0%|          | 0/311 [00:00<?, ?it/s]Creating shards: 100%|██████████| 311/311 [00:00<00:00, 1363039.23it/s]
+2026-04-26 03:48:13,459 - INFO - Writing 1 shard files...
+Writing shards:   0%|          | 0/1 [00:00<?, ?it/s]2026-04-26 03:48:15,257 - INFO - Shard 1/1: 3.97 GiB saved to /home/v-daqianding/workspace/tmp_hf_step22000/model-00000-of-00001.safetensors
+Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.80s/it]Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.80s/it]
+2026-04-26 03:48:15,258 - INFO - Index file saved to /home/v-daqianding/workspace/tmp_hf_step22000/model.safetensors.index.json
+2026-04-26 03:48:15,258 - INFO - Total model size: 3.97 GiB
+2026-04-26 03:48:15,305 - INFO - Copying config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step22000
+2026-04-26 03:48:15,462 - INFO - Successfully copied 8 config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step22000
+2026-04-26 03:48:15,463 - INFO - Conversion completed successfully!
+  ...0000-of-00001.safetensors:  99%|█████████▉| 4.21GB / 4.26GB            
+[32m✓ Uploaded[0m
+  url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/091dcafa3fe497d3ad5a0fdc01e7038cb1c1dabe
+[cleanup] removing local step21000
