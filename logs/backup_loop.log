@@ -204,3 +204,17 @@ docker: Error response from daemon: failed to create task for container: mkdir /
 [cleanup] removing local step21500
 [cleanup] removing local step22000
 [cleanup] removing local step22500
+2026-04-26 06:25:27,963 - INFO - Splitting state_dict into shards (max 5 GB per shard)...
+Creating shards:   0%|          | 0/311 [00:00<?, ?it/s]Creating shards: 100%|██████████| 311/311 [00:00<00:00, 1126449.52it/s]
+2026-04-26 06:25:27,964 - INFO - Writing 1 shard files...
+Writing shards:   0%|          | 0/1 [00:00<?, ?it/s]2026-04-26 06:25:29,691 - INFO - Shard 1/1: 3.97 GiB saved to /home/v-daqianding/workspace/tmp_hf_step24000/model-00000-of-00001.safetensors
+Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.73s/it]Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.73s/it]
+2026-04-26 06:25:29,692 - INFO - Index file saved to /home/v-daqianding/workspace/tmp_hf_step24000/model.safetensors.index.json
+2026-04-26 06:25:29,692 - INFO - Total model size: 3.97 GiB
+2026-04-26 06:25:29,738 - INFO - Copying config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step24000
+2026-04-26 06:25:29,749 - INFO - Successfully copied 8 config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step24000
+2026-04-26 06:25:29,749 - INFO - Conversion completed successfully!
+  ...0000-of-00001.safetensors:  99%|█████████▉| 4.21GB / 4.26GB            
+[32m✓ Uploaded[0m
+  url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/b6e53135a07892a8450857372c96e7a69daace4c
+[cleanup] removing local step23000
