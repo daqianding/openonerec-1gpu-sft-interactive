@@ -203,3 +203,4 @@ docker: Error response from daemon: failed to create task for container: mkdir /
 [cleanup] removing local step21000
 [cleanup] removing local step21500
 [cleanup] removing local step22000
+[cleanup] removing local step22500
