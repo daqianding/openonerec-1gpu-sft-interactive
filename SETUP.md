@@ -161,3 +161,26 @@ bash ~/workspace/backup_loop.sh 2>&1 | tee -a ~/workspace/logs/backup_loop.log
 - LR=2e-4 → MIN_LR=1e-4 cosine, NUM_WARMUP=3000
 - NUM_STEPS=40000, SAVE_PER_STEP=500
 - bf16 weights via fp32 master, gradient checkpointing on, chunked loss, FSDP world_size=1
+
+---
+
+## ✅ Last Resume Point: step38500 (2026-04-27 03:00 UTC)
+
+Training stopped at **step38500 / 40000** to free GPU for interactive benchmark before Azure VM rental ended.
+
+**HF state at handoff**:
+- `ckpt/step38500` — full distcp + optimizer + dataloader (USE THIS to resume)
+- `ckpt/step30000`, `ckpt/step15000` — earlier full milestones
+- `weights/step38000` — latest bf16 safetensors (use for benchmark/inference)
+
+**To resume on a new VM**:
+```bash
+LATEST_STEP=38500
+hf download dqding/OneRec-1.7B-sft-interactive-1gpu \
+  --include "ckpt/step${LATEST_STEP}/*" --local-dir /tmp/hf_dl
+mkdir -p ~/workspace/outputs/sft
+mv /tmp/hf_dl/ckpt/step${LATEST_STEP} ~/workspace/outputs/sft/step${LATEST_STEP}
+echo step${LATEST_STEP} > ~/workspace/outputs/sft/latest
+bash ~/workspace/run_full_train_resume.sh ${LATEST_STEP}
+# This will resume from step38500 and train to step40000 (1500 more steps, ~1.85h on A100)
+```
