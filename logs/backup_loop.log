@@ -339,3 +339,4 @@ Make sure your token has the correct permissions.
 [32m✓ Uploaded[0m
   url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/df3fdea8c19d976ba6b1a6c2ca6f9647c3058052
 [cleanup] removing local step37000
+[cleanup] removing local step37500
