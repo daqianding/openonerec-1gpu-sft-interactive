@@ -272,3 +272,56 @@ Cannot access content at: https://huggingface.co/dqding/OneRec-1.7B-sft-interact
 Make sure your token has the correct permissions.
 [90mSet HF_DEBUG=1 as environment variable for full traceback.[0m
 [cleanup] removing local step29000
+2026-04-27 01:23:33,277 - INFO - Splitting state_dict into shards (max 5 GB per shard)...
+Creating shards:   0%|          | 0/311 [00:00<?, ?it/s]Creating shards: 100%|██████████| 311/311 [00:00<00:00, 1310983.46it/s]
+2026-04-27 01:23:33,278 - INFO - Writing 1 shard files...
+Writing shards:   0%|          | 0/1 [00:00<?, ?it/s]2026-04-27 01:23:35,088 - INFO - Shard 1/1: 3.97 GiB saved to /home/v-daqianding/workspace/tmp_hf_step32000/model-00000-of-00001.safetensors
+Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.81s/it]Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.81s/it]
+2026-04-27 01:23:35,089 - INFO - Index file saved to /home/v-daqianding/workspace/tmp_hf_step32000/model.safetensors.index.json
+2026-04-27 01:23:35,090 - INFO - Total model size: 3.97 GiB
+2026-04-27 01:23:35,123 - INFO - Copying config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step32000
+2026-04-27 01:23:35,474 - INFO - Successfully copied 8 config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step32000
+2026-04-27 01:23:35,474 - INFO - Conversion completed successfully!
+  ...0000-of-00001.safetensors:  99%|█████████▉| 4.21GB / 4.26GB            
+[32m✓ Uploaded[0m
+  url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/5b286e75407d3f1268bae76058893686b5e6c1cd
+2026-04-27 01:24:54,546 - INFO - Splitting state_dict into shards (max 5 GB per shard)...
+Creating shards:   0%|          | 0/311 [00:00<?, ?it/s]Creating shards: 100%|██████████| 311/311 [00:00<00:00, 1272613.21it/s]
+2026-04-27 01:24:54,547 - INFO - Writing 1 shard files...
+Writing shards:   0%|          | 0/1 [00:00<?, ?it/s]2026-04-27 01:24:56,351 - INFO - Shard 1/1: 3.97 GiB saved to /home/v-daqianding/workspace/tmp_hf_step34000/model-00000-of-00001.safetensors
+Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.80s/it]Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.80s/it]
+2026-04-27 01:24:56,352 - INFO - Index file saved to /home/v-daqianding/workspace/tmp_hf_step34000/model.safetensors.index.json
+2026-04-27 01:24:56,352 - INFO - Total model size: 3.97 GiB
+2026-04-27 01:24:56,398 - INFO - Copying config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step34000
+2026-04-27 01:24:56,409 - INFO - Successfully copied 8 config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step34000
+2026-04-27 01:24:56,409 - INFO - Conversion completed successfully!
+  ...0000-of-00001.safetensors:  99%|█████████▉| 4.21GB / 4.26GB            
+[32m✓ Uploaded[0m
+  url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/529dc1a329cbf1b0428e509bfde75cdd4e564f97
+2026-04-27 01:25:36,023 - INFO - Splitting state_dict into shards (max 5 GB per shard)...
+Creating shards:   0%|          | 0/311 [00:00<?, ?it/s]Creating shards: 100%|██████████| 311/311 [00:00<00:00, 1266435.48it/s]
+2026-04-27 01:25:36,024 - INFO - Writing 1 shard files...
+Writing shards:   0%|          | 0/1 [00:00<?, ?it/s]2026-04-27 01:25:37,669 - INFO - Shard 1/1: 3.97 GiB saved to /home/v-daqianding/workspace/tmp_hf_step36000/model-00000-of-00001.safetensors
+Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.65s/it]Writing shards: 100%|██████████| 1/1 [00:01<00:00,  1.65s/it]
+2026-04-27 01:25:37,670 - INFO - Index file saved to /home/v-daqianding/workspace/tmp_hf_step36000/model.safetensors.index.json
+2026-04-27 01:25:37,670 - INFO - Total model size: 3.97 GiB
+2026-04-27 01:25:37,707 - INFO - Copying config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step36000
+2026-04-27 01:25:37,718 - INFO - Successfully copied 8 config files from /home/v-daqianding/workspace/data/hf_models/OneRec-1.7B-pretrain to /home/v-daqianding/workspace/tmp_hf_step36000
+2026-04-27 01:25:37,718 - INFO - Conversion completed successfully!
+  ...0000-of-00001.safetensors:  99%|█████████▉| 4.21GB / 4.26GB            
+[32m✓ Uploaded[0m
+  url: https://huggingface.co/dqding/OneRec-1.7B-sft-interactive-1gpu/commit/3511844e9715beaf7613b5350288ab6e9fc4fa65
+[cleanup] removing local step29500
+[cleanup] removing local step30500
+[cleanup] removing local step31000
+[cleanup] removing local step31500
+[cleanup] removing local step32000
+[cleanup] removing local step32500
+[cleanup] removing local step33000
+[cleanup] removing local step33500
+[cleanup] removing local step34000
+[cleanup] removing local step34500
+[cleanup] removing local step35000
+[cleanup] removing local step35500
+[cleanup] removing local step36000
+[cleanup] removing local step36500
